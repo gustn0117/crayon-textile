@@ -1,0 +1,325 @@
+/* -- hero ----------------------------------------------------------------- */
+
+.hero {
+  padding-top: clamp(48px, 7vw, 108px);
+  padding-bottom: clamp(56px, 8vw, 116px);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: center;
+}
+
+.heroCopy {
+  min-width: 0;
+}
+
+.heroEyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.heroEyebrow span + span {
+  padding-left: 14px;
+  border-left: 1px solid var(--line-strong);
+}
+
+.heroTitle {
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+.heroLead {
+  max-width: 44ch;
+  margin-top: clamp(22px, 2.6vw, 32px);
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.85;
+  color: var(--body);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 34px);
+  margin-top: clamp(32px, 3.6vw, 48px);
+}
+
+.heroVisual {
+  min-width: 0;
+}
+
+.heroImage {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.heroImage img {
+  object-fit: cover;
+}
+
+.heroCaption {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--ink);
+  margin-top: 14px;
+}
+
+.heroCaption > div {
+  padding-top: 12px;
+}
+
+.heroCaption > div + div {
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+}
+
+.heroCaption dt {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.heroCaption dd {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroImage {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* -- figures -------------------------------------------------------------- */
+
+.figures {
+  border-block: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.figuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.figure {
+  padding: clamp(28px, 3.4vw, 44px) clamp(16px, 2vw, 32px) clamp(28px, 3.4vw, 44px) 0;
+}
+
+.figure + .figure {
+  padding-left: clamp(20px, 2.4vw, 36px);
+  border-left: 1px solid var(--line);
+}
+
+.figureValue {
+  font-family: var(--font-mono);
+  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.figureUnit {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.figureNote {
+  margin-top: 18px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+@media (max-width: 780px) {
+  .figuresGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .figure:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .figure:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* -- index ---------------------------------------------------------------- */
+
+.indexSection {
+  background: var(--paper);
+}
+
+.indexHead {
+  padding-bottom: clamp(32px, 4vw, 56px);
+}
+
+.indexList {
+  border-top: 1px solid var(--ink);
+}
+
+.indexList > li + li {
+  border-top: 1px solid var(--line);
+}
+
+/* The whole row is the target: it flips to ink on hover so the page reads as
+   an index of swatch cards being pulled out. */
+.indexRow {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 8fr) auto;
+  gap: clamp(20px, 3vw, 56px);
+  align-items: baseline;
+  padding: clamp(24px, 3vw, 40px) clamp(16px, 2.4vw, 32px);
+  margin-inline: clamp(-32px, -2.4vw, -16px);
+  transition:
+    background-color 0.4s var(--ease),
+    color 0.4s var(--ease);
+}
+
+.indexRow:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.indexEn {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 1.8;
+}
+
+.indexBody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.indexTitle {
+  font-size: clamp(1.25rem, 2vw, 1.625rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.35;
+}
+
+.indexDescription {
+  max-width: 64ch;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--body);
+  transition: color 0.4s var(--ease);
+}
+
+.indexRow:hover .indexDescription {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.indexArrow {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  line-height: 1.4;
+  transition: transform 0.4s var(--ease);
+}
+
+.indexRow:hover .indexArrow {
+  transform: translateX(8px);
+}
+
+@media (max-width: 760px) {
+  .indexRow {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px 20px;
+  }
+
+  .indexEn {
+    grid-column: 1;
+  }
+
+  .indexArrow {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .indexBody {
+    grid-column: 1 / -1;
+  }
+}
+
+/* -- closing -------------------------------------------------------------- */
+
+.closing {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding-block: clamp(64px, 8vw, 128px);
+}
+
+.closingInner {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+
+.closingTitle {
+  margin-top: clamp(18px, 2vw, 26px);
+}
+
+.closingSide {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3vw, 34px);
+}
+
+.closingNote {
+  max-width: 34ch;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--body);
+}
+
+.closingActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(18px, 2.4vw, 30px);
+}
+
+@media (max-width: 900px) {
+  .closingInner {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}

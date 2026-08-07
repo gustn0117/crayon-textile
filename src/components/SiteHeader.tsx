@@ -1,24 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
-const navigation = [
-  { label: "회사 소개", href: "#about" },
-  { label: "디자인", href: "#studio" },
-  { label: "컬렉션", href: "#collection" },
-  { label: "글로벌", href: "#global" },
-];
-
-function Logo() {
-  return (
-    <span className="brand-mark" aria-label="크레용 홈">
-      <span className="brand-mark__ko">크레용</span>
-      <span className="brand-mark__en">NOW CRAYON · SEOUL</span>
-    </span>
-  );
-}
+import { contact, navigation } from "@/lib/site";
+import styles from "./SiteHeader.module.css";
 
 export function SiteHeader() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -27,40 +16,51 @@ export function SiteHeader() {
   }, [isOpen]);
 
   useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsOpen(false);
     };
-
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, []);
 
   return (
-    <header className="site-header">
-      <div className="site-header__inner">
-        <a className="site-header__logo" href="#top" onClick={() => setIsOpen(false)}>
-          <Logo />
-        </a>
+    <header className={styles.header}>
+      <div className={styles.inner}>
+        <Link className={styles.brand} href="/">
+          <span className={styles.brandKo}>크레용</span>
+          <span className={styles.brandEn}>CRAYON TEXTILE</span>
+        </Link>
 
-        <nav className="desktop-nav" aria-label="주요 메뉴">
-          {navigation.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
-          ))}
+        <nav className={styles.nav} aria-label="주요 메뉴">
+          {navigation.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={isActive ? `${styles.navLink} ${styles.isActive}` : styles.navLink}
+                aria-current={isActive ? "page" : undefined}
+              >
+                {item.en}
+              </Link>
+            );
+          })}
         </nav>
 
-        <a className="header-cta" href="#contact">
-          원단 상담하기
-          <span aria-hidden="true">↗</span>
+        <a className={styles.tel} href={contact.telHref}>
+          T. {contact.tel}
         </a>
 
         <button
-          className="menu-button"
+          className={isOpen ? `${styles.toggle} ${styles.isOpen}` : styles.toggle}
           type="button"
           aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={isOpen}
-          aria-controls="mobile-navigation"
+          aria-controls="site-menu"
           onClick={() => setIsOpen((value) => !value)}
         >
           <span />
@@ -68,25 +68,27 @@ export function SiteHeader() {
         </button>
       </div>
 
-      <div className={`mobile-menu${isOpen ? " is-open" : ""}`} id="mobile-navigation">
-        <nav aria-label="모바일 메뉴">
-          {navigation.map((item, index) => (
-            <a key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
-              <span>0{index + 1}</span>
-              {item.label}
-              <b aria-hidden="true">↗</b>
-            </a>
+      <div
+        className={isOpen ? `${styles.panel} ${styles.panelOpen}` : styles.panel}
+        id="site-menu"
+        hidden={!isOpen}
+      >
+        <nav className={styles.panelNav} aria-label="전체 메뉴">
+          <Link className={styles.panelLink} href="/">
+            <span className={styles.panelEn}>INDEX</span>
+            <span className={styles.panelKo}>홈</span>
+          </Link>
+          {navigation.map((item) => (
+            <Link key={item.href} className={styles.panelLink} href={item.href}>
+              <span className={styles.panelEn}>{item.en}</span>
+              <span className={styles.panelKo}>{item.ko}</span>
+            </Link>
           ))}
-          <a className="mobile-menu__contact" href="#contact" onClick={() => setIsOpen(false)}>
-            <span>05</span>
-            문의하기
-            <b aria-hidden="true">↗</b>
-          </a>
         </nav>
 
-        <div className="mobile-menu__meta">
-          <a href="tel:+821077710786">010-7771-0786</a>
-          <p>동대문종합시장 D동 2층 2621호</p>
+        <div className={styles.panelMeta}>
+          <a href={contact.mobileHref}>{contact.mobile}</a>
+          <p>{contact.addressLines[1]}</p>
         </div>
       </div>
     </header>

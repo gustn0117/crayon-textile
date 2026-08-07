@@ -1,0 +1,129 @@
+.origin {
+  max-width: 62ch;
+}
+
+/* -- pull quote ----------------------------------------------------------- */
+
+.quoteSection {
+  border-block: 1px solid var(--line);
+  background: var(--surface);
+  padding-block: clamp(56px, 8vw, 120px);
+}
+
+.quote {
+  max-width: 20ch;
+  font-size: clamp(1.5rem, 3.6vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+/* -- principles ----------------------------------------------------------- */
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(40px, 5vw, 72px);
+  border-top: 1px solid var(--ink);
+}
+
+.principle {
+  padding: clamp(26px, 3vw, 40px) clamp(20px, 2.4vw, 36px) 0 0;
+}
+
+.principle + .principle {
+  padding-left: clamp(20px, 2.4vw, 36px);
+  border-left: 1px solid var(--line);
+}
+
+.principleEn {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.principleTitle {
+  margin-top: 20px;
+  font-size: clamp(1.125rem, 1.7vw, 1.375rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+
+.principleText {
+  margin-top: 12px;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--body);
+}
+
+@media (max-width: 820px) {
+  .principles {
+    grid-template-columns: 1fr;
+  }
+
+  .principle {
+    padding-right: 0;
+    padding-bottom: clamp(24px, 4vw, 32px);
+  }
+
+  .principle + .principle {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
+/* -- profile -------------------------------------------------------------- */
+
+.profileSection {
+  border-top: 1px solid var(--line);
+}
+
+.profile {
+  border-top: 1px solid var(--ink);
+}
+
+.profileRow {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: clamp(16px, 3vw, 40px);
+  padding-block: clamp(16px, 2vw, 22px);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Korean terms stay in the sans face — the mono's wide tracking pulls Hangul
+   syllables apart and the glyphs fall back to a different font anyway. */
+.profileRow dt {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+  line-height: 2.15;
+}
+
+.profileRow dd {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--ink);
+}
+
+.profileLink {
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+@media (max-width: 560px) {
+  .profileRow {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .profileRow dt {
+    line-height: 1.4;
+  }
+}

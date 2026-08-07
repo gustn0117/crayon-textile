@@ -1,0 +1,191 @@
+.legend {
+  padding-bottom: clamp(32px, 4vw, 56px);
+}
+
+.legendText {
+  max-width: 56ch;
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.85;
+  color: var(--body);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 3.6vw, 64px);
+  border-top: 1px solid var(--ink);
+  padding-top: clamp(28px, 3.6vw, 56px);
+}
+
+.card {
+  height: 100%;
+}
+
+/* -- the swatch itself ----------------------------------------------------
+   Each pattern is drawn in CSS and tiled at --repeat. The dashed box marks one
+   repeat unit, snapped to the tile origin so it lines up with the pattern. It
+   stays faintly visible at rest and firms up on hover, so the mark is never
+   information that only a mouse can reach.
+   ------------------------------------------------------------------------- */
+
+.art {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background-color: var(--surface);
+  background-position: 0 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.repeatBox {
+  position: absolute;
+  top: var(--repeat);
+  left: var(--repeat);
+  width: var(--repeat);
+  height: var(--repeat);
+  border: 1px dashed var(--ink);
+  opacity: 0.28;
+  transition: opacity 0.4s var(--ease);
+}
+
+.repeatLabel {
+  position: absolute;
+  top: calc(var(--repeat) * 2 + 10px);
+  left: var(--repeat);
+  padding: 4px 6px;
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  line-height: 1;
+  opacity: 0.55;
+  transition: opacity 0.4s var(--ease);
+}
+
+.card:hover .repeatBox,
+.card:hover .repeatLabel {
+  opacity: 1;
+}
+
+/* Scattered dots — light, seasonal. */
+.artWomen {
+  --repeat: 52px;
+  background-image:
+    radial-gradient(circle at 22% 26%, var(--ink) 0 2.4px, transparent 2.6px),
+    radial-gradient(circle at 68% 62%, var(--ink) 0 3.4px, transparent 3.6px),
+    radial-gradient(circle at 46% 88%, var(--line-strong) 0 5px, transparent 5.2px);
+  background-size: var(--repeat) var(--repeat);
+}
+
+/* Gingham check — the most recognisable children's-wear print. Two bands of the
+   same weight cross to make the third, darker tone. */
+.artKids {
+  --repeat: 48px;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      rgba(11, 11, 11, 0.1) 0 24px,
+      transparent 24px 48px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(11, 11, 11, 0.1) 0 24px,
+      transparent 24px 48px
+    );
+  background-size: var(--repeat) var(--repeat);
+}
+
+/* Diagonal rep stripe. The stripe period is 48 / √2 so the pattern comes back
+   round on an exact 48px square — the tile the dashed box claims it does. */
+.artCasual {
+  --repeat: 48px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--ink) 0 1.6px,
+    transparent 1.6px 10.6px,
+    rgba(11, 11, 11, 0.3) 10.6px 14.6px,
+    transparent 14.6px 33.941px
+  );
+}
+
+/* Lattice with a centred motif — steady, calm, made to sit behind a room. */
+.artHome {
+  --repeat: 44px;
+  background-image:
+    radial-gradient(circle at 50% 50%, var(--ink) 0 2.6px, transparent 2.8px),
+    linear-gradient(90deg, rgba(11, 11, 11, 0.22) 0 1px, transparent 1px),
+    linear-gradient(0deg, rgba(11, 11, 11, 0.22) 0 1px, transparent 1px);
+  background-size: var(--repeat) var(--repeat);
+}
+
+/* -- card meta ------------------------------------------------------------ */
+
+.meta {
+  padding-top: 18px;
+}
+
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: clamp(1.125rem, 1.9vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.nameKo {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--body);
+}
+
+.description {
+  max-width: 40ch;
+  margin-top: 14px;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--body);
+}
+
+/* -- footnote ------------------------------------------------------------- */
+
+.footnote {
+  margin-top: clamp(48px, 6vw, 88px);
+  padding-top: clamp(28px, 3vw, 40px);
+  border-top: 1px solid var(--line);
+}
+
+.footnoteText {
+  max-width: 50ch;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--body);
+}
+
+.footnoteLink {
+  margin-top: clamp(22px, 2.6vw, 32px);
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

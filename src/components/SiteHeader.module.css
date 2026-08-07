@@ -1,0 +1,220 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 64px);
+  height: var(--header-h);
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* -- brand ---------------------------------------------------------------- */
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-right: auto;
+}
+
+.brandKo {
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.brandEn {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  line-height: 1;
+  padding-left: 12px;
+  border-left: 1px solid var(--line);
+}
+
+/* -- desktop nav ---------------------------------------------------------- */
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.6vw, 40px);
+}
+
+.navLink {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1;
+  transition: color 0.3s var(--ease);
+}
+
+.navLink:hover {
+  color: var(--ink);
+}
+
+.isActive {
+  color: var(--ink);
+}
+
+/* The current page carries a filled square — the same mark the collection
+   swatches use for a repeat unit. */
+.isActive::before {
+  content: "";
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  margin-top: -2px;
+  background: var(--ink);
+}
+
+.tel {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  line-height: 1;
+  transition: color 0.3s var(--ease);
+}
+
+.tel:hover {
+  color: var(--ink);
+}
+
+/* -- mobile toggle -------------------------------------------------------- */
+
+.toggle {
+  display: none;
+  width: 26px;
+  height: 16px;
+  position: relative;
+}
+
+.toggle span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform 0.35s var(--ease);
+}
+
+.toggle span:first-child {
+  top: 3px;
+}
+
+.toggle span:last-child {
+  bottom: 3px;
+}
+
+.isOpen span:first-child {
+  transform: translateY(4.5px) rotate(45deg);
+}
+
+.isOpen span:last-child {
+  transform: translateY(-4.5px) rotate(-45deg);
+}
+
+/* -- mobile panel --------------------------------------------------------- */
+
+.panel {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .nav,
+  .tel {
+    display: none;
+  }
+
+  .toggle {
+    display: block;
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    inset: var(--header-h) 0 0;
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(28px, 7vw, 48px) var(--gutter) clamp(32px, 8vw, 56px);
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+  }
+
+  .panelOpen {
+    opacity: 1;
+  }
+
+  .panelNav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panelLink {
+    display: grid;
+    grid-template-columns: 8.8em 1fr;
+    align-items: baseline;
+    gap: 12px;
+    padding-block: clamp(14px, 3.4vw, 20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .panelLink:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .panelEn {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .panelKo {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .panelMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .panelMeta a {
+    color: var(--paper);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .panelMeta p {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+  }
+}
