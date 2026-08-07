@@ -38,6 +38,8 @@ export default function CollectionPage() {
     <>
       <PageIntro
         en="COLLECTION"
+        imageSrc="/images/crayon-collection-hero.jpg"
+        imagePosition="center 52%"
         title={
           <>
             다양한 쓰임에 맞춘

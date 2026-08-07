@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 import { Reveal } from "./Reveal";
 import styles from "./PageIntro.module.css";
 
@@ -6,11 +7,31 @@ type PageIntroProps = {
   en: string;
   title: ReactNode;
   lead?: ReactNode;
+  imageSrc: string;
+  imagePosition?: string;
 };
 
-export function PageIntro({ en, title, lead }: PageIntroProps) {
+export function PageIntro({
+  en,
+  title,
+  lead,
+  imageSrc,
+  imagePosition = "center",
+}: PageIntroProps) {
   return (
     <section className={styles.intro}>
+      <div className={styles.media} aria-hidden="true">
+        <Image
+          src={imageSrc}
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          style={{ objectPosition: imagePosition }}
+        />
+        <div className={styles.scrim} />
+      </div>
+
       <div className={`container split ${styles.grid}`}>
         <Reveal className={styles.meta}>
           <p className={styles.en}>{en}</p>

@@ -46,6 +46,8 @@ export default function AboutPage() {
     <>
       <PageIntro
         en="ABOUT"
+        imageSrc="/images/crayon-about-hero.jpg"
+        imagePosition="center 54%"
         title={
           <>
             시장을 이해하는 경험,

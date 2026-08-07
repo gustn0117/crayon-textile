@@ -80,8 +80,10 @@
 }
 
 .heroTitle {
-  max-width: 16ch;
+  max-width: none;
   margin-top: clamp(20px, 2.6vw, 32px);
+  font-size: clamp(2.5rem, 4.35vw, 4.5rem);
+  white-space: nowrap;
 }
 
 .heroLead {
@@ -203,6 +205,10 @@
 }
 
 @media (max-width: 700px) {
+  .heroTitle {
+    font-size: 4.9vw;
+  }
+
   /* No room for a side-weighted scrim — darken the whole frame instead. */
   .heroScrim {
     background: linear-gradient(

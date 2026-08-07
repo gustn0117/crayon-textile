@@ -50,9 +50,7 @@ export default function HomePage() {
 
           <Reveal delay={70}>
             <h1 className={`display-lg ${styles.heroTitle}`}>
-              패턴의 차이가
-              <br />
-              원단의 가치를 만듭니다.
+              패턴의 차이가 원단의 가치를 만듭니다.
             </h1>
           </Reveal>
 

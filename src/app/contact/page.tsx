@@ -46,6 +46,8 @@ export default function ContactPage() {
     <>
       <PageIntro
         en="CONTACT"
+        imageSrc="/images/crayon-contact-hero.jpg"
+        imagePosition="68% center"
         title={
           <>
             새로운 원단을

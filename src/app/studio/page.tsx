@@ -25,6 +25,8 @@ export default function StudioPage() {
     <>
       <PageIntro
         en="STUDIO"
+        imageSrc="/images/crayon-studio-hero.jpg"
+        imagePosition="68% center"
         title={
           <>
             직접 그린 패턴으로
@@ -44,6 +46,7 @@ export default function StudioPage() {
                   src="/images/crayon-design-studio.jpg"
                   alt="패턴 도안과 컬러칩, 원단 샘플을 검토하는 크레용 디자인 스튜디오"
                   fill
+                  loading="eager"
                   sizes="(max-width: 900px) 100vw, 90vw"
                 />
               </div>

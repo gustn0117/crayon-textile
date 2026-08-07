@@ -1,10 +1,54 @@
 .intro {
-  padding-top: clamp(56px, 8vw, 128px);
-  padding-bottom: clamp(48px, 6vw, 88px);
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  display: flex;
+  min-height: clamp(470px, 60svh, 680px);
+  padding-top: clamp(80px, 10vw, 148px);
+  padding-bottom: clamp(56px, 7vw, 96px);
+  align-items: flex-end;
+  color: var(--paper);
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  overflow: hidden;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+}
+
+.media img {
+  object-fit: cover;
+  transform: scale(1.025);
+  animation: introSettle 4.8s var(--ease) both;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(11, 11, 11, 0.8) 0%,
+      rgba(11, 11, 11, 0.67) 54%,
+      rgba(11, 11, 11, 0.46) 100%
+    ),
+    linear-gradient(0deg, rgba(11, 11, 11, 0.64) 0%, rgba(11, 11, 11, 0.08) 58%),
+    linear-gradient(180deg, rgba(11, 11, 11, 0.28) 0%, rgba(11, 11, 11, 0) 28%);
+}
+
+@keyframes introSettle {
+  from {
+    transform: scale(1.075);
+  }
+  to {
+    transform: scale(1.025);
+  }
 }
 
 .grid {
+  position: relative;
+  z-index: 1;
+  width: 100%;
   align-items: start;
 }
 
@@ -18,7 +62,7 @@
   font-size: clamp(0.75rem, 1.1vw, 0.8125rem);
   font-weight: 500;
   letter-spacing: 0.28em;
-  color: var(--ink);
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1;
 }
 
@@ -27,5 +71,29 @@
   margin-top: clamp(20px, 2.4vw, 30px);
   font-size: clamp(1rem, 1.25vw, 1.125rem);
   line-height: 1.85;
-  color: var(--body);
+  color: rgba(255, 255, 255, 0.76);
+}
+
+@media (max-width: 900px) {
+  .intro {
+    min-height: clamp(430px, 62svh, 590px);
+  }
+
+  .scrim {
+    background:
+      linear-gradient(180deg, rgba(11, 11, 11, 0.48) 0%, rgba(11, 11, 11, 0.76) 100%),
+      linear-gradient(90deg, rgba(11, 11, 11, 0.54), rgba(11, 11, 11, 0.42));
+  }
+}
+
+@media (max-width: 560px) {
+  .intro {
+    min-height: 460px;
+    padding-top: 76px;
+    padding-bottom: 52px;
+  }
+
+  .content :global(.display) {
+    font-size: clamp(2.2rem, 10.4vw, 3rem);
+  }
 }
