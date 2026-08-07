@@ -52,6 +52,12 @@ body.menu-open {
   overflow: hidden;
 }
 
+/* The header is fixed so it can sit transparently over the home hero. Every
+   page reserves its height; the hero cancels that reservation and slides under. */
+main {
+  padding-top: var(--header-h);
+}
+
 h1,
 h2,
 h3,
@@ -112,7 +118,7 @@ button {
 }
 
 .section {
-  padding-block: clamp(64px, 7.5vw, 116px);
+  padding-block: clamp(76px, 8.5vw, 136px);
 }
 
 .section-tight {
@@ -170,11 +176,13 @@ button {
   letter-spacing: -0.035em;
 }
 
+/* One notch lighter than the heaviest cut, one notch larger. Gothic A1 at 900
+   shouts; at 800 and this size it carries without raising its voice. */
 .display-lg {
-  font-weight: 900;
-  font-size: clamp(2.5rem, 6.6vw, 5.25rem);
-  line-height: 1.08;
-  letter-spacing: -0.045em;
+  font-weight: 800;
+  font-size: clamp(2.6rem, 6.4vw, 5.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.05em;
 }
 
 .heading {

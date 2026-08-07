@@ -4,9 +4,13 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  min-height: 540px;
-  min-height: clamp(540px, calc(100svh - var(--header-h)), 800px);
-  padding-block: clamp(56px, 7vw, 92px);
+  min-height: 620px;
+  min-height: 100svh;
+  /* Cancels the reservation main makes for the fixed header, then puts it back
+     as padding — the image runs to the top of the window, the type does not. */
+  margin-top: calc(var(--header-h) * -1);
+  padding-top: calc(var(--header-h) + 48px);
+  padding-bottom: clamp(76px, 8vw, 116px);
   color: var(--paper);
   overflow: hidden;
 }
@@ -16,8 +20,20 @@
   inset: 0;
 }
 
+/* A single slow settle on load. Long enough to read as camera movement rather
+   than as an effect. */
 .heroMedia img {
   object-fit: cover;
+  animation: heroSettle 5.5s cubic-bezier(0.16, 0.84, 0.24, 1) both;
+}
+
+@keyframes heroSettle {
+  from {
+    transform: scale(1.09);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 
 /* Weighted toward the left, where the type sits, so the fabric still shows its
@@ -38,6 +54,66 @@
 
 .heroInner {
   position: relative;
+  width: 100%;
+}
+
+/* Vertical scroll cue, bottom right. The mark travels the rule once every few
+   seconds; nothing else on the page moves on its own. */
+.heroCue {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(76px, 8vw, 116px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Only the label rotates — rotating the flex container would turn its main axis
+   sideways and lay the label and rule out side by side. */
+.heroCue span {
+  writing-mode: vertical-rl;
+}
+
+.heroCue i {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 56px;
+  background: rgba(255, 255, 255, 0.24);
+  overflow: hidden;
+}
+
+.heroCue i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -55%;
+  height: 55%;
+  background: var(--paper);
+  animation: cueTravel 2.8s var(--ease) infinite;
+}
+
+@keyframes cueTravel {
+  0% {
+    top: -55%;
+  }
+  55%,
+  100% {
+    top: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .heroCue {
+    display: none;
+  }
 }
 
 .heroEyebrow {
@@ -206,6 +282,11 @@
 
 .aboutImage img {
   object-fit: cover;
+  transition: transform 1.4s var(--ease);
+}
+
+.aboutVisual:hover .aboutImage img {
+  transform: scale(1.04);
 }
 
 .aboutCaption {
@@ -268,12 +349,19 @@
   flex: 0 0 100%;
   aspect-ratio: 4 / 3;
   border: 1px solid var(--line);
-  margin-bottom: 12px;
-  transition: opacity 0.35s var(--ease);
+  margin-bottom: 14px;
+  overflow: hidden;
 }
 
-.businessCard:hover .businessArt {
-  opacity: 0.72;
+.businessArtInner {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s var(--ease);
+}
+
+.businessCard:hover .businessArtInner {
+  transform: scale(1.07);
 }
 
 .businessCode {
@@ -293,6 +381,16 @@
   letter-spacing: 0.06em;
   color: var(--ink);
   line-height: 1.2;
+  padding-bottom: 3px;
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0 1px;
+  transition: background-size 0.5s var(--ease);
+}
+
+.businessCard:hover .businessName {
+  background-size: 100% 1px;
 }
 
 .businessKo {
@@ -318,14 +416,23 @@
   }
 }
 
-/* -- studio summary ------------------------------------------------------- */
+/* -- studio summary — the one inverted block in the middle of the page ------ */
+
+.studio {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.studioLabel {
+  color: rgba(255, 255, 255, 0.5);
+}
 
 .studioLead {
   max-width: 52ch;
   margin-top: clamp(18px, 2.2vw, 26px);
   font-size: 1rem;
   line-height: 1.85;
-  color: var(--body);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .studioSteps {
@@ -340,17 +447,17 @@
   align-items: baseline;
   gap: 8px;
   padding: 11px 16px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   font-family: var(--font-mono);
   font-size: 0.625rem;
   font-weight: 500;
   letter-spacing: 0.18em;
-  color: var(--ink);
+  color: var(--paper);
   line-height: 1;
 }
 
 .studioSteps span {
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .studioLink {
@@ -359,10 +466,11 @@
 
 /* -- closing -------------------------------------------------------------- */
 
+/* Sits between two ink blocks, so it needs enough height to read as a room of
+   its own rather than a seam. */
 .closing {
-  border-top: 1px solid var(--line);
   background: var(--surface);
-  padding-block: clamp(64px, 8vw, 120px);
+  padding-block: clamp(88px, 10.5vw, 168px);
 }
 
 .closingInner {

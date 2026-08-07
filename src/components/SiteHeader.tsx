@@ -9,6 +9,18 @@ import styles from "./SiteHeader.module.css";
 export function SiteHeader() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Only the home page has a full-bleed hero for the header to float over.
+  const overHero = pathname === "/" && !isScrolled && !isOpen;
+
+  useEffect(() => {
+    if (pathname !== "/") return;
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", isOpen);
@@ -28,7 +40,7 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className={styles.header}>
+    <header className={overHero ? `${styles.header} ${styles.overHero}` : styles.header}>
       <div className={styles.inner}>
         <Link className={styles.brand} href="/">
           <span className={styles.brandKo}>크레용</span>

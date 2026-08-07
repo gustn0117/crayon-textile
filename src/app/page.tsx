@@ -61,6 +61,11 @@ export default function HomePage() {
               <span aria-hidden="true">→</span>
             </Link>
           </Reveal>
+
+          <div className={styles.heroCue} aria-hidden="true">
+            <span>SCROLL</span>
+            <i />
+          </div>
         </div>
       </section>
 
@@ -136,10 +141,9 @@ export default function HomePage() {
               <li key={item.code}>
                 <Reveal delay={i * 60}>
                   <Link className={styles.businessCard} href="/collection">
-                    <span
-                      className={`${styles.businessArt} ${item.swatch}`}
-                      aria-hidden="true"
-                    />
+                    <span className={styles.businessArt} aria-hidden="true">
+                      <span className={`${styles.businessArtInner} ${item.swatch}`} />
+                    </span>
                     <span className={styles.businessCode}>{item.code}</span>
                     <span className={styles.businessName}>{item.en}</span>
                     <span className={styles.businessKo}>{item.ko}</span>
@@ -158,10 +162,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className={`section ${styles.studio}`}>
         <div className="container split">
           <Reveal>
-            <p className="label label-ink">STUDIO</p>
+            <p className={`label ${styles.studioLabel}`}>STUDIO</p>
           </Reveal>
 
           <Reveal delay={60}>
@@ -183,7 +187,10 @@ export default function HomePage() {
               ))}
             </ol>
 
-            <Link className={`arrow-link ${styles.studioLink}`} href="/studio">
+            <Link
+              className={`arrow-link arrow-link-light ${styles.studioLink}`}
+              href="/studio"
+            >
               디자인 스튜디오 보기
               <span aria-hidden="true">→</span>
             </Link>
