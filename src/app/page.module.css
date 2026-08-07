@@ -1,19 +1,43 @@
-/* -- hero ----------------------------------------------------------------- */
+/* -- hero — headline over the fabric --------------------------------------- */
 
 .hero {
-  padding-top: clamp(48px, 7vw, 108px);
-  padding-bottom: clamp(56px, 8vw, 116px);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 540px;
+  min-height: clamp(540px, calc(100svh - var(--header-h)), 800px);
+  padding-block: clamp(56px, 7vw, 92px);
+  color: var(--paper);
+  overflow: hidden;
 }
 
-.heroGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(40px, 5vw, 88px);
-  align-items: center;
+.heroMedia {
+  position: absolute;
+  inset: 0;
 }
 
-.heroCopy {
-  min-width: 0;
+.heroMedia img {
+  object-fit: cover;
+}
+
+/* Weighted toward the left, where the type sits, so the fabric still shows its
+   colour on the right. */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      100deg,
+      rgba(11, 11, 11, 0.9) 0%,
+      rgba(11, 11, 11, 0.78) 38%,
+      rgba(11, 11, 11, 0.34) 78%,
+      rgba(11, 11, 11, 0.24) 100%
+    ),
+    linear-gradient(180deg, rgba(11, 11, 11, 0.34) 0%, rgba(11, 11, 11, 0) 32%);
+}
+
+.heroInner {
+  position: relative;
 }
 
 .heroEyebrow {
@@ -25,25 +49,26 @@
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.2em;
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1;
 }
 
 .heroEyebrow span + span {
   padding-left: 14px;
-  border-left: 1px solid var(--line-strong);
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .heroTitle {
-  margin-top: clamp(24px, 3vw, 40px);
+  max-width: 16ch;
+  margin-top: clamp(20px, 2.6vw, 32px);
 }
 
 .heroLead {
   max-width: 44ch;
-  margin-top: clamp(22px, 2.6vw, 32px);
+  margin-top: clamp(20px, 2.4vw, 28px);
   font-size: clamp(1rem, 1.25vw, 1.125rem);
   line-height: 1.85;
-  color: var(--body);
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .heroActions {
@@ -51,74 +76,40 @@
   flex-wrap: wrap;
   align-items: center;
   gap: clamp(18px, 2.6vw, 34px);
-  margin-top: clamp(32px, 3.6vw, 48px);
+  margin-top: clamp(30px, 3.4vw, 44px);
 }
 
-.heroVisual {
-  min-width: 0;
-}
-
-.heroImage {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  background: var(--surface);
-  overflow: hidden;
-}
-
-.heroImage img {
-  object-fit: cover;
-}
-
-.heroCaption {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border-top: 1px solid var(--ink);
-  margin-top: 14px;
-}
-
-.heroCaption > div {
-  padding-top: 12px;
-}
-
-.heroCaption > div + div {
-  padding-left: 18px;
-  border-left: 1px solid var(--line);
-}
-
-.heroCaption dt {
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  color: var(--muted);
-  line-height: 1;
-}
-
-.heroCaption dd {
-  margin: 8px 0 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  color: var(--ink);
-  line-height: 1;
-}
-
-@media (max-width: 900px) {
-  .heroGrid {
-    grid-template-columns: 1fr;
+@media (max-width: 640px) {
+  /* Stacked, the divider rule would strand itself at the start of line two. */
+  .heroEyebrow {
+    display: block;
   }
 
-  .heroImage {
-    aspect-ratio: 3 / 2;
+  .heroEyebrow span + span {
+    display: block;
+    margin-top: 8px;
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  /* No room for a side-weighted scrim — darken the whole frame instead. */
+  .heroScrim {
+    background: linear-gradient(
+      180deg,
+      rgba(11, 11, 11, 0.6) 0%,
+      rgba(11, 11, 11, 0.78) 60%,
+      rgba(11, 11, 11, 0.86) 100%
+    );
   }
 }
 
 /* -- figures -------------------------------------------------------------- */
 
 .figures {
-  border-block: 1px solid var(--line);
-  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
 }
 
 .figuresGrid {
@@ -176,106 +167,194 @@
   }
 }
 
-/* -- index ---------------------------------------------------------------- */
+/* -- about summary -------------------------------------------------------- */
 
-.indexSection {
-  background: var(--paper);
-}
-
-.indexHead {
-  padding-bottom: clamp(32px, 4vw, 56px);
-}
-
-.indexList {
-  border-top: 1px solid var(--ink);
-}
-
-.indexList > li + li {
-  border-top: 1px solid var(--line);
-}
-
-/* The whole row is the target: it flips to ink on hover so the page reads as
-   an index of swatch cards being pulled out. */
-.indexRow {
+.aboutGrid {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 8fr) auto;
-  gap: clamp(20px, 3vw, 56px);
-  align-items: baseline;
-  padding: clamp(24px, 3vw, 40px) clamp(16px, 2.4vw, 32px);
-  margin-inline: clamp(-32px, -2.4vw, -16px);
-  transition:
-    background-color 0.4s var(--ease),
-    color 0.4s var(--ease);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(36px, 5vw, 88px);
+  align-items: start;
 }
 
-.indexRow:hover {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.indexEn {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  line-height: 1.8;
-}
-
-.indexBody {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.aboutCopy {
   min-width: 0;
 }
 
-.indexTitle {
-  font-size: clamp(1.25rem, 2vw, 1.625rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.35;
+.aboutTitle {
+  margin-top: clamp(18px, 2vw, 26px);
 }
 
-.indexDescription {
-  max-width: 64ch;
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--body);
-  transition: color 0.4s var(--ease);
+.aboutProse {
+  max-width: 46ch;
+  margin-top: clamp(20px, 2.4vw, 30px);
 }
 
-.indexRow:hover .indexDescription {
-  color: rgba(255, 255, 255, 0.72);
+.aboutLink {
+  margin-top: clamp(28px, 3.2vw, 40px);
 }
 
-.indexArrow {
+.aboutVisual {
+  min-width: 0;
+}
+
+.aboutImage {
+  position: relative;
+  aspect-ratio: 5 / 4;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.aboutImage img {
+  object-fit: cover;
+}
+
+.aboutCaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--ink);
   font-family: var(--font-mono);
-  font-size: 1.125rem;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .aboutGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -- business ------------------------------------------------------------- */
+
+.business {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.businessHead {
+  padding-bottom: clamp(32px, 4vw, 52px);
+}
+
+.businessLead {
+  max-width: 48ch;
+  margin-top: 16px;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--body);
+}
+
+.businessGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 28px);
+  border-top: 1px solid var(--ink);
+  padding-top: clamp(28px, 3.2vw, 44px);
+}
+
+.businessCard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 10px;
+}
+
+.businessArt {
+  flex: 0 0 100%;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  margin-bottom: 12px;
+  transition: opacity 0.35s var(--ease);
+}
+
+.businessCard:hover .businessArt {
+  opacity: 0.72;
+}
+
+.businessCode {
+  flex: 0 0 100%;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.businessName {
+  font-family: var(--font-mono);
+  font-size: clamp(0.9375rem, 1.4vw, 1.125rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.businessKo {
+  font-size: 0.8125rem;
+  color: var(--body);
   line-height: 1.4;
-  transition: transform 0.4s var(--ease);
 }
 
-.indexRow:hover .indexArrow {
-  transform: translateX(8px);
+.businessFoot {
+  margin-top: clamp(32px, 3.6vw, 48px);
 }
 
-@media (max-width: 760px) {
-  .indexRow {
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 12px 20px;
+@media (max-width: 860px) {
+  .businessGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(20px, 4vw, 32px);
   }
+}
 
-  .indexEn {
-    grid-column: 1;
+@media (max-width: 420px) {
+  .businessGrid {
+    grid-template-columns: 1fr;
   }
+}
 
-  .indexArrow {
-    grid-column: 2;
-    grid-row: 1;
-  }
+/* -- studio summary ------------------------------------------------------- */
 
-  .indexBody {
-    grid-column: 1 / -1;
-  }
+.studioLead {
+  max-width: 52ch;
+  margin-top: clamp(18px, 2.2vw, 26px);
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--body);
+}
+
+.studioSteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(26px, 3vw, 36px);
+}
+
+.studioSteps li {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 11px 16px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.studioSteps span {
+  color: var(--muted);
+}
+
+.studioLink {
+  margin-top: clamp(28px, 3.2vw, 40px);
 }
 
 /* -- closing -------------------------------------------------------------- */
@@ -283,7 +362,7 @@
 .closing {
   border-top: 1px solid var(--line);
   background: var(--surface);
-  padding-block: clamp(64px, 8vw, 128px);
+  padding-block: clamp(64px, 8vw, 120px);
 }
 
 .closingInner {

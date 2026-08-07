@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { contact } from "@/lib/site";
+import { categories, contact } from "@/lib/site";
 import styles from "./page.module.css";
 
 const figures = [
@@ -11,95 +11,55 @@ const figures = [
   { value: "GLOBAL", unit: "SUPPLY", note: "국내외 텍스타일 공급" },
 ];
 
-const index = [
-  {
-    href: "/about",
-    en: "ABOUT",
-    title: "시장을 이해하는 경험",
-    description: "30년간 동대문 현장에서 쌓은 감각과 1,000개 이상의 디자인 개발 경험.",
-  },
-  {
-    href: "/collection",
-    en: "COLLECTION",
-    title: "쓰임에 맞춘 패턴",
-    description: "여성복, 아동복, 캐주얼, 홈패브릭까지 용도별로 원단을 제안합니다.",
-  },
-  {
-    href: "/studio",
-    en: "STUDIO",
-    title: "직접 그리는 패턴",
-    description: "자체 디자인 제도실에서 아이디어 구상부터 패턴 개발까지 관리합니다.",
-  },
-  {
-    href: "/contact",
-    en: "CONTACT",
-    title: "원단 상담",
-    description: "찾으시는 용도와 분위기를 알려주시면 알맞은 원단을 함께 찾아드립니다.",
-  },
-];
+const processSteps = ["RESEARCH", "CONCEPT", "PATTERN", "COLORWAY"];
 
 export default function HomePage() {
   return (
     <>
       <section className={styles.hero}>
-        <div className={`container ${styles.heroGrid}`}>
-          <div className={styles.heroCopy}>
-            <Reveal>
-              <p className={styles.heroEyebrow}>
-                <span>SEOUL · DONGDAEMUN</span>
-                <span>30 YEARS OF PRINTED TEXTILE</span>
-              </p>
-            </Reveal>
+        <div className={styles.heroMedia} aria-hidden="true">
+          <Image
+            src="/images/crayon-textile-hero.jpg"
+            alt=""
+            fill
+            preload
+            sizes="100vw"
+          />
+          <div className={styles.heroScrim} />
+        </div>
 
-            <Reveal delay={70}>
-              <h1 className={`display-lg ${styles.heroTitle}`}>
-                패턴의 차이가
-                <br />
-                원단의 가치를
-                <br />
-                만듭니다.
-              </h1>
-            </Reveal>
+        <div className={`container ${styles.heroInner}`}>
+          <Reveal>
+            <p className={styles.heroEyebrow}>
+              <span>SEOUL · DONGDAEMUN</span>
+              <span>30 YEARS OF PRINTED TEXTILE</span>
+            </p>
+          </Reveal>
 
-            <Reveal delay={140}>
-              <p className={styles.heroLead}>
-                서울 동대문에서 30년간 나염 원단을 개발해 온 크레용. 자체 디자인실의
-                독창적인 패턴으로 상품의 가능성을 넓힙니다.
-              </p>
-            </Reveal>
+          <Reveal delay={70}>
+            <h1 className={`display-lg ${styles.heroTitle}`}>
+              패턴의 차이가
+              <br />
+              원단의 가치를 만듭니다.
+            </h1>
+          </Reveal>
 
-            <Reveal className={styles.heroActions} delay={210}>
-              <Link className="btn btn-solid" href="/contact">
-                원단 · 패턴 상담하기
-                <span aria-hidden="true">↗</span>
-              </Link>
-              <Link className="arrow-link" href="/collection">
-                컬렉션 보기
-                <span aria-hidden="true">→</span>
-              </Link>
-            </Reveal>
-          </div>
+          <Reveal delay={140}>
+            <p className={styles.heroLead}>
+              서울 동대문에서 30년간 나염 원단을 개발해 온 크레용. 자체 디자인실의
+              독창적인 패턴으로 상품의 가능성을 넓힙니다.
+            </p>
+          </Reveal>
 
-          <Reveal className={styles.heroVisual} delay={120}>
-            <div className={styles.heroImage}>
-              <Image
-                src="/images/crayon-textile-hero.jpg"
-                alt="크레용이 개발한 오리지널 패턴이 인쇄된 텍스타일"
-                fill
-                preload
-                sizes="(max-width: 900px) 100vw, 46vw"
-              />
-            </div>
-            <dl className={styles.heroCaption}>
-              <div>
-                <dt>ARCHIVE</dt>
-                <dd>CR—2621</dd>
-              </div>
-              <div>
-                <dt>TYPE</dt>
-                <dd>ORIGINAL PATTERN</dd>
-              </div>
-            </dl>
+          <Reveal className={styles.heroActions} delay={210}>
+            <Link className="btn btn-invert" href="/contact">
+              원단 · 패턴 상담하기
+              <span aria-hidden="true">↗</span>
+            </Link>
+            <Link className="arrow-link arrow-link-light" href="/collection">
+              컬렉션 보기
+              <span aria-hidden="true">→</span>
+            </Link>
           </Reveal>
         </div>
       </section>
@@ -116,34 +76,118 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className={`section ${styles.indexSection}`}>
-        <div className="container">
-          <Reveal className={`split ${styles.indexHead}`}>
-            <p className="label label-ink">INDEX</p>
-            <h2 className="heading">
-              크레용을 이루는 네 가지 이야기를
-              <br className="wide-only" /> 나누어 담았습니다.
+      <section className="section">
+        <div className={`container ${styles.aboutGrid}`}>
+          <Reveal className={styles.aboutCopy}>
+            <p className="label label-ink">ABOUT CRAYON</p>
+            <h2 className={`heading ${styles.aboutTitle}`}>
+              시장을 이해하는 경험,
+              <br />
+              상품을 완성하는 디자인.
             </h2>
+            <div className={`prose ${styles.aboutProse}`}>
+              <p>
+                크레용은 서울 동대문종합시장을 기반으로 여성복, 아동복, 캐주얼, 침구용 등
+                다양한 분야의 프린트 원단을 개발해 왔습니다.
+              </p>
+              <p>
+                30년간 축적한 시장 경험과 1,000개 이상의 디자인 개발 경험을 바탕으로,
+                트렌드와 활용도는 물론 대중성과 상품성까지 세심하게 고려한 원단을
+                제안합니다.
+              </p>
+            </div>
+            <Link className={`arrow-link ${styles.aboutLink}`} href="/about">
+              회사 소개 자세히 보기
+              <span aria-hidden="true">→</span>
+            </Link>
           </Reveal>
 
-          <ul className={styles.indexList}>
-            {index.map((item, i) => (
-              <li key={item.href}>
+          <Reveal className={styles.aboutVisual} delay={80}>
+            <div className={styles.aboutImage}>
+              <Image
+                src="/images/crayon-design-studio.jpg"
+                alt="패턴 도안과 컬러칩, 원단 샘플을 검토하는 크레용 디자인 스튜디오"
+                fill
+                sizes="(max-width: 900px) 100vw, 44vw"
+              />
+            </div>
+            <p className={styles.aboutCaption}>
+              <span>DESIGN PROCESS</span>
+              <span>FROM IDEA TO TEXTILE</span>
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className={`section ${styles.business}`}>
+        <div className="container">
+          <Reveal className={`split ${styles.businessHead}`}>
+            <p className="label label-ink">BUSINESS</p>
+            <div>
+              <h2 className="heading">네 갈래의 원단을 다룹니다.</h2>
+              <p className={styles.businessLead}>
+                찾으시는 용도와 분위기를 알려주시면 알맞은 원단과 패턴을 함께 제안합니다.
+              </p>
+            </div>
+          </Reveal>
+
+          <ul className={styles.businessGrid}>
+            {categories.map((item, i) => (
+              <li key={item.code}>
                 <Reveal delay={i * 60}>
-                  <Link className={styles.indexRow} href={item.href}>
-                    <span className={styles.indexEn}>{item.en}</span>
-                    <span className={styles.indexBody}>
-                      <strong className={styles.indexTitle}>{item.title}</strong>
-                      <span className={styles.indexDescription}>{item.description}</span>
-                    </span>
-                    <span className={styles.indexArrow} aria-hidden="true">
-                      →
-                    </span>
+                  <Link className={styles.businessCard} href="/collection">
+                    <span
+                      className={`${styles.businessArt} ${item.swatch}`}
+                      aria-hidden="true"
+                    />
+                    <span className={styles.businessCode}>{item.code}</span>
+                    <span className={styles.businessName}>{item.en}</span>
+                    <span className={styles.businessKo}>{item.ko}</span>
                   </Link>
                 </Reveal>
               </li>
             ))}
           </ul>
+
+          <Reveal className={styles.businessFoot}>
+            <Link className="arrow-link" href="/collection">
+              컬렉션 전체 보기
+              <span aria-hidden="true">→</span>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container split">
+          <Reveal>
+            <p className="label label-ink">STUDIO</p>
+          </Reveal>
+
+          <Reveal delay={60}>
+            <h2 className="heading">
+              직접 그린 패턴으로
+              <br className="wide-only" /> 더 안심할 수 있는 선택.
+            </h2>
+            <p className={styles.studioLead}>
+              자체 디자인 제도실을 운영하며 브랜드 모방이나 카피가 아닌 독자 개발 패턴을
+              중심으로 제안합니다. 아이디어 구상부터 컬러웨이 전개까지 직접 관리합니다.
+            </p>
+
+            <ol className={styles.studioSteps}>
+              {processSteps.map((step, i) => (
+                <li key={step}>
+                  <span>{String(i + 1).padStart(2, "0")}</span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+
+            <Link className={`arrow-link ${styles.studioLink}`} href="/studio">
+              디자인 스튜디오 보기
+              <span aria-hidden="true">→</span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 

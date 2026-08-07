@@ -7,6 +7,39 @@ export const navigation = [
   { href: "/contact", en: "CONTACT", ko: "문의" },
 ] as const;
 
+/* The four fields Crayon develops fabric for. `swatch` names a global class in
+   globals.css that draws the pattern. */
+export const categories = [
+  {
+    code: "CR—W01",
+    en: "WOMEN",
+    ko: "여성복",
+    description: "계절의 감도와 실용성을 함께 고려한 섬세한 패턴.",
+    swatch: "swatch-women",
+  },
+  {
+    code: "CR—K02",
+    en: "KIDS",
+    ko: "아동복",
+    description: "밝고 생동감 있는 리듬과 자유로운 모티프.",
+    swatch: "swatch-kids",
+  },
+  {
+    code: "CR—C03",
+    en: "CASUAL",
+    ko: "캐주얼",
+    description: "일상의 옷에 자연스럽게 스며드는 균형 잡힌 디자인.",
+    swatch: "swatch-casual",
+  },
+  {
+    code: "CR—H04",
+    en: "HOME",
+    ko: "침구 · 홈패브릭",
+    description: "공간의 분위기를 완성하는 편안한 반복 패턴.",
+    swatch: "swatch-home",
+  },
+] as const;
+
 export const contact = {
   tel: "02-2266-0786",
   telHref: "tel:+82222660786",

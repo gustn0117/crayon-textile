@@ -232,12 +232,6 @@
 
 .globalLink {
   margin-top: clamp(24px, 3vw, 36px);
-  color: var(--paper);
-  border-bottom-color: rgba(255, 255, 255, 0.4);
-}
-
-.globalLink:hover {
-  border-bottom-color: var(--paper);
 }
 
 @media (max-width: 900px) {

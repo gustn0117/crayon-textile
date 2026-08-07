@@ -160,7 +160,10 @@ export default function StudioPage() {
                 해외 시장에 공급되고 있습니다. 서로 다른 시장과 취향을 이해하며 한국
                 텍스타일 디자인의 경쟁력을 더 넓은 무대에 전하고 있습니다.
               </p>
-              <Link className={`arrow-link ${styles.globalLink}`} href="/contact">
+              <Link
+                className={`arrow-link arrow-link-light ${styles.globalLink}`}
+                href="/contact"
+              >
                 수출 · 대량 공급 문의
                 <span aria-hidden="true">→</span>
               </Link>

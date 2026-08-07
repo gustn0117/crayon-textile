@@ -31,7 +31,6 @@
 .art {
   position: relative;
   aspect-ratio: 4 / 3;
-  background-color: var(--surface);
   background-position: 0 0;
   overflow: hidden;
   border: 1px solid var(--line);
@@ -69,56 +68,8 @@
   opacity: 1;
 }
 
-/* Scattered dots — light, seasonal. */
-.artWomen {
-  --repeat: 52px;
-  background-image:
-    radial-gradient(circle at 22% 26%, var(--ink) 0 2.4px, transparent 2.6px),
-    radial-gradient(circle at 68% 62%, var(--ink) 0 3.4px, transparent 3.6px),
-    radial-gradient(circle at 46% 88%, var(--line-strong) 0 5px, transparent 5.2px);
-  background-size: var(--repeat) var(--repeat);
-}
-
-/* Gingham check — the most recognisable children's-wear print. Two bands of the
-   same weight cross to make the third, darker tone. */
-.artKids {
-  --repeat: 48px;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(11, 11, 11, 0.1) 0 24px,
-      transparent 24px 48px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      rgba(11, 11, 11, 0.1) 0 24px,
-      transparent 24px 48px
-    );
-  background-size: var(--repeat) var(--repeat);
-}
-
-/* Diagonal rep stripe. The stripe period is 48 / √2 so the pattern comes back
-   round on an exact 48px square — the tile the dashed box claims it does. */
-.artCasual {
-  --repeat: 48px;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    var(--ink) 0 1.6px,
-    transparent 1.6px 10.6px,
-    rgba(11, 11, 11, 0.3) 10.6px 14.6px,
-    transparent 14.6px 33.941px
-  );
-}
-
-/* Lattice with a centred motif — steady, calm, made to sit behind a room. */
-.artHome {
-  --repeat: 44px;
-  background-image:
-    radial-gradient(circle at 50% 50%, var(--ink) 0 2.6px, transparent 2.8px),
-    linear-gradient(90deg, rgba(11, 11, 11, 0.22) 0 1px, transparent 1px),
-    linear-gradient(0deg, rgba(11, 11, 11, 0.22) 0 1px, transparent 1px);
-  background-size: var(--repeat) var(--repeat);
-}
+/* The pattern fills themselves live in globals.css as .swatch-* so the home
+   page summary draws from the same source. */
 
 /* -- card meta ------------------------------------------------------------ */
 

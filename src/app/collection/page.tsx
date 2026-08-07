@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro } from "@/components/PageIntro";
 import { Reveal } from "@/components/Reveal";
+import { categories } from "@/lib/site";
 import styles from "./collection.module.css";
 
 export const metadata: Metadata = {
@@ -9,37 +10,6 @@ export const metadata: Metadata = {
   description:
     "여성복, 아동복, 캐주얼, 침구 및 홈패브릭까지. 크레용이 개발하는 용도별 나염 원단 패턴을 소개합니다.",
 };
-
-const swatches = [
-  {
-    code: "CR—W01",
-    en: "WOMEN",
-    ko: "여성복",
-    description: "계절의 감도와 실용성을 함께 고려한 섬세한 패턴.",
-    art: styles.artWomen,
-  },
-  {
-    code: "CR—K02",
-    en: "KIDS",
-    ko: "아동복",
-    description: "밝고 생동감 있는 리듬과 자유로운 모티프.",
-    art: styles.artKids,
-  },
-  {
-    code: "CR—C03",
-    en: "CASUAL",
-    ko: "캐주얼",
-    description: "일상의 옷에 자연스럽게 스며드는 균형 잡힌 디자인.",
-    art: styles.artCasual,
-  },
-  {
-    code: "CR—H04",
-    en: "HOME",
-    ko: "침구 · 홈패브릭",
-    description: "공간의 분위기를 완성하는 편안한 반복 패턴.",
-    art: styles.artHome,
-  },
-];
 
 export default function CollectionPage() {
   return (
@@ -67,11 +37,11 @@ export default function CollectionPage() {
           </Reveal>
 
           <ul className={styles.grid}>
-            {swatches.map((item, i) => (
+            {categories.map((item, i) => (
               <li key={item.code}>
                 <Reveal delay={i * 70}>
                   <article className={styles.card}>
-                    <div className={`${styles.art} ${item.art}`} aria-hidden="true">
+                    <div className={`${styles.art} ${item.swatch}`} aria-hidden="true">
                       <span className={styles.repeatBox} />
                       <span className={styles.repeatLabel}>REPEAT UNIT</span>
                     </div>
