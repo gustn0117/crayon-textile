@@ -1,0 +1,110 @@
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: clamp(28px, 4vw, 72px);
+  align-items: start;
+  padding-bottom: clamp(36px, 4.5vw, 64px);
+}
+
+/* The left column used to hold a single label and a lot of nothing. It now runs
+   index → label → descriptor, so it reads as a column rather than a margin. */
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 4px;
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.en {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.note {
+  max-width: 17ch;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+.body {
+  min-width: 0;
+}
+
+.title {
+  max-width: 24ch;
+}
+
+.lead {
+  max-width: 58ch;
+  margin-top: clamp(18px, 2vw, 26px);
+  font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+  line-height: 1.85;
+  color: var(--body);
+}
+
+/* -- on ink --------------------------------------------------------------- */
+
+.light .index {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.light .en {
+  color: var(--paper);
+}
+
+.light .note {
+  border-top-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.light .title {
+  color: var(--paper);
+}
+
+.light .lead {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 900px) {
+  .head {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .meta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px;
+    padding-top: 0;
+  }
+
+  .en,
+  .note {
+    margin-top: 0;
+  }
+
+  .note {
+    flex: 0 0 100%;
+    max-width: none;
+    padding-top: 14px;
+  }
+}

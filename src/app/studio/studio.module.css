@@ -37,33 +37,30 @@
   }
 }
 
-/* -- in-house copy -------------------------------------------------------- */
-
-.copy {
-  max-width: 62ch;
-}
-
 /* -- process -------------------------------------------------------------- */
 
 .processSection {
   border-top: 1px solid var(--line);
+  background: var(--surface);
 }
 
 .process {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: clamp(40px, 5vw, 72px);
   border-top: 1px solid var(--ink);
 }
 
 .step {
-  padding: clamp(24px, 3vw, 36px) clamp(18px, 2.2vw, 32px) 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   height: 100%;
+  padding: clamp(24px, 3vw, 36px) clamp(18px, 2.2vw, 32px) 0 0;
 }
 
 .process > li + li .step {
   padding-left: clamp(18px, 2.2vw, 32px);
-  border-left: 1px solid var(--line);
+  border-left: 1px solid var(--line-strong);
 }
 
 .stepNumber {
@@ -103,7 +100,7 @@
 .note {
   margin-top: clamp(36px, 4vw, 56px);
   padding-top: 20px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
   font-size: 0.8125rem;
   line-height: 1.7;
   color: var(--muted);
@@ -142,20 +139,12 @@
   }
 }
 
-/* -- global supply — inverted block -------------------------------------- */
+/* -- global supply — inverted block --------------------------------------- */
 
 .globalSection {
   background: var(--ink);
   color: var(--paper);
-  padding-block: clamp(64px, 8vw, 128px);
-}
-
-.labelLight {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.globalTitle {
-  color: var(--paper);
+  padding-block: clamp(76px, 8.5vw, 136px);
 }
 
 .route {
@@ -163,8 +152,7 @@
   grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
   gap: clamp(24px, 4vw, 72px);
   align-items: center;
-  margin-top: clamp(44px, 5vw, 76px);
-  padding-top: clamp(28px, 3vw, 40px);
+  padding-top: clamp(24px, 3vw, 36px);
   border-top: 1px solid rgba(255, 255, 255, 0.28);
 }
 
@@ -219,19 +207,22 @@
   color: rgba(255, 255, 255, 0.82);
 }
 
-.globalCopy {
-  margin-top: clamp(40px, 5vw, 64px);
+.globalFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 48px;
+  margin-top: clamp(36px, 4vw, 56px);
+  padding-top: clamp(20px, 2.4vw, 28px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.globalCopy p {
-  max-width: 56ch;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.globalLink {
-  margin-top: clamp(24px, 3vw, 36px);
+.globalFoot p {
+  max-width: 46ch;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.66);
 }
 
 @media (max-width: 900px) {

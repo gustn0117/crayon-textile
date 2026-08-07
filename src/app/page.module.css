@@ -3,14 +3,15 @@
 .hero {
   position: relative;
   display: flex;
-  align-items: flex-end;
-  min-height: 620px;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 640px;
   min-height: 100svh;
   /* Cancels the reservation main makes for the fixed header, then puts it back
      as padding — the image runs to the top of the window, the type does not. */
   margin-top: calc(var(--header-h) * -1);
   padding-top: calc(var(--header-h) + 48px);
-  padding-bottom: clamp(76px, 8vw, 116px);
+  padding-bottom: clamp(20px, 2.4vw, 32px);
   color: var(--paper);
   overflow: hidden;
 }
@@ -49,71 +50,15 @@
       rgba(11, 11, 11, 0.34) 78%,
       rgba(11, 11, 11, 0.24) 100%
     ),
-    linear-gradient(180deg, rgba(11, 11, 11, 0.34) 0%, rgba(11, 11, 11, 0) 32%);
+    linear-gradient(180deg, rgba(11, 11, 11, 0.34) 0%, rgba(11, 11, 11, 0) 30%),
+    linear-gradient(0deg, rgba(11, 11, 11, 0.6) 0%, rgba(11, 11, 11, 0) 26%);
 }
 
 .heroInner {
   position: relative;
   width: 100%;
-}
-
-/* Vertical scroll cue, bottom right. The mark travels the rule once every few
-   seconds; nothing else on the page moves on its own. */
-.heroCue {
-  position: absolute;
-  right: var(--gutter);
-  bottom: clamp(76px, 8vw, 116px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.3em;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* Only the label rotates — rotating the flex container would turn its main axis
-   sideways and lay the label and rule out side by side. */
-.heroCue span {
-  writing-mode: vertical-rl;
-}
-
-.heroCue i {
-  position: relative;
-  display: block;
-  width: 1px;
-  height: 56px;
-  background: rgba(255, 255, 255, 0.24);
-  overflow: hidden;
-}
-
-.heroCue i::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -55%;
-  height: 55%;
-  background: var(--paper);
-  animation: cueTravel 2.8s var(--ease) infinite;
-}
-
-@keyframes cueTravel {
-  0% {
-    top: -55%;
-  }
-  55%,
-  100% {
-    top: 100%;
-  }
-}
-
-@media (max-width: 760px) {
-  .heroCue {
-    display: none;
-  }
+  margin-top: auto;
+  padding-bottom: clamp(44px, 5vw, 76px);
 }
 
 .heroEyebrow {
@@ -155,6 +100,120 @@
   margin-top: clamp(30px, 3.4vw, 44px);
 }
 
+/* -- hero foot — the four fields, on the image ---------------------------- */
+
+.heroFoot {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: clamp(18px, 2vw, 26px);
+  border-top: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.heroFields {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px clamp(20px, 3vw, 56px);
+  flex: 1 1 auto;
+  max-width: 860px;
+}
+
+.heroFields li {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.heroFields b {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--paper);
+  line-height: 1;
+}
+
+.heroFields span {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1;
+}
+
+/* Vertical scroll cue. The mark travels the rule once every few seconds;
+   nothing else on the page moves on its own. */
+.heroCue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Only the label rotates — rotating the flex container would turn its main axis
+   sideways and lay the label and rule out side by side. */
+.heroCue span {
+  writing-mode: vertical-rl;
+}
+
+.heroCue i {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.24);
+  overflow: hidden;
+}
+
+.heroCue i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -55%;
+  height: 55%;
+  background: var(--paper);
+  animation: cueTravel 2.8s var(--ease) infinite;
+}
+
+@keyframes cueTravel {
+  0% {
+    top: -55%;
+  }
+  55%,
+  100% {
+    top: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .heroFields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .heroCue {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  /* No room for a side-weighted scrim — darken the whole frame instead. */
+  .heroScrim {
+    background: linear-gradient(
+      180deg,
+      rgba(11, 11, 11, 0.6) 0%,
+      rgba(11, 11, 11, 0.78) 55%,
+      rgba(11, 11, 11, 0.88) 100%
+    );
+  }
+}
+
 @media (max-width: 640px) {
   /* Stacked, the divider rule would strand itself at the start of line two. */
   .heroEyebrow {
@@ -166,18 +225,6 @@
     margin-top: 8px;
     padding-left: 0;
     border-left: 0;
-  }
-}
-
-@media (max-width: 700px) {
-  /* No room for a side-weighted scrim — darken the whole frame instead. */
-  .heroScrim {
-    background: linear-gradient(
-      180deg,
-      rgba(11, 11, 11, 0.6) 0%,
-      rgba(11, 11, 11, 0.78) 60%,
-      rgba(11, 11, 11, 0.86) 100%
-    );
   }
 }
 
@@ -247,8 +294,8 @@
 
 .aboutGrid {
   display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
-  gap: clamp(36px, 5vw, 88px);
+  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+  gap: clamp(36px, 4.5vw, 76px);
   align-items: start;
 }
 
@@ -256,13 +303,12 @@
   min-width: 0;
 }
 
-.aboutTitle {
-  margin-top: clamp(18px, 2vw, 26px);
-}
-
 .aboutProse {
   max-width: 46ch;
-  margin-top: clamp(20px, 2.4vw, 30px);
+}
+
+.aboutFacts {
+  margin-top: clamp(28px, 3.4vw, 44px);
 }
 
 .aboutLink {
@@ -275,7 +321,7 @@
 
 .aboutImage {
   position: relative;
-  aspect-ratio: 5 / 4;
+  aspect-ratio: 4 / 3;
   background: var(--surface);
   overflow: hidden;
 }
@@ -305,6 +351,40 @@
   line-height: 1;
 }
 
+.principleList {
+  display: grid;
+  gap: 1px;
+  margin-top: clamp(24px, 3vw, 36px);
+  background: var(--line);
+  border-block: 1px solid var(--line);
+}
+
+.principleList li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+  padding-block: clamp(13px, 1.6vw, 17px);
+  background: var(--paper);
+}
+
+.principleList span {
+  flex: 0 0 11.5em;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.principleList b {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
 @media (max-width: 900px) {
   .aboutGrid {
     grid-template-columns: 1fr;
@@ -316,18 +396,6 @@
 .business {
   border-top: 1px solid var(--line);
   background: var(--surface);
-}
-
-.businessHead {
-  padding-bottom: clamp(32px, 4vw, 52px);
-}
-
-.businessLead {
-  max-width: 48ch;
-  margin-top: 16px;
-  font-size: 0.9375rem;
-  line-height: 1.8;
-  color: var(--body);
 }
 
 .businessGrid {
@@ -399,6 +467,16 @@
   line-height: 1.4;
 }
 
+.businessNote {
+  flex: 0 0 100%;
+  margin-top: 6px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--body);
+}
+
 .businessFoot {
   margin-top: clamp(32px, 3.6vw, 48px);
 }
@@ -416,52 +494,187 @@
   }
 }
 
-/* -- studio summary — the one inverted block in the middle of the page ------ */
+/* -- studio — the one inverted block in the middle of the page ------------- */
 
 .studio {
   background: var(--ink);
   color: var(--paper);
 }
 
-.studioLabel {
-  color: rgba(255, 255, 255, 0.5);
+.process {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
 }
 
-.studioLead {
-  max-width: 52ch;
-  margin-top: clamp(18px, 2.2vw, 26px);
-  font-size: 1rem;
-  line-height: 1.85;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.studioSteps {
+.step {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: clamp(26px, 3vw, 36px);
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: clamp(24px, 3vw, 38px) clamp(18px, 2.2vw, 32px) 0 0;
 }
 
-.studioSteps li {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 11px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
+.process > li + li .step {
+  padding-left: clamp(18px, 2.2vw, 32px);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.stepNumber {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 1.75rem;
   font-weight: 500;
-  letter-spacing: 0.18em;
+  letter-spacing: -0.04em;
+  line-height: 1;
   color: var(--paper);
+}
+
+.stepEn {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.45);
   line-height: 1;
 }
 
-.studioSteps span {
-  color: rgba(255, 255, 255, 0.45);
+.stepTitle {
+  margin-top: 18px;
+  font-size: clamp(1rem, 1.5vw, 1.1875rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
 }
 
-.studioLink {
-  margin-top: clamp(28px, 3.2vw, 40px);
+.stepText {
+  margin-top: 10px;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.studioFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 40px;
+  margin-top: clamp(36px, 4vw, 56px);
+  padding-top: clamp(20px, 2.4vw, 28px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.studioNote {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 900px) {
+  .process {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .process > li:nth-child(odd) .step {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .process > li:nth-child(n + 3) .step {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: clamp(20px, 3vw, 32px);
+  }
+
+  .step {
+    padding-bottom: clamp(20px, 3vw, 28px);
+  }
+}
+
+@media (max-width: 520px) {
+  .process {
+    grid-template-columns: 1fr;
+  }
+
+  .process > li + li .step {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 24px;
+  }
+}
+
+/* -- global supply -------------------------------------------------------- */
+
+.route {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+  gap: clamp(24px, 4vw, 72px);
+  align-items: center;
+  padding-top: clamp(24px, 3vw, 36px);
+  border-top: 1px solid var(--ink);
+}
+
+.origin {
+  position: relative;
+  padding-left: 20px;
+}
+
+.originMark {
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  background: var(--ink);
+}
+
+.originName {
+  font-family: var(--font-mono);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.originNote {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.destinations {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.destinations li {
+  background: var(--paper);
+  padding: clamp(18px, 2.2vw, 26px) clamp(12px, 1.6vw, 20px);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .route {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .destinations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* -- closing -------------------------------------------------------------- */
@@ -469,6 +682,7 @@
 /* Sits between two ink blocks, so it needs enough height to read as a room of
    its own rather than a seam. */
 .closing {
+  border-top: 1px solid var(--line);
   background: var(--surface);
   padding-block: clamp(88px, 10.5vw, 168px);
 }

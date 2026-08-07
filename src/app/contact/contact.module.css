@@ -81,52 +81,26 @@
   }
 }
 
-/* -- details -------------------------------------------------------------- */
-
-.details {
-  border-top: 1px solid var(--ink);
-}
-
-.detailRow {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
-  gap: clamp(16px, 3vw, 40px);
-  padding-block: clamp(16px, 2vw, 22px);
-  border-bottom: 1px solid var(--line);
-}
-
-.detailRow dt {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  line-height: 2.1;
-}
-
-.detailRow dd {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin: 0;
-  font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--ink);
-}
+/* -- visit ---------------------------------------------------------------- */
 
 .mapLink {
   margin-top: clamp(28px, 3.4vw, 44px);
 }
 
-@media (max-width: 560px) {
-  .detailRow {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
+.visitAside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(24px, 3vw, 34px);
+  padding-top: clamp(16px, 2vw, 22px);
+  border-top: 1px solid var(--line-strong);
+}
 
-  .detailRow dt {
-    line-height: 1.4;
-  }
+.visitNote {
+  max-width: 36ch;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--body);
 }
 
 /* -- checklist ------------------------------------------------------------ */
@@ -137,35 +111,49 @@
 }
 
 .checklist {
-  margin-top: clamp(32px, 4vw, 48px);
   border-top: 1px solid var(--ink);
 }
 
 .checkRow {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 10fr);
-  gap: clamp(16px, 3vw, 40px);
-  padding-block: clamp(16px, 2vw, 22px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 9fr);
+  gap: clamp(12px, 2.4vw, 40px);
+  align-items: baseline;
+  padding-block: clamp(18px, 2.2vw, 26px);
   border-bottom: 1px solid var(--line-strong);
 }
 
-.checkRow dt {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ink);
+.checkStep {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  line-height: 1.8;
 }
 
-.checkRow dd {
-  margin: 0;
+.checkTerm {
+  font-size: clamp(1rem, 1.5vw, 1.1875rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.checkText {
+  max-width: 56ch;
   font-size: 0.9375rem;
-  line-height: 1.75;
+  line-height: 1.8;
   color: var(--body);
 }
 
-@media (max-width: 560px) {
+@media (max-width: 760px) {
   .checkRow {
-    grid-template-columns: 1fr;
-    gap: 4px;
+    grid-template-columns: auto 1fr;
+    gap: 6px 16px;
+  }
+
+  .checkText {
+    grid-column: 2;
   }
 }

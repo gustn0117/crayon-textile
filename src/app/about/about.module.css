@@ -1,5 +1,44 @@
-.origin {
-  max-width: 62ch;
+/* -- stance — what Crayon does and does not do ---------------------------- */
+
+.stanceWrap {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3vw, 36px);
+}
+
+.stance {
+  padding-top: clamp(16px, 2vw, 22px);
+  border-top: 1px solid var(--ink);
+}
+
+.stanceLabel {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.stanceList {
+  margin-top: 12px;
+}
+
+.stanceList li {
+  position: relative;
+  padding: 9px 0 9px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--body);
+}
+
+.stanceList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 17px;
+  width: 6px;
+  height: 1px;
+  background: var(--line-strong);
 }
 
 /* -- pull quote ----------------------------------------------------------- */
@@ -7,7 +46,15 @@
 .quoteSection {
   border-block: 1px solid var(--line);
   background: var(--surface);
-  padding-block: clamp(56px, 8vw, 120px);
+  padding-block: clamp(64px, 8vw, 128px);
+}
+
+.quoteInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(28px, 4vw, 64px);
 }
 
 .quote {
@@ -19,12 +66,26 @@
   color: var(--ink);
 }
 
+.quoteMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  line-height: 1;
+}
+
 /* -- principles ----------------------------------------------------------- */
 
 .principles {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: clamp(40px, 5vw, 72px);
   border-top: 1px solid var(--ink);
 }
 
@@ -84,46 +145,24 @@
   border-top: 1px solid var(--line);
 }
 
-.profile {
-  border-top: 1px solid var(--ink);
+.profileAside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(22px, 2.6vw, 32px);
+  padding-top: clamp(16px, 2vw, 22px);
+  border-top: 1px solid var(--line-strong);
 }
 
-.profileRow {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
-  gap: clamp(16px, 3vw, 40px);
-  padding-block: clamp(16px, 2vw, 22px);
-  border-bottom: 1px solid var(--line);
-}
-
-/* Korean terms stay in the sans face — the mono's wide tracking pulls Hangul
-   syllables apart and the glyphs fall back to a different font anyway. */
-.profileRow dt {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--muted);
-  line-height: 2.15;
-}
-
-.profileRow dd {
-  margin: 0;
+.profileNote {
+  max-width: 34ch;
   font-size: 0.9375rem;
-  line-height: 1.75;
-  color: var(--ink);
+  line-height: 1.85;
+  color: var(--body);
 }
 
-.profileLink {
-  margin-top: clamp(32px, 4vw, 48px);
-}
-
-@media (max-width: 560px) {
-  .profileRow {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
-  .profileRow dt {
-    line-height: 1.4;
-  }
+.profileLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
 }

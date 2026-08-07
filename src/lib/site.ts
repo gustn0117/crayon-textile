@@ -40,6 +40,55 @@ export const categories = [
   },
 ] as const;
 
+/* Shared so the home summaries and the detail pages can never drift apart. */
+export const processSteps = [
+  {
+    step: "01",
+    en: "RESEARCH",
+    title: "시장 리서치",
+    description: "계절과 브랜드가 필요로 하는 방향을 동대문 현장에서 직접 확인합니다.",
+  },
+  {
+    step: "02",
+    en: "CONCEPT",
+    title: "아이디어 구상",
+    description: "모티프와 구성, 밀도를 정하고 손으로 초안을 그립니다.",
+  },
+  {
+    step: "03",
+    en: "PATTERN",
+    title: "패턴 개발",
+    description: "반복 단위를 다듬어 원단 위에서 이음매 없이 이어지도록 만듭니다.",
+  },
+  {
+    step: "04",
+    en: "COLORWAY",
+    title: "컬러웨이 전개",
+    description: "같은 패턴을 여러 색으로 전개해 선택의 폭을 넓힙니다.",
+  },
+] as const;
+
+export const principles = [
+  {
+    en: "MARKET SENSE",
+    title: "시장을 읽는 경험",
+    description:
+      "30년간 동대문 현장에서 쌓은 감각으로 지금 필요한 원단이 무엇인지 읽습니다.",
+  },
+  {
+    en: "ORIGINALITY",
+    title: "직접 만드는 패턴",
+    description: "자체 디자인 제도실에서 아이디어 구상부터 패턴 개발까지 직접 관리합니다.",
+  },
+  {
+    en: "COMMERCIAL BALANCE",
+    title: "상품이 되는 디자인",
+    description: "보기 좋은 감각을 넘어 대중성과 활용도까지 현실적으로 설계합니다.",
+  },
+] as const;
+
+export const destinations = ["JAPAN", "TAIWAN", "EUROPE", "MIDDLE EAST"] as const;
+
 export const contact = {
   tel: "02-2266-0786",
   telHref: "tel:+82222660786",
