@@ -163,7 +163,7 @@ export default function AboutPage() {
               </div>
               <figcaption className={styles.pressCaption}>
                 <span>KBS 다큐ON 「DDP, 디자인으로 소통하다」</span>
-                <span>6월 29일 방영 · 영상 저작권은 KBS에 있습니다</span>
+                <span>6월 29일 방영 · © KBS · 사용 허락을 받아 게재</span>
               </figcaption>
             </figure>
           </Reveal>
