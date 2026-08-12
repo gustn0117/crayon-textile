@@ -138,9 +138,41 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className={`section ${styles.pressSection}`}>
+        <div className="container">
+          <SectionHead
+            index="03"
+            en="ON AIR"
+            note="방송에 소개된 크레용."
+            title="KBS 다큐ON에 크레용의 작업이 담겼습니다."
+            lead="동대문과 DDP를 다룬 KBS 다큐ON 「DDP, 디자인으로 소통하다」 편에 크레용의 원단 아카이브와 자체 개발 디자인이 소개되었습니다."
+          />
+
+          <Reveal>
+            <figure className={styles.press}>
+              <div className={styles.pressPlayer}>
+                <video
+                  controls
+                  preload="metadata"
+                  playsInline
+                  poster="/video/crayon-kbs-docu-poster.jpg"
+                >
+                  <source src="/video/crayon-kbs-docu.mp4" type="video/mp4" />
+                  브라우저가 동영상 재생을 지원하지 않습니다.
+                </video>
+              </div>
+              <figcaption className={styles.pressCaption}>
+                <span>KBS 다큐ON 「DDP, 디자인으로 소통하다」</span>
+                <span>6월 29일 방영 · 영상 저작권은 KBS에 있습니다</span>
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+      </section>
+
       <section className={`section ${styles.profileSection}`}>
         <div className="container">
-          <SectionHead index="03" en="PROFILE" note="회사 개요" />
+          <SectionHead index="04" en="PROFILE" note="회사 개요" />
 
           <div className="duo">
             <Reveal>

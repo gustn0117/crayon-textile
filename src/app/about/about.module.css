@@ -139,6 +139,57 @@
   }
 }
 
+/* -- press ---------------------------------------------------------------- */
+
+.pressSection {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.press {
+  margin: 0;
+  border-top: 1px solid var(--ink);
+  padding-top: clamp(24px, 3vw, 40px);
+}
+
+.pressPlayer {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.pressPlayer video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.pressCaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-top: 12px;
+  margin-top: 14px;
+  border-top: 1px solid var(--line-strong);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.pressCaption span:last-child {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
 /* -- profile -------------------------------------------------------------- */
 
 .profileSection {

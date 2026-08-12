@@ -23,6 +23,7 @@ const overview = [
   { term: "취급 품목", value: "나염 프린트 원단 · 텍스타일 패턴 디자인" },
   { term: "주요 분야", value: "여성복 · 아동복 · 캐주얼 · 침구 및 홈패브릭" },
   { term: "공급 지역", value: "대한민국 · 일본 · 대만 · 유럽 · 중동" },
+  { term: "방송 소개", value: "KBS 다큐ON 「DDP, 디자인으로 소통하다」" },
 ];
 
 export default function HomePage() {
