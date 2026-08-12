@@ -125,10 +125,58 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className={styles.globalSection}>
+      <section className="section">
         <div className="container">
           <SectionHead
             index="03"
+            en="PRINTING"
+            note="도안이 원단 위에 올라가는 자리."
+            title="패턴은 나염 공정을 거쳐 원단이 됩니다."
+            lead="개발이 끝난 도안은 제판을 거쳐 나염 현장으로 넘어갑니다. 같은 도안이라도 원단과 공정에 따라 색과 선의 표현이 달라지기 때문에, 현장에서 나온 결과를 보고 다시 조정합니다."
+          />
+
+          <div className={styles.printing}>
+            <Reveal>
+              <figure className={styles.printFigure}>
+                <div className={styles.printImage}>
+                  <Image
+                    src="/images/crayon-printing-table.jpg"
+                    alt="나염 인쇄대 위로 꽃무늬가 인쇄되어 나오는 원단"
+                    fill
+                    sizes="(max-width: 900px) 100vw, 46vw"
+                  />
+                </div>
+                <figcaption>
+                  <span>ON THE TABLE</span>
+                  <span>인쇄대 위의 원단</span>
+                </figcaption>
+              </figure>
+            </Reveal>
+
+            <Reveal delay={80}>
+              <figure className={styles.printFigure}>
+                <div className={styles.printImage}>
+                  <Image
+                    src="/images/crayon-printing-line.jpg"
+                    alt="원단이 지나가는 나염 생산 라인과 대기 중인 원단 롤"
+                    fill
+                    sizes="(max-width: 900px) 100vw, 46vw"
+                  />
+                </div>
+                <figcaption>
+                  <span>PRINTING LINE</span>
+                  <span>나염 생산 라인</span>
+                </figcaption>
+              </figure>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.globalSection}>
+        <div className="container">
+          <SectionHead
+            index="04"
             en="GLOBAL SUPPLY"
             note="서로 다른 시장과 취향을 이해합니다."
             title={

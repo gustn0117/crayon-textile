@@ -507,6 +507,49 @@
   color: var(--paper);
 }
 
+.studioVisual {
+  margin-bottom: clamp(36px, 4.5vw, 64px);
+}
+
+.studioImage {
+  position: relative;
+  aspect-ratio: 21 / 9;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.studioImage img {
+  object-fit: cover;
+}
+
+.studioCaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+}
+
+.studioCaption span:last-child {
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 760px) {
+  .studioImage {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 .process {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

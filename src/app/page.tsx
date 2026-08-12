@@ -227,6 +227,21 @@ export default function HomePage() {
             light
           />
 
+          <Reveal className={styles.studioVisual}>
+            <div className={styles.studioImage}>
+              <Image
+                src="/images/crayon-printing-table.jpg"
+                alt="나염 인쇄대 위로 꽃무늬가 인쇄되어 나오는 원단"
+                fill
+                sizes="100vw"
+              />
+            </div>
+            <p className={styles.studioCaption}>
+              <span>ON THE TABLE</span>
+              <span>인쇄대 위의 원단</span>
+            </p>
+          </Reveal>
+
           <ol className={styles.process}>
             {processSteps.map((item, i) => (
               <li key={item.step}>

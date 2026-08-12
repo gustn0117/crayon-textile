@@ -83,6 +83,63 @@
 
 /* -- visit ---------------------------------------------------------------- */
 
+/* The storefront photo carries the same weight as the address here — for a
+   booth inside a market, seeing the sign is half the direction. */
+.visitGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 4vw, 72px);
+  align-items: start;
+}
+
+.storeVisual {
+  min-width: 0;
+}
+
+.store {
+  margin: 0;
+}
+
+.storeImage {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.storeImage img {
+  object-fit: cover;
+}
+
+.storeCaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.storeCaption span:last-child {
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  font-size: 0.8125rem;
+}
+
+.visitInfo {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 52px);
+  min-width: 0;
+}
+
 .mapLink {
   margin-top: clamp(28px, 3.4vw, 44px);
 }
@@ -94,6 +151,16 @@
   gap: clamp(24px, 3vw, 34px);
   padding-top: clamp(16px, 2vw, 22px);
   border-top: 1px solid var(--line-strong);
+}
+
+@media (max-width: 900px) {
+  .visitGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .storeImage {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .visitNote {

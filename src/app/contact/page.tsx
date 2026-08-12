@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
@@ -91,43 +92,62 @@ export default function ContactPage() {
             title="오시는 길과 연락처."
           />
 
-          <div className="duo">
-            <Reveal>
-              <dl className="facts">
-                {details.map((row) => (
-                  <div key={row.term}>
-                    <dt>{row.term}</dt>
-                    <dd>
-                      {row.lines.map((line) => (
-                        <span key={line}>{line}</span>
-                      ))}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-
-              <a
-                className={`arrow-link ${styles.mapLink}`}
-                href={contact.mapUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                지도에서 보기
-                <span aria-hidden="true">↗</span>
-              </a>
+          <div className={styles.visitGrid}>
+            <Reveal className={styles.storeVisual}>
+              <figure className={styles.store}>
+                <div className={styles.storeImage}>
+                  <Image
+                    src="/images/crayon-store.jpg"
+                    alt="동대문종합시장 D동 2621호 크레용 매장. 파란 간판 아래로 원단 스와치와 샘플이 진열되어 있다."
+                    fill
+                    sizes="(max-width: 900px) 100vw, 40vw"
+                  />
+                </div>
+                <figcaption className={styles.storeCaption}>
+                  <span>CRAYON · D—2621</span>
+                  <span>이 간판을 찾으시면 됩니다</span>
+                </figcaption>
+              </figure>
             </Reveal>
 
-            <Reveal className={styles.visitAside} delay={70}>
-              <p className={styles.visitNote}>
-                동대문종합시장은 층과 동이 넓어 처음 오시면 찾기 어려울 수 있습니다. 방문
-                전에 전화 주시면 위치를 안내해 드리고, 보고 싶으신 방향의 원단을 미리
-                준비해 두겠습니다.
-              </p>
-              <a className="btn btn-ghost" href={contact.telHref}>
-                전화로 방문 문의
-                <span aria-hidden="true">↗</span>
-              </a>
-            </Reveal>
+            <div className={styles.visitInfo}>
+              <Reveal delay={70}>
+                <dl className="facts">
+                  {details.map((row) => (
+                    <div key={row.term}>
+                      <dt>{row.term}</dt>
+                      <dd>
+                        {row.lines.map((line) => (
+                          <span key={line}>{line}</span>
+                        ))}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+
+                <a
+                  className={`arrow-link ${styles.mapLink}`}
+                  href={contact.mapUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  지도에서 보기
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </Reveal>
+
+              <Reveal className={styles.visitAside} delay={140}>
+                <p className={styles.visitNote}>
+                  동대문종합시장은 층과 동이 넓어 처음 오시면 찾기 어려울 수 있습니다. 방문
+                  전에 전화 주시면 위치를 안내해 드리고, 보고 싶으신 방향의 원단을 미리
+                  준비해 두겠습니다.
+                </p>
+                <a className="btn btn-ghost" href={contact.telHref}>
+                  전화로 방문 문의
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>

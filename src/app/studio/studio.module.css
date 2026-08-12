@@ -139,6 +139,64 @@
   }
 }
 
+/* -- printing floor ------------------------------------------------------- */
+
+.printing {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 2.6vw, 40px);
+  border-top: 1px solid var(--ink);
+  padding-top: clamp(28px, 3.2vw, 44px);
+}
+
+.printFigure {
+  margin: 0;
+}
+
+.printImage {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.printImage img {
+  object-fit: cover;
+  transition: transform 1.4s var(--ease);
+}
+
+.printFigure:hover .printImage img {
+  transform: scale(1.03);
+}
+
+.printFigure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.printFigure figcaption span:last-child {
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  font-size: 0.8125rem;
+}
+
+@media (max-width: 760px) {
+  .printing {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* -- global supply — inverted block --------------------------------------- */
 
 .globalSection {
