@@ -92,6 +92,40 @@ export default function StudioPage() {
               </dl>
             </Reveal>
           </div>
+
+          <Reveal className={styles.room}>
+            <figure className={styles.roomMain}>
+              <Image
+                src="/images/crayon-designroom-floor.jpg"
+                alt="여러 대의 작업 자리가 늘어선 크레용 디자인 제도실 내부"
+                fill
+                sizes="(max-width: 760px) 100vw, 60vw"
+              />
+            </figure>
+            <figure className={styles.roomSide}>
+              <Image
+                src="/images/crayon-designroom-desks.jpg"
+                alt="모니터와 자료가 놓인 디자인 제도실 작업 자리"
+                fill
+                sizes="(max-width: 760px) 100vw, 30vw"
+              />
+            </figure>
+            <figure className={styles.roomSide}>
+              <Image
+                src="/images/crayon-designroom-meeting.jpg"
+                alt="디자인 제도실 회의 공간"
+                fill
+                sizes="(max-width: 760px) 100vw, 30vw"
+              />
+            </figure>
+          </Reveal>
+
+          <Reveal>
+            <p className={styles.roomCaption}>
+              <span>DESIGN ROOM</span>
+              <span>디자인 제도실 · 자체 운영</span>
+            </p>
+          </Reveal>
         </div>
       </section>
 

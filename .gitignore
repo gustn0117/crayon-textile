@@ -27,3 +27,6 @@ next-env.d.ts
 
 # original video drops — web-ready versions live in public/video
 /영상*.mp4
+
+# original photo drop
+/디자인제도실/
