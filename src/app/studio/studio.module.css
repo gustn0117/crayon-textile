@@ -274,6 +274,8 @@
   background: var(--ink);
   color: var(--paper);
   padding-block: clamp(76px, 8.5vw, 136px);
+  /* The footer is ink too — without this the two blocks read as one slab. */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 }
 
 .route {

@@ -33,12 +33,51 @@
    the mark is never information only a mouse can reach.
    ------------------------------------------------------------------------- */
 
+/* The swatch sits on a mount card with a punched hole and a printed foot —
+   the object that actually hangs in the shop, not a coloured rectangle. */
+.mount {
+  position: relative;
+  padding: clamp(38px, 3.4vw, 52px) clamp(16px, 1.6vw, 22px) clamp(14px, 1.4vw, 18px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 0 var(--line-strong), 0 18px 36px -28px rgba(11, 11, 11, 0.5);
+}
+
+.hole {
+  position: absolute;
+  top: clamp(15px, 1.4vw, 20px);
+  left: clamp(16px, 1.6vw, 22px);
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+}
+
+.mountFoot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  margin-top: clamp(12px, 1.2vw, 16px);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.mountFoot span:first-child {
+  color: var(--ink);
+}
+
 .art {
   position: relative;
   aspect-ratio: 4 / 3;
   background-position: 0 0;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
 }
 
 .repeatBox {
@@ -76,16 +115,7 @@
 /* -- card meta ------------------------------------------------------------ */
 
 .meta {
-  padding-top: 18px;
-}
-
-.code {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  line-height: 1;
+  padding-top: clamp(18px, 2vw, 26px);
 }
 
 .name {
@@ -93,7 +123,6 @@
   flex-wrap: wrap;
   align-items: baseline;
   gap: 14px;
-  margin-top: 16px;
   font-family: var(--font-mono);
   font-size: clamp(1.125rem, 1.9vw, 1.5rem);
   font-weight: 500;
@@ -127,8 +156,7 @@
 /* -- how to choose -------------------------------------------------------- */
 
 .guideSection {
-  border-top: 1px solid var(--line);
-  background: var(--surface);
+  background: var(--paper);
 }
 
 .guideGrid {

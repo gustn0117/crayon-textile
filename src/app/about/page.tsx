@@ -101,16 +101,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className={styles.quoteSection}>
-        <div className={`container ${styles.quoteInner}`}>
+      <section className="statement-band">
+        <div className="container statement-inner">
           <Reveal>
-            <blockquote className={styles.quote}>
+            <blockquote className="statement">
               유행을 좇는 데 그치지 않고,
               <br />
               오래 선택받을 수 있는 패턴을 고민합니다.
             </blockquote>
           </Reveal>
-          <Reveal className={styles.quoteMeta} delay={70}>
+          <Reveal className="statement-meta" delay={70}>
             <span>CRAYON</span>
             <span>SEOUL · DONGDAEMUN · 2621</span>
           </Reveal>

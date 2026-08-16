@@ -85,13 +85,19 @@ export default function CollectionPage() {
               <li key={item.code}>
                 <Reveal delay={i * 70}>
                   <article className={styles.card}>
-                    <div className={`${styles.art} ${item.swatch}`} aria-hidden="true">
-                      <span className={styles.repeatBox} />
-                      <span className={styles.repeatLabel}>REPEAT UNIT</span>
+                    <div className={styles.mount}>
+                      <span className={styles.hole} aria-hidden="true" />
+                      <div className={`${styles.art} ${item.swatch}`} aria-hidden="true">
+                        <span className={styles.repeatBox} />
+                        <span className={styles.repeatLabel}>REPEAT UNIT</span>
+                      </div>
+                      <p className={styles.mountFoot} aria-hidden="true">
+                        <span>{item.code}</span>
+                        <span>CRAYON ORIGINAL TEXTILE</span>
+                      </p>
                     </div>
 
                     <div className={styles.meta}>
-                      <p className={styles.code}>{item.code}</p>
                       <h2 className={styles.name}>
                         {item.en}
                         <span className={styles.nameKo}>{item.ko}</span>
@@ -103,6 +109,22 @@ export default function CollectionPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="statement-band">
+        <div className="container statement-inner">
+          <Reveal>
+            <p className="statement">
+              잘 맞물린 리피트는
+              <br />
+              눈에 띄지 않습니다.
+            </p>
+          </Reveal>
+          <Reveal className="statement-meta" delay={70}>
+            <span>SEAMLESS REPEAT</span>
+            <span>CRAYON ORIGINAL</span>
+          </Reveal>
         </div>
       </section>
 

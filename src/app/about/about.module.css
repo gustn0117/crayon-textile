@@ -41,45 +41,7 @@
   background: var(--line-strong);
 }
 
-/* -- pull quote ----------------------------------------------------------- */
-
-.quoteSection {
-  border-block: 1px solid var(--line);
-  background: var(--surface);
-  padding-block: clamp(64px, 8vw, 128px);
-}
-
-.quoteInner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: clamp(28px, 4vw, 64px);
-}
-
-.quote {
-  max-width: 20ch;
-  font-size: clamp(1.5rem, 3.6vw, 2.75rem);
-  font-weight: 800;
-  line-height: 1.35;
-  letter-spacing: -0.035em;
-  color: var(--ink);
-}
-
-.quoteMeta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 8px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line-strong);
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  color: var(--muted);
-  line-height: 1;
-}
+/* The pull quote now uses the shared .statement-band in globals.css. */
 
 /* -- principles ----------------------------------------------------------- */
 

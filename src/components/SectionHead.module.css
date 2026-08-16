@@ -12,20 +12,24 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-top: 4px;
 }
 
+/* The section number is the only large graphic mark a monochrome page gets.
+   Set light, it gives the left column weight without competing with the title. */
 .index {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: clamp(2rem, 3.4vw, 3.25rem);
   font-weight: 500;
-  letter-spacing: 0.24em;
-  color: var(--muted);
-  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--line-strong);
+  line-height: 0.85;
 }
 
 .en {
-  margin-top: 14px;
+  align-self: stretch;
+  margin-top: clamp(16px, 1.8vw, 24px);
+  padding-top: clamp(14px, 1.6vw, 18px);
+  border-top: 1px solid var(--ink);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 500;
@@ -36,9 +40,7 @@
 
 .note {
   max-width: 17ch;
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px solid var(--line);
+  margin-top: 14px;
   font-size: 0.8125rem;
   line-height: 1.7;
   color: var(--body);
@@ -63,15 +65,15 @@
 /* -- on ink --------------------------------------------------------------- */
 
 .light .index {
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .light .en {
   color: var(--paper);
+  border-top-color: rgba(255, 255, 255, 0.4);
 }
 
 .light .note {
-  border-top-color: rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.6);
 }
 
@@ -93,18 +95,29 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
-    gap: 12px;
-    padding-top: 0;
+    gap: 4px 14px;
   }
 
-  .en,
-  .note {
+  .index {
+    font-size: 1.5rem;
+  }
+
+  .en {
+    align-self: auto;
     margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
   }
 
   .note {
     flex: 0 0 100%;
     max-width: none;
-    padding-top: 14px;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  .light .note {
+    border-top-color: rgba(255, 255, 255, 0.2);
   }
 }

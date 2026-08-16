@@ -175,6 +175,30 @@ export default function ContactPage() {
           </ol>
         </div>
       </section>
+
+      <section className={styles.closing}>
+        <div className={`container ${styles.closingInner}`}>
+          <Reveal>
+            <p className={styles.closingLabel}>NEW FABRIC, NEW POSSIBILITY</p>
+            <p className={styles.closingTitle}>
+              먼저 연락 주세요.
+              <br />
+              나머지는 함께 좁혀가겠습니다.
+            </p>
+          </Reveal>
+
+          <Reveal className={styles.closingActions} delay={80}>
+            <a className="btn btn-invert" href={contact.mobileHref}>
+              {contact.mobile}
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a className="arrow-link arrow-link-light" href={contact.emailHref}>
+              {contact.email}
+              <span aria-hidden="true">→</span>
+            </a>
+          </Reveal>
+        </div>
+      </section>
     </>
   );
 }
