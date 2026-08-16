@@ -32,6 +32,17 @@
   color: rgba(255, 255, 255, 0.66);
 }
 
+.overHero .lang {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--paper);
+}
+
+.overHero .lang:hover {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+}
+
 .overHero .navLink:hover,
 .overHero .tel:hover,
 .overHero .isActive {
@@ -142,6 +153,27 @@
   color: var(--ink);
 }
 
+.lang {
+  padding: 7px 11px;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  line-height: 1;
+  transition:
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+.lang:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
 /* -- mobile toggle -------------------------------------------------------- */
 
 .toggle {
@@ -188,6 +220,10 @@
   .nav,
   .tel {
     display: none;
+  }
+
+  .lang {
+    margin-left: auto;
   }
 
   .toggle {
@@ -257,6 +293,16 @@
     color: var(--paper);
     font-size: 1rem;
     letter-spacing: 0.08em;
+  }
+
+  .panelLang {
+    align-self: flex-start;
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    font-family: var(--font-sans);
+    font-size: 0.8125rem !important;
+    letter-spacing: -0.01em !important;
   }
 
   .panelMeta p {

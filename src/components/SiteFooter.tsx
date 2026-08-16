@@ -1,51 +1,51 @@
 import Link from "next/link";
-import { contact, navigation } from "@/lib/site";
+import { contact } from "@/lib/site";
+import { localePath, type Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./SiteFooter.module.css";
 
-export function SiteFooter() {
+export function SiteFooter({ lang, d }: { lang: Locale; d: Dictionary }) {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <Link className={styles.brandKo} href="/">
-            크레용
+          <Link className={styles.brandKo} href={localePath(lang, "/")}>
+            {d.brand.ko}
           </Link>
           <p className={styles.brandEn}>CRAYON TEXTILE · SEOUL</p>
-          <p className={styles.brandNote}>
-            차별화된 디자인과 신뢰할 수 있는 품질로 함께 성장하겠습니다.
-          </p>
+          <p className={styles.brandNote}>{d.footer.tagline}</p>
         </div>
 
-        <nav className={styles.column} aria-label="사이트맵">
-          <p className={styles.columnLabel}>SITEMAP</p>
-          <Link href="/">홈</Link>
-          {navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.ko}
+        <nav className={styles.column} aria-label={d.footer.sitemapAria}>
+          <p className={styles.columnLabel}>{d.footer.sitemap}</p>
+          <Link href={localePath(lang, "/")}>{d.footer.home}</Link>
+          {d.nav.map((item) => (
+            <Link key={item.href} href={localePath(lang, item.href)}>
+              {item.label}
             </Link>
           ))}
         </nav>
 
         <div className={styles.column}>
-          <p className={styles.columnLabel}>CONTACT</p>
-          <a href={contact.telHref}>T. {contact.tel}</a>
-          <span>F. {contact.fax}</span>
+          <p className={styles.columnLabel}>{d.footer.contact}</p>
+          <a href={contact.telHref}>T. {d.phone.tel}</a>
+          <span>F. {d.phone.fax}</span>
           <a href={contact.emailHref}>{contact.email}</a>
         </div>
 
         <div className={styles.column}>
-          <p className={styles.columnLabel}>ADDRESS</p>
+          <p className={styles.columnLabel}>{d.footer.address}</p>
           <address className={styles.address}>
-            {contact.addressLines[0]}
-            <br />
-            {contact.addressLines[1]}
+            {d.contact.details[0].lines.map((line) => (
+              <span key={line}>{line}</span>
+            ))}
           </address>
         </div>
       </div>
 
       <div className={`container ${styles.baseline}`}>
         <span>SEOUL · DONGDAEMUN · 2621</span>
-        <span>© 2026 CRAYON. ALL RIGHTS RESERVED.</span>
+        <span>{d.footer.rights}</span>
       </div>
     </footer>
   );

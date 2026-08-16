@@ -73,6 +73,9 @@
 }
 
 .address {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   font-style: normal;
   line-height: 1.7;
 }

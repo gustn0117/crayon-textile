@@ -3,24 +3,36 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { contact, navigation } from "@/lib/site";
+import { contact } from "@/lib/site";
+import { localePath, type Locale } from "@/lib/i18n";
+import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./SiteHeader.module.css";
 
-export function SiteHeader() {
+/** The current path with any /en prefix removed, so the switcher can rebuild it. */
+function basePath(pathname: string) {
+  if (pathname === "/en") return "/";
+  return pathname.startsWith("/en/") ? pathname.slice(3) : pathname;
+}
+
+export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const home = localePath(lang, "/");
+  const otherLang: Locale = lang === "ko" ? "en" : "ko";
+  const otherHref = localePath(otherLang, basePath(pathname));
+
   // Only the home page has a full-bleed hero for the header to float over.
-  const overHero = pathname === "/" && !isScrolled && !isOpen;
+  const overHero = pathname === home && !isScrolled && !isOpen;
 
   useEffect(() => {
-    if (pathname !== "/") return;
+    if (pathname !== home) return;
     const onScroll = () => setIsScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname]);
+  }, [pathname, home]);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", isOpen);
@@ -42,18 +54,19 @@ export function SiteHeader() {
   return (
     <header className={overHero ? `${styles.header} ${styles.overHero}` : styles.header}>
       <div className={styles.inner}>
-        <Link className={styles.brand} href="/">
-          <span className={styles.brandKo}>크레용</span>
-          <span className={styles.brandEn}>CRAYON TEXTILE</span>
+        <Link className={styles.brand} href={home}>
+          <span className={styles.brandKo}>{d.brand.ko}</span>
+          <span className={styles.brandEn}>{d.brand.en}</span>
         </Link>
 
-        <nav className={styles.nav} aria-label="주요 메뉴">
-          {navigation.map((item) => {
-            const isActive = pathname === item.href;
+        <nav className={styles.nav} aria-label={d.header.navAria}>
+          {d.nav.map((item) => {
+            const href = localePath(lang, item.href);
+            const isActive = pathname === href;
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={href}
                 className={isActive ? `${styles.navLink} ${styles.isActive}` : styles.navLink}
                 aria-current={isActive ? "page" : undefined}
               >
@@ -64,13 +77,25 @@ export function SiteHeader() {
         </nav>
 
         <a className={styles.tel} href={contact.telHref}>
-          T. {contact.tel}
+          T. {d.phone.tel}
+        </a>
+
+        {/* Switching language crosses root layouts, so this is a plain anchor —
+            a client transition cannot swap <html lang>. */}
+        <a
+          className={styles.lang}
+          href={otherHref}
+          hrefLang={otherLang}
+          aria-label={d.header.langAria}
+          title={d.header.langOtherTitle}
+        >
+          {d.header.langOther}
         </a>
 
         <button
           className={isOpen ? `${styles.toggle} ${styles.isOpen}` : styles.toggle}
           type="button"
-          aria-label={isOpen ? "메뉴 닫기" : "메뉴 열기"}
+          aria-label={isOpen ? d.header.close : d.header.open}
           aria-expanded={isOpen}
           aria-controls="site-menu"
           onClick={() => setIsOpen((value) => !value)}
@@ -85,22 +110,29 @@ export function SiteHeader() {
         id="site-menu"
         hidden={!isOpen}
       >
-        <nav className={styles.panelNav} aria-label="전체 메뉴">
-          <Link className={styles.panelLink} href="/">
+        <nav className={styles.panelNav} aria-label={d.header.fullNavAria}>
+          <Link className={styles.panelLink} href={home}>
             <span className={styles.panelEn}>INDEX</span>
-            <span className={styles.panelKo}>홈</span>
+            <span className={styles.panelKo}>{d.header.indexLabel}</span>
           </Link>
-          {navigation.map((item) => (
-            <Link key={item.href} className={styles.panelLink} href={item.href}>
+          {d.nav.map((item) => (
+            <Link
+              key={item.href}
+              className={styles.panelLink}
+              href={localePath(lang, item.href)}
+            >
               <span className={styles.panelEn}>{item.en}</span>
-              <span className={styles.panelKo}>{item.ko}</span>
+              <span className={styles.panelKo}>{item.label}</span>
             </Link>
           ))}
         </nav>
 
         <div className={styles.panelMeta}>
-          <a href={contact.mobileHref}>{contact.mobile}</a>
-          <p>{contact.addressLines[1]}</p>
+          <a className={styles.panelLang} href={otherHref} hrefLang={otherLang}>
+            {d.header.langOtherTitle}
+          </a>
+          <a href={contact.mobileHref}>{d.phone.mobile}</a>
+          <p>{d.phone.addressShort}</p>
         </div>
       </div>
     </header>
