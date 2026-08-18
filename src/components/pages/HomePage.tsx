@@ -117,14 +117,14 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
             <Reveal className={styles.aboutVisual} delay={80}>
               <div className={styles.aboutImage}>
                 <Image
-                  src="/images/crayon-pattern-floral.jpg"
-                  alt={t.patternAlt}
+                  src="/images/crayon-design-desk.jpg"
+                  alt={t.aboutVisualAlt}
                   fill
                   sizes="(max-width: 900px) 100vw, 44vw"
                 />
               </div>
               <p className={styles.aboutCaption}>
-                {t.patternCaption.map((line) => (
+                {t.aboutVisualCaption.map((line) => (
                   <span key={line}>{line}</span>
                 ))}
               </p>

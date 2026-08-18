@@ -33,3 +33,4 @@ next-env.d.ts
 
 # original image drop
 /0818_*.jpeg
+/0818_*.png

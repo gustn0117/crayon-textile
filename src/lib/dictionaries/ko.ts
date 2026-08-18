@@ -168,8 +168,9 @@ export const ko = {
       { term: "방송 소개", value: "KBS 다큐ON 「DDP, 디자인으로 소통하다」" },
     ],
     aboutMore: "회사 소개 자세히 보기",
-    patternAlt: "크레용이 개발한 촘촘한 꽃무늬 나염 원단",
-    patternCaption: ["ORIGINAL PATTERN", "CRAYON ARCHIVE"],
+    aboutVisualAlt:
+      "패턴 도안과 컬러칩, 원단 스와치를 놓고 작업 중인 크레용 디자인 제도실 책상",
+    aboutVisualCaption: ["DESIGN PROCESS", "FROM IDEA TO TEXTILE"],
     businessHead: {
       en: "BUSINESS",
       note: "용도에 따라 밀도와 모티프를 달리 설계합니다.",
