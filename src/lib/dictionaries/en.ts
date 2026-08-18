@@ -172,8 +172,8 @@ export const en: Dictionary = {
       { term: "Broadcast", value: "KBS Docu ON, “DDP, Communicating Through Design”" },
     ],
     aboutMore: "More about the company",
-    studioAlt:
-      "CRAYON design studio: pattern drawings, colour chips and fabric samples under review",
+    patternAlt: "A dense floral print developed by CRAYON",
+    patternCaption: ["ORIGINAL PATTERN", "CRAYON ARCHIVE"],
     businessHead: {
       en: "BUSINESS",
       note: "Density and motif are set by where the cloth will go.",

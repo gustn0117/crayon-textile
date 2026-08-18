@@ -30,3 +30,6 @@ next-env.d.ts
 
 # original photo drop
 /디자인제도실/
+
+# original image drop
+/0818_*.jpeg
