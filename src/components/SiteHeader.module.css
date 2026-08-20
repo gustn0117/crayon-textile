@@ -18,8 +18,8 @@
   border-bottom-color: transparent;
 }
 
-.overHero .brandKo {
-  color: var(--paper);
+.overHero .logo {
+  filter: brightness(0) invert(1);
 }
 
 .overHero .brandEn {
@@ -72,17 +72,17 @@
 
 .brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
   margin-right: auto;
 }
 
-.brandKo {
-  font-size: 1.125rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  transition: color 0.45s var(--ease);
+/* One asset for both states: brightness(0) invert(1) keeps the alpha and
+   paints every opaque pixel white, so no second file is needed. */
+.logo {
+  width: auto;
+  height: clamp(22px, 2.2vw, 28px);
+  transition: filter 0.45s var(--ease);
 }
 
 .brandEn {

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { contact } from "@/lib/site";
 import { localePath, type Locale } from "@/lib/i18n";
@@ -9,8 +10,14 @@ export function SiteFooter({ lang, d }: { lang: Locale; d: Dictionary }) {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
         <div className={styles.brand}>
-          <Link className={styles.brandKo} href={localePath(lang, "/")}>
-            {d.brand.ko}
+          <Link className={styles.brandLink} href={localePath(lang, "/")}>
+            <Image
+              className={styles.logo}
+              src="/images/logo-crayon.png"
+              alt={d.brand.ko}
+              width={760}
+              height={341}
+            />
           </Link>
           <p className={styles.brandEn}>CRAYON TEXTILE · SEOUL</p>
           <p className={styles.brandNote}>{d.footer.tagline}</p>

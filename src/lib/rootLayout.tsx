@@ -38,7 +38,7 @@ export function rootMetadata(lang: Locale): Metadata {
     title: { default: d.meta.titleDefault, template: d.meta.titleTemplate },
     description: d.meta.description,
     keywords: [...d.meta.keywords],
-    icons: { icon: "/favicon.svg" },
+    icons: { icon: "/favicon.png" },
     robots: { index: true, follow: true },
     alternates: {
       canonical: localePath(lang, "/"),

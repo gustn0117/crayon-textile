@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -55,7 +56,14 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
     <header className={overHero ? `${styles.header} ${styles.overHero}` : styles.header}>
       <div className={styles.inner}>
         <Link className={styles.brand} href={home}>
-          <span className={styles.brandKo}>{d.brand.ko}</span>
+          <Image
+            className={styles.logo}
+            src="/images/logo-crayon.png"
+            alt={d.brand.ko}
+            width={760}
+            height={341}
+            priority
+          />
           <span className={styles.brandEn}>{d.brand.en}</span>
         </Link>
 

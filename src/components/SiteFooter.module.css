@@ -19,11 +19,14 @@
   gap: 10px;
 }
 
-.brandKo {
-  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
-  font-weight: 900;
-  letter-spacing: -0.045em;
-  line-height: 1;
+.brandLink {
+  display: inline-flex;
+}
+
+.logo {
+  width: auto;
+  height: clamp(34px, 4vw, 46px);
+  filter: brightness(0) invert(1);
 }
 
 .brandEn {

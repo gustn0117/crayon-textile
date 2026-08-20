@@ -2,7 +2,7 @@ import { contact } from "@/lib/site";
 
 export const ko = {
   htmlLang: "ko",
-  brand: { ko: "크레용", en: "CRAYON TEXTILE" },
+  brand: { ko: "크레용", en: "TEXTILE · SEOUL" },
 
   meta: {
     titleDefault: "크레용 | 나염 원단 · 텍스타일 디자인 스튜디오",
