@@ -33,11 +33,26 @@ export const ko = {
   },
 
   nav: [
+    { href: "/new", en: "NEW", label: "신상품" },
+    { href: "/fabrics/cotton", en: "COTTON", label: "면·셀룰로오스" },
+    { href: "/fabrics/polyester", en: "POLYESTER", label: "폴리에스터" },
+    { href: "/fabrics/use", en: "BY USE", label: "용도별 원단" },
+    { href: "/fabrics/design", en: "BY DESIGN", label: "디자인별 원단" },
+    { href: "/studio", en: "STUDIO", label: "디자인 개발" },
     { href: "/about", en: "ABOUT", label: "회사 소개" },
-    { href: "/collection", en: "COLLECTION", label: "컬렉션" },
-    { href: "/studio", en: "STUDIO", label: "디자인 스튜디오" },
     { href: "/contact", en: "CONTACT", label: "문의" },
   ],
+
+  fabrics: {
+    jumpTo: "바로가기",
+    askAbout: "이 원단 문의",
+    closingLabel: "NEW FABRIC, NEW POSSIBILITY",
+    closingTitle: "찾으시는 원단이 목록에 없어도 괜찮습니다.",
+    closingNote:
+      "취급 품목은 목록보다 넓습니다. 만드실 옷과 원하시는 느낌을 알려주시면 맞는 원단을 함께 찾아드립니다.",
+    closingCta: "원단 상담하기",
+    studioLink: "디자인 개발 과정 보기",
+  },
 
   header: {
     navAria: "주요 메뉴",
@@ -138,12 +153,12 @@ export const ko = {
   ],
 
   home: {
-    heroEyebrow: ["SEOUL · DONGDAEMUN", "30 YEARS OF PRINTED TEXTILE"],
+    heroEyebrow: ["동대문 나염 원단 전문", "자체 디자인 개발"],
     heroTitle: "패턴의 차이가 원단의 가치를 만듭니다.",
     heroLead:
-      "서울 동대문에서 30년간 나염 원단을 개발해 온 크레용. 자체 디자인실의 독창적인 패턴으로 상품의 가능성을 넓힙니다.",
+      "면·레이온·폴리에스터·다이마루·기모까지, 서울 동대문에서 30년간 나염 원단을 개발해 온 크레용. 자체 디자인 제도실의 독창적인 패턴으로 상품의 가능성을 넓힙니다.",
     heroCtaContact: "원단 · 패턴 상담하기",
-    heroCtaCollection: "컬렉션 보기",
+    heroCtaCollection: "원단 종류 보기",
     figuresAria: "크레용 주요 지표",
     figures: [
       { value: "30", unit: "YEARS", note: "동대문 현장 경험" },
@@ -172,12 +187,20 @@ export const ko = {
       "패턴 도안과 컬러칩, 원단 스와치를 놓고 작업 중인 크레용 디자인 제도실 책상",
     aboutVisualCaption: ["DESIGN PROCESS", "FROM IDEA TO TEXTILE"],
     businessHead: {
-      en: "BUSINESS",
-      note: "용도에 따라 밀도와 모티프를 달리 설계합니다.",
-      title: "네 갈래의 원단을 다룹니다.",
-      lead: "찾으시는 용도와 분위기를 알려주시면 알맞은 원단과 패턴을 함께 제안합니다. 아래는 크레용이 개발하는 분야와 그 방향입니다.",
+      en: "FABRICS",
+      note: "소재로 찾으셔도, 용도로 찾으셔도 됩니다.",
+      title: "취급 원단을 네 갈래로 정리했습니다.",
+      lead: "면·셀룰로오스와 폴리에스터는 소재로, 용도별·디자인별은 만드실 옷과 원하시는 무늬로 찾으실 수 있습니다.",
     },
-    businessMore: "컬렉션 전체 보기",
+    businessMore: "신상품 · 시즌 원단 보기",
+    materialsLabel: "취급 소재",
+    materials: [
+      { en: "COTTON", ko: "면" },
+      { en: "RAYON", ko: "레이온" },
+      { en: "POLYESTER", ko: "폴리에스터" },
+      { en: "KNIT", ko: "다이마루" },
+      { en: "FLEECE", ko: "기모지" },
+    ],
     studioHead: {
       en: "DESIGN STUDIO",
       note: "카피가 아닌 독자 개발 패턴을 제안합니다.",

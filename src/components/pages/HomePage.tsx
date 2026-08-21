@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
 import { contact, destinations } from "@/lib/site";
+import { categoryPath, fabricCategories, pick } from "@/lib/fabrics";
 import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./home.module.css";
@@ -41,7 +42,7 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
               {t.heroCtaContact}
               <span aria-hidden="true">↗</span>
             </Link>
-            <Link className="arrow-link arrow-link-light" href={to("/collection")}>
+            <Link className="arrow-link arrow-link-light" href={to("/fabrics/cotton")}>
               {t.heroCtaCollection}
               <span aria-hidden="true">→</span>
             </Link>
@@ -50,10 +51,10 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
 
         <div className={`container ${styles.heroFoot}`}>
           <ul className={styles.heroFields}>
-            {d.categories.map((item) => (
-              <li key={item.code}>
+            {t.materials.map((item) => (
+              <li key={item.en}>
                 <b>{item.en}</b>
-                <span>{item.name}</span>
+                <span>{item.ko}</span>
               </li>
             ))}
           </ul>
@@ -153,25 +154,35 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
           />
 
           <ul className={styles.businessGrid}>
-            {d.categories.map((item, i) => (
-              <li key={item.code}>
-                <Reveal delay={i * 60}>
-                  <Link className={styles.businessCard} href={to("/collection")}>
-                    <span className={styles.businessArt} aria-hidden="true">
-                      <span className={`${styles.businessArtInner} ${item.swatch}`} />
-                    </span>
-                    <span className={styles.businessCode}>{item.code}</span>
-                    <span className={styles.businessName}>{item.en}</span>
-                    <span className={styles.businessKo}>{item.name}</span>
-                    <span className={styles.businessNote}>{item.description}</span>
-                  </Link>
-                </Reveal>
-              </li>
-            ))}
+            {fabricCategories
+              .filter((c) => c.slug !== "new")
+              .map((c, i) => (
+                <li key={c.slug}>
+                  <Reveal delay={i * 60}>
+                    <Link className={styles.businessCard} href={to(categoryPath(c))}>
+                      <span className={styles.businessArt} aria-hidden="true">
+                        <span
+                          className={`${styles.businessArtInner} ${d.categories[i].swatch}`}
+                        />
+                      </span>
+                      <span className={styles.businessCode}>
+                        {pick(c.label, lang)}
+                      </span>
+                      <span className={styles.businessName}>{pick(c.nav, lang)}</span>
+                      <span className={styles.businessNote}>
+                        {c.groups
+                          .slice(0, 4)
+                          .map((g) => pick(g.name, lang))
+                          .join(" · ")}
+                      </span>
+                    </Link>
+                  </Reveal>
+                </li>
+              ))}
           </ul>
 
           <Reveal className={styles.businessFoot}>
-            <Link className="arrow-link" href={to("/collection")}>
+            <Link className="arrow-link" href={to("/new")}>
               {t.businessMore}
               <span aria-hidden="true">→</span>
             </Link>

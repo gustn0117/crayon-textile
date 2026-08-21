@@ -32,11 +32,26 @@ export const en: Dictionary = {
   },
 
   nav: [
-    { href: "/about", en: "ABOUT", label: "About us" },
-    { href: "/collection", en: "COLLECTION", label: "Collection" },
+    { href: "/new", en: "NEW", label: "New arrivals" },
+    { href: "/fabrics/cotton", en: "COTTON", label: "Cotton & cellulose" },
+    { href: "/fabrics/polyester", en: "POLYESTER", label: "Polyester" },
+    { href: "/fabrics/use", en: "BY USE", label: "Fabric by use" },
+    { href: "/fabrics/design", en: "BY DESIGN", label: "Fabric by design" },
     { href: "/studio", en: "STUDIO", label: "Design studio" },
+    { href: "/about", en: "ABOUT", label: "About us" },
     { href: "/contact", en: "CONTACT", label: "Contact" },
   ],
+
+  fabrics: {
+    jumpTo: "Jump to",
+    askAbout: "Ask about this",
+    closingLabel: "NEW FABRIC, NEW POSSIBILITY",
+    closingTitle: "Not on the list? That is not a problem.",
+    closingNote:
+      "Our range runs wider than this page. Tell us the garment and the feeling you want, and we will find the fabric with you.",
+    closingCta: "Talk to us about fabric",
+    studioLink: "See how we develop designs",
+  },
 
   header: {
     navAria: "Main menu",
@@ -142,12 +157,12 @@ export const en: Dictionary = {
   ],
 
   home: {
-    heroEyebrow: ["SEOUL · DONGDAEMUN", "30 YEARS OF PRINTED TEXTILE"],
+    heroEyebrow: ["DONGDAEMUN PRINTED TEXTILE", "IN-HOUSE DESIGN"],
     heroTitle: "The pattern is what gives the fabric its worth.",
     heroLead:
-      "CRAYON has developed printed fabric in Dongdaemun, Seoul for thirty years. Original patterns from our own design room widen what a product can be.",
+      "Cotton, rayon, polyester, interlock knit and brushed fleece — printed fabric developed in Dongdaemun, Seoul for thirty years. Original patterns from our own design room widen what a product can be.",
     heroCtaContact: "Talk to us about fabric",
-    heroCtaCollection: "View the collection",
+    heroCtaCollection: "Browse the fabrics",
     figuresAria: "Key figures",
     figures: [
       { value: "30", unit: "YEARS", note: "On the Dongdaemun floor" },
@@ -176,12 +191,20 @@ export const en: Dictionary = {
       "Hands at work over pattern drawings, colour chips and fabric swatches in the CRAYON design room",
     aboutVisualCaption: ["DESIGN PROCESS", "FROM IDEA TO TEXTILE"],
     businessHead: {
-      en: "BUSINESS",
-      note: "Density and motif are set by where the cloth will go.",
-      title: "Four fields of fabric.",
-      lead: "Tell us the use and the feeling you are after, and we will propose the fabric and pattern to match. Below are the fields we develop for and the direction of each.",
+      en: "FABRICS",
+      note: "Search by base, or by what you are making.",
+      title: "Our range, in four branches.",
+      lead: "Cotton and polyester are grouped by base; the other two let you search by the garment you are making or the pattern family you want.",
     },
-    businessMore: "See the full collection",
+    businessMore: "New and seasonal fabric",
+    materialsLabel: "MATERIALS",
+    materials: [
+      { en: "COTTON", ko: "Cotton" },
+      { en: "RAYON", ko: "Rayon" },
+      { en: "POLYESTER", ko: "Polyester" },
+      { en: "KNIT", ko: "Interlock" },
+      { en: "FLEECE", ko: "Fleece" },
+    ],
     studioHead: {
       en: "DESIGN STUDIO",
       note: "Originals, never copies.",

@@ -60,7 +60,7 @@
 .inner {
   display: flex;
   align-items: center;
-  gap: clamp(24px, 4vw, 64px);
+  gap: clamp(16px, 2.2vw, 36px);
   height: var(--header-h);
   width: 100%;
   max-width: var(--container);
@@ -104,15 +104,16 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(20px, 2.6vw, 40px);
+  gap: clamp(11px, 1.5vw, 22px);
 }
 
 .navLink {
   position: relative;
+  white-space: nowrap;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.14em;
   color: var(--muted);
   line-height: 1;
   transition: color 0.3s var(--ease);
@@ -131,7 +132,7 @@
 .isActive::before {
   content: "";
   position: absolute;
-  left: -13px;
+  left: -9px;
   top: 50%;
   width: 5px;
   height: 5px;
@@ -214,6 +215,12 @@
 
 .panel {
   display: none;
+}
+
+@media (max-width: 1280px) {
+  .tel {
+    display: none;
+  }
 }
 
 @media (max-width: 900px) {
