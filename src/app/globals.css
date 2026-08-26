@@ -15,7 +15,7 @@
 
   --gutter: clamp(20px, 4.4vw, 72px);
   --container: 1440px;
-  --header-h: 68px;
+  --header-h: 76px;
 
   --font-sans: var(--font-gothic), "Apple SD Gothic Neo", "Noto Sans KR",
     "Malgun Gothic", sans-serif;

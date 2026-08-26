@@ -381,8 +381,8 @@ export const en: Dictionary = {
       { term: "Usage rights", value: "Confirmed per design on consultation" },
     ],
     roomAlts: [
-      "Inside the CRAYON design room, rows of workstations",
-      "A workstation in the design room with monitor and reference material",
+      "Designers at work in the CRAYON design room, with pattern drawings and colour references",
+      "The CRAYON design team reviewing colourways against printed patterns on screen",
       "Meeting space in the design room",
     ],
     roomCaption: "Design room · operated in-house",
@@ -430,7 +430,7 @@ export const en: Dictionary = {
       title: "How to find us.",
     },
     storeAlt:
-      "The CRAYON shop at Room 2621, Building D, Dongdaemun Comprehensive Market, fabric swatches and samples displayed beneath the blue sign.",
+      "The CRAYON shop at Room 2621, Building D, Dongdaemun Comprehensive Market — swatches, samples and finished garments displayed beneath the blue sign.",
     storeCaption: "Look for this sign",
     details: [
       {

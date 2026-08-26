@@ -9,8 +9,8 @@ import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./studio.module.css";
 
 const roomImages = [
-  "/images/crayon-designroom-floor.jpg",
-  "/images/crayon-designroom-desks.jpg",
+  "/images/crayon-designroom-team.jpg",
+  "/images/crayon-designroom-work.jpg",
   "/images/crayon-designroom-meeting.jpg",
 ];
 

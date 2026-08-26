@@ -81,7 +81,7 @@
    paints every opaque pixel white, so no second file is needed. */
 .logo {
   width: auto;
-  height: clamp(22px, 2.2vw, 28px);
+  height: clamp(30px, 3vw, 40px);
   transition: filter 0.45s var(--ease);
 }
 
