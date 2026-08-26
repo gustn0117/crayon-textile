@@ -190,6 +190,25 @@ export const en: Dictionary = {
     aboutVisualAlt:
       "Hands at work over pattern drawings, colour chips and fabric swatches in the CRAYON design room",
     aboutVisualCaption: ["DESIGN PROCESS", "FROM IDEA TO TEXTILE"],
+    galleryLabel: "CRAYON AT WORK",
+    galleryLead: "Drawn in the design room, printed on the floor, sold in Dongdaemun.",
+    gallery: [
+      {
+        en: "DESIGN ROOM",
+        ko: "Design room",
+        alt: "Designers at work in the CRAYON design room, with pattern drawings and colour references",
+      },
+      {
+        en: "PATTERN DEVELOPMENT",
+        ko: "Pattern development",
+        alt: "The CRAYON design team reviewing colourways against printed patterns on screen",
+      },
+      {
+        en: "DONGDAEMUN SHOWROOM",
+        ko: "Dongdaemun showroom",
+        alt: "The CRAYON shop at Room 2621, Building D, Dongdaemun Comprehensive Market — swatches, samples and finished garments beneath the blue sign.",
+      },
+    ],
     businessHead: {
       en: "FABRICS",
       note: "Search by base, or by what you are making.",

@@ -186,6 +186,25 @@ export const ko = {
     aboutVisualAlt:
       "패턴 도안과 컬러칩, 원단 스와치를 놓고 작업 중인 크레용 디자인 제도실 책상",
     aboutVisualCaption: ["DESIGN PROCESS", "FROM IDEA TO TEXTILE"],
+    galleryLabel: "CRAYON AT WORK",
+    galleryLead: "제도실에서 그리고, 현장에서 찍고, 동대문 매장에서 만납니다.",
+    gallery: [
+      {
+        en: "DESIGN ROOM",
+        ko: "디자인 제도실",
+        alt: "크레용 디자인 제도실에서 디자이너들이 패턴 도안과 컬러 자료를 놓고 작업하는 모습",
+      },
+      {
+        en: "PATTERN DEVELOPMENT",
+        ko: "패턴 개발",
+        alt: "모니터에 띄운 나염 패턴을 보며 배색을 검토하는 크레용 디자인팀",
+      },
+      {
+        en: "DONGDAEMUN SHOWROOM",
+        ko: "동대문 매장",
+        alt: "동대문종합시장 D동 2621호 크레용 매장. 파란 간판 아래로 원단 스와치와 샘플, 완성된 의류가 진열되어 있다.",
+      },
+    ],
     businessHead: {
       en: "FABRICS",
       note: "소재로 찾으셔도, 용도로 찾으셔도 됩니다.",

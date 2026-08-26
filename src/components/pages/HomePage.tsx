@@ -8,6 +8,15 @@ import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./home.module.css";
 
+const galleryImages = [
+  "/images/crayon-designroom-team.jpg",
+  "/images/crayon-designroom-work.jpg",
+  "/images/crayon-store.jpg",
+];
+
+// The shop is the only portrait frame; bias its crop up so the blue signs stay in.
+const galleryPositions = ["center 45%", "center 40%", "center 26%"];
+
 export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
   const t = d.home;
   const to = (path: string) => localePath(lang, path);
@@ -140,6 +149,41 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
               </ul>
             </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* People, floor and shop — the home page had no photograph of any of
+          the three until now. */}
+      <section className={styles.gallery}>
+        <div className="container">
+          <Reveal className={styles.galleryHead}>
+            <p className="label label-ink">{t.galleryLabel}</p>
+            <p className={styles.galleryLead}>{t.galleryLead}</p>
+          </Reveal>
+
+          <ul className={styles.galleryGrid}>
+            {t.gallery.map((item, i) => (
+              <li key={item.en}>
+                <Reveal delay={i * 70}>
+                  <figure className={styles.galleryFigure}>
+                    <div className={styles.galleryImage}>
+                      <Image
+                        src={galleryImages[i]}
+                        alt={item.alt}
+                        fill
+                        sizes="(max-width: 760px) 100vw, 33vw"
+                        style={{ objectPosition: galleryPositions[i] }}
+                      />
+                    </div>
+                    <figcaption className={styles.galleryCaption}>
+                      <span>{item.en}</span>
+                      <span>{item.ko}</span>
+                    </figcaption>
+                  </figure>
+                </Reveal>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
