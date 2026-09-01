@@ -20,6 +20,12 @@
   line-height: 0.73;
   white-space: nowrap;
   color: var(--ink);
+  /* line-height 0.73 makes the box shorter than the glyphs, and background-clip
+     only paints inside the box — the caps and the round overshoots would come
+     out transparent. The padding grows the paint area; the negative margin
+     keeps the layout where it was. */
+  padding-block: 0.22em;
+  margin-bottom: -0.22em;
 }
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
@@ -32,8 +38,8 @@
     background-image:
       linear-gradient(rgba(11, 11, 11, 0.66), rgba(11, 11, 11, 0.66)),
       url("/images/crayon-collection-hero.jpg");
-    background-size: 165% auto;
-    background-position: 50% 62%;
+    background-size: 150% auto;
+    background-position: 50% 58%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
