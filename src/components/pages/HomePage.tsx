@@ -7,12 +7,6 @@ import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./home.module.css";
 
-/** Every second-level fabric term, run twice so the ticker loops seamlessly. */
-function tickerTerms(lang: Locale) {
-  return fabricCategories.flatMap((c) => c.groups.map((g) => pick(g.name, lang)));
-}
-
-/** The three story rows, paired with the photography each one is about. */
 const chipSwatch = [
   "swatch-women",
   "swatch-kids",
@@ -21,18 +15,14 @@ const chipSwatch = [
   "swatch-women",
 ];
 
-const storyMedia = [
-  { src: "/images/crayon-design-desk.jpg", altKey: 1 as const },
-  { src: "/images/crayon-store.jpg", altKey: 2 as const },
-  { src: "/images/crayon-designroom-team.jpg", altKey: 0 as const },
-];
+/** Every second-level fabric term, run twice so the ticker loops seamlessly. */
+function tickerTerms(lang: Locale) {
+  return fabricCategories.flatMap((c) => c.groups.map((g) => pick(g.name, lang)));
+}
 
 export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
   const t = d.home;
   const to = (path: string) => localePath(lang, path);
-
-  const storyBody = [t.aboutBody, t.businessHead.lead, t.stories[2].body ?? ""];
-  const storyHref = ["/about", "/fabrics/cotton", "/studio"];
 
   return (
     <>
@@ -82,15 +72,18 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         />
       </figure>
 
-      {/* Four numbers, one hairline row — the quickest read of the company. */}
-      <section className={styles.figures} aria-label={t.figuresAria}>
-        {t.figures.map((item) => (
-          <div className={styles.figure} key={item.unit}>
-            <p className={styles.figureValue}>{item.value}</p>
-            <p className={styles.figureUnit}>{item.unit}</p>
-            <p className={styles.figureNote}>{item.note}</p>
-          </div>
-        ))}
+      {/* The figures ride up over the photograph rather than sitting under it,
+          so the page opens on an overlap instead of a stack. */}
+      <section className={styles.figuresWrap} aria-label={t.figuresAria}>
+        <div className={styles.figures}>
+          {t.figures.map((item) => (
+            <div className={styles.figure} key={item.unit}>
+              <p className={styles.figureValue}>{item.value}</p>
+              <p className={styles.figureUnit}>{item.unit}</p>
+              <p className={styles.figureNote}>{item.note}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       <div className="ticker" aria-hidden="true">
@@ -100,54 +93,92 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         </div>
       </div>
 
-      <section className={styles.editorial}>
-        {storyMedia.map((media, i) => (
-          <div
-            className={i % 2 ? `${styles.storyGrid} ${styles.storyReverse}` : styles.storyGrid}
-            key={media.src}
-          >
-            {i % 2 ? (
-              <figure className={styles.storyMedia}>
-                <Image
-                  src={media.src}
-                  alt={i === 0 ? t.aboutVisualAlt : t.gallery[media.altKey].alt}
-                  fill
-                  loading="eager"
-                  sizes="(max-width: 760px) 100vw, 58vw"
-                />
-                <figcaption>{t.stories[i].caption}</figcaption>
-              </figure>
-            ) : null}
+      {/* 01 — a narrow column of type against a large image dropped below it. */}
+      <section className={styles.storyOne}>
+        <div className={styles.oneCopy}>
+          <p className={styles.index}>{t.stories[0].index}</p>
+          <Reveal mask>
+            <h2>
+              {t.stories[0].title[0]}
+              <br />
+              {t.stories[0].title[1]}
+            </h2>
+          </Reveal>
+          <p className={styles.body}>{t.aboutBody}</p>
+          <Link className={styles.textLink} href={to("/about")}>
+            {t.stories[0].link} <span aria-hidden="true">→</span>
+          </Link>
+        </div>
 
-            <div className={styles.storyCopy}>
-              <p className={styles.index}>{t.stories[i].index}</p>
-              <Reveal mask>
-                <h2>
-                  {t.stories[i].title[0]}
-                  <br />
-                  {t.stories[i].title[1]}
-                </h2>
-              </Reveal>
-              <p>{storyBody[i]}</p>
-              <Link className={styles.textLink} href={to(storyHref[i])}>
-                {t.stories[i].link} <span aria-hidden="true">→</span>
-              </Link>
-            </div>
+        <figure className={styles.oneMedia}>
+          <Image
+            src="/images/crayon-design-desk.jpg"
+            alt={t.aboutVisualAlt}
+            fill
+            loading="eager"
+            sizes="(max-width: 900px) 100vw, 66vw"
+          />
+          <figcaption>{t.stories[0].caption}</figcaption>
+        </figure>
+      </section>
 
-            {i % 2 ? null : (
-              <figure className={styles.storyMedia}>
-                <Image
-                  src={media.src}
-                  alt={i === 0 ? t.aboutVisualAlt : t.gallery[media.altKey].alt}
-                  fill
-                  loading="eager"
-                  sizes="(max-width: 760px) 100vw, 58vw"
-                />
-                <figcaption>{t.stories[i].caption}</figcaption>
-              </figure>
-            )}
-          </div>
-        ))}
+      {/* 02 — the photograph runs off the right edge and the type sits on it. */}
+      <section className={styles.storyTwo}>
+        <figure className={styles.twoMedia}>
+          <Image
+            src="/images/crayon-store.jpg"
+            alt={t.gallery[2].alt}
+            fill
+            loading="eager"
+            sizes="(max-width: 900px) 100vw, 84vw"
+          />
+        </figure>
+
+        <div className={styles.twoCard}>
+          <p className={styles.index}>{t.stories[1].index}</p>
+          <Reveal mask>
+            <h2>
+              {t.stories[1].title[0]}
+              <br />
+              {t.stories[1].title[1]}
+            </h2>
+          </Reveal>
+          <p className={styles.body}>{t.businessHead.lead}</p>
+          <Link className={styles.textLink} href={to("/fabrics/cotton")}>
+            {t.stories[1].link} <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+
+        <p className={styles.twoCaption}>{t.stories[1].caption}</p>
+      </section>
+
+      {/* 03 — the type pins while the photograph travels past it. */}
+      <section className={styles.storyThree}>
+        <div className={styles.threeCopy}>
+          <p className={styles.index}>{t.stories[2].index}</p>
+          <Reveal mask>
+            <h2>
+              {t.stories[2].title[0]}
+              <br />
+              {t.stories[2].title[1]}
+            </h2>
+          </Reveal>
+          <p className={styles.body}>{t.stories[2].body}</p>
+          <Link className={styles.textLink} href={to("/studio")}>
+            {t.stories[2].link} <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+
+        <figure className={styles.threeMedia}>
+          <Image
+            src="/images/crayon-designroom-team.jpg"
+            alt={t.gallery[0].alt}
+            fill
+            loading="eager"
+            sizes="(max-width: 900px) 100vw, 50vw"
+          />
+          <figcaption>{t.stories[2].caption}</figcaption>
+        </figure>
       </section>
 
       {/* The fabric branches, as an index. These are the pages search traffic
@@ -165,10 +196,6 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
                 <span className={styles.fabricNum}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span
-                  className={`${styles.fabricChip} ${chipSwatch[i % chipSwatch.length]}`}
-                  aria-hidden="true"
-                />
                 <span className={styles.fabricName}>{pick(c.nav, lang)}</span>
                 <span className={styles.fabricGroups}>
                   {c.groups
@@ -179,6 +206,10 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
                 <span className={styles.fabricArrow} aria-hidden="true">
                   →
                 </span>
+                <span
+                  className={`${styles.fabricPanel} ${chipSwatch[i % chipSwatch.length]}`}
+                  aria-hidden="true"
+                />
               </Link>
             </li>
           ))}

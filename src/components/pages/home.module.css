@@ -138,7 +138,9 @@
     animation-range: entry 0% exit 100%;
   }
 
-  .storyMedia img {
+  .oneMedia img,
+  .twoMedia img,
+  .threeMedia img {
     animation: imageDrift linear both;
     animation-timeline: view();
     animation-range: entry 10% exit 90%;
@@ -150,86 +152,34 @@
   to   { object-position: center 66%; }
 }
 
-.editorial { padding: clamp(80px, 10vw, 160px) var(--gutter); }
-.storyGrid { display: grid; grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.4fr); align-items: center; gap: clamp(50px, 7vw, 120px); }
-.storyGrid + .storyGrid { margin-top: clamp(80px, 11vw, 180px); }
-.storyReverse { grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); }
-.storyCopy { max-width: 500px; }
+/* -- figures: a white card riding up over the opening photograph ---------- */
 
-.index { display: flex; align-items: center; gap: 20px; margin-bottom: clamp(30px, 4vw, 64px); font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.12em; }
-.index::after { content: ""; height: 1px; flex: 1; background: var(--line-strong); }
-.storyCopy h2 { font-size: clamp(2rem, 3.35vw, 3.5rem); font-weight: 600; line-height: 1.22; letter-spacing: -0.055em; }
-.storyCopy > p:not(.index) { max-width: 43ch; margin-top: clamp(24px, 3vw, 42px); color: var(--body); font-size: 0.9375rem; line-height: 1.9; }
-.textLink { display: inline-flex; align-items: center; gap: 22px; margin-top: clamp(40px, 5vw, 76px); padding-bottom: 5px; border-bottom: 1px solid var(--ink); font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; }
-.storyMedia { position: relative; aspect-ratio: 1.25 / 1; margin: 0; overflow: hidden; }
-.storyMedia img { object-fit: cover; transition: transform 1.4s var(--ease); }
-.storyMedia:hover img { transform: scale(1.03); }
-.storyReverse .storyMedia { aspect-ratio: 1.15 / 1; }
-.storyMedia figcaption {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 9px 14px;
-  background: var(--paper);
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--ink);
-  line-height: 1;
+.figuresWrap {
+  position: relative;
+  z-index: 2;
+  padding-inline: var(--gutter);
+  margin-top: clamp(-40px, -6vw, -110px);
 }
-
-.closing { min-height: min(72vw, 880px); padding: clamp(80px, 11vw, 160px) var(--gutter); display: flex; flex-direction: column; justify-content: space-between; background: var(--ink); color: var(--paper); }
-.closing > p { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.18em; }
-.closing h2 { max-width: 15ch; margin-block: clamp(80px, 11vw, 160px); font-size: clamp(2.8rem, 7.5vw, 7.2rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.06em; }
-.closing a { align-self: flex-end; display: flex; width: min(100%, 420px); justify-content: space-between; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.5); border-bottom: 1px solid rgba(255,255,255,.5); }
-
-@media (max-width: 900px) {
-  .hero { min-height: auto; padding-top: clamp(70px, 16vw, 130px); }
-  .heroWord { margin: 0; font-size: 16.6vw; line-height: 0.8; }
-  .heroBottom { grid-template-columns: 1fr 1fr; }
-  .heroMeta { grid-column: 1 / -1; }
-  .storyGrid, .storyReverse { grid-template-columns: 1fr; }
-  .storyReverse .storyMedia { order: 2; }
-  .storyReverse .storyCopy { order: 1; }
-  .storyCopy { max-width: 650px; }
-}
-
-@media (max-width: 620px) {
-  .hero { padding-inline: 20px; padding-bottom: 24px; }
-  .heroRule { margin-top: 42px; }
-  .heroBottom { grid-template-columns: 1fr; gap: 28px; }
-  .heroCta { width: 100%; }
-  .heroImage { min-height: 430px; height: 112vw; }
-  .editorial { padding-inline: 20px; }
-  .storyGrid { gap: 38px; }
-  .storyMedia, .storyReverse .storyMedia { aspect-ratio: .92 / 1; }
-  .closing { min-height: 760px; padding-inline: 20px; }
-}
-
-@media (prefers-reduced-motion: reduce) { .heroCta { transition: none; } }
-
-/* -- figures — one hairline row under the opening image -------------------- */
 
 .figures {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  padding-inline: var(--gutter);
-  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  padding: clamp(24px, 3vw, 44px) clamp(20px, 2.6vw, 44px);
 }
 
 .figure {
-  padding: clamp(30px, 3.6vw, 48px) clamp(16px, 2vw, 32px) clamp(30px, 3.6vw, 48px) 0;
+  padding-right: clamp(14px, 2vw, 32px);
 }
 
 .figure + .figure {
-  padding-left: clamp(20px, 2.4vw, 40px);
+  padding-left: clamp(18px, 2.4vw, 40px);
   border-left: 1px solid var(--line);
 }
 
 .figureValue {
   font-family: var(--font-mono);
-  font-size: clamp(1.75rem, 3.4vw, 3rem);
+  font-size: clamp(1.625rem, 3.2vw, 2.875rem);
   font-weight: 500;
   letter-spacing: -0.045em;
   line-height: 1;
@@ -246,10 +196,170 @@
 }
 
 .figureNote {
-  margin-top: 18px;
-  font-size: 0.875rem;
+  margin-top: 16px;
+  font-size: 0.8125rem;
   line-height: 1.6;
   color: var(--body);
+}
+
+/* -- shared story type ---------------------------------------------------- */
+
+.index {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: clamp(24px, 3vw, 44px);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.index::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line-strong);
+}
+
+.storyOne h2,
+.storyTwo h2,
+.storyThree h2 {
+  font-size: clamp(1.875rem, 3.2vw, 3.35rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.055em;
+}
+
+.body {
+  margin-top: clamp(20px, 2.4vw, 34px);
+  color: var(--body);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+}
+
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: clamp(30px, 3.6vw, 54px);
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+}
+
+.storyOne figcaption,
+.storyThree figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 9px 14px;
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* -- 01: narrow type column, large image dropped below it ----------------- */
+
+.storyOne {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: clamp(36px, 5vw, 90px);
+  align-items: start;
+  padding: clamp(84px, 11vw, 170px) var(--gutter) 0;
+}
+
+.oneCopy {
+  max-width: 34ch;
+  padding-top: clamp(0px, 2vw, 40px);
+}
+
+.oneMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  margin-top: clamp(40px, 7vw, 130px);
+  overflow: hidden;
+}
+
+.oneMedia img {
+  object-fit: cover;
+}
+
+/* -- 02: photograph bleeds off the right edge, type sits on top of it ----- */
+
+.storyTwo {
+  position: relative;
+  margin-top: clamp(70px, 9vw, 140px);
+  padding-left: var(--gutter);
+  padding-bottom: clamp(28px, 3vw, 44px);
+}
+
+/* The section has no right padding, so 100% already reaches the viewport edge —
+   adding the gutter back on top of that overflowed the page. */
+.twoMedia {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.twoMedia img {
+  object-fit: cover;
+  object-position: center 42%;
+}
+
+.twoCard {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 460px);
+  margin-top: clamp(-60px, -7vw, -150px);
+  padding: clamp(28px, 3.4vw, 52px) clamp(24px, 3vw, 48px) clamp(28px, 3.4vw, 48px) 0;
+  background: var(--paper);
+}
+
+.twoCaption {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+/* -- 03: the type pins while the photograph travels past ------------------ */
+
+.storyThree {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(36px, 5vw, 96px);
+  align-items: start;
+  padding: clamp(84px, 11vw, 170px) var(--gutter) clamp(84px, 11vw, 170px);
+}
+
+.threeCopy {
+  position: sticky;
+  top: calc(var(--header-h) + clamp(40px, 8vh, 110px));
+  max-width: 38ch;
+}
+
+.threeMedia {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  min-height: clamp(420px, 74vh, 760px);
+  overflow: hidden;
+}
+
+.threeMedia img {
+  object-fit: cover;
 }
 
 /* -- fabric index --------------------------------------------------------- */
@@ -297,8 +407,10 @@
 /* The whole row is the target; it flips to ink so the index reads as a stack
    of cards being pulled out. */
 .fabricRow {
+  position: relative;
+  overflow: hidden;
   display: grid;
-  grid-template-columns: auto auto minmax(0, 4fr) minmax(0, 7fr) auto;
+  grid-template-columns: auto minmax(0, 4fr) minmax(0, 7fr) auto;
   align-items: baseline;
   gap: clamp(16px, 3vw, 48px);
   padding: clamp(22px, 2.8vw, 38px) clamp(14px, 2vw, 26px);
@@ -406,18 +518,97 @@
 }
 
 @media (max-width: 900px) {
+  .hero { min-height: auto; padding-top: clamp(70px, 16vw, 130px); }
+  .heroWord { margin-top: 0; font-size: 16.6vw; line-height: 0.8; }
+  .heroMaterials { margin-bottom: 0; }
+  .heroBottom { grid-template-columns: 1fr 1fr; }
+  .heroMeta { grid-column: 1 / -1; }
+
+  /* One column, and the pinned column stops pinning — there is nothing beside
+     it to travel past. */
+  .storyOne, .storyThree { grid-template-columns: 1fr; }
+  .oneCopy, .threeCopy { max-width: 650px; }
+  .oneMedia { margin-top: 0; }
+  .threeCopy { position: static; }
+  .threeMedia { aspect-ratio: 4 / 3; min-height: 0; }
+  .twoCard { width: 100%; margin-top: clamp(-40px, -6vw, -72px); padding-right: 0; }
+
   .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .figure:nth-child(odd) { padding-left: 0; border-left: 0; }
   .figure:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .fabricRow { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px 20px; }
-  .fabricChip { display: none; }
+  .fabricPanel { display: none; }
   .fabricGroups { grid-column: 2 / -1; }
   .routeList { margin-left: 0; flex-basis: 100%; }
 }
 
 @media (max-width: 620px) {
-  .figures, .fabricIndex, .route { padding-inline: 20px; }
+  .hero { padding-inline: 20px; padding-bottom: 24px; }
+  .heroRule { margin-top: 42px; }
+  .heroBottom { grid-template-columns: 1fr; gap: 28px; }
+  .heroCta { width: 100%; }
+  .heroImage { min-height: 430px; height: 112vw; }
+
+  .storyOne, .storyThree { padding-inline: 20px; gap: 32px; }
+  .storyTwo { padding-left: 20px; }
+  .twoMedia { aspect-ratio: 4 / 3; }
+  .oneMedia, .threeMedia { aspect-ratio: 0.95 / 1; }
+
+  .figuresWrap { padding-inline: 20px; margin-top: -30px; }
+  .figures { padding-inline: 20px; }
+  .figure:nth-child(n + 3) { padding-top: 20px; margin-top: 4px; }
+  .fabricIndex, .route { padding-inline: 20px; }
   .fabricRow { margin-inline: -14px; }
+}
+
+/* -- closing ------------------------------------------------------------- */
+
+.closing {
+  min-height: min(72vw, 880px);
+  padding: clamp(80px, 11vw, 160px) var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.closing > p {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.closing h2 {
+  max-width: 15ch;
+  margin-block: clamp(60px, 9vw, 140px);
+  font-size: clamp(2.6rem, 7vw, 6.8rem);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.06em;
+}
+
+.closing a {
+  align-self: flex-end;
+  display: flex;
+  width: min(100%, 420px);
+  justify-content: space-between;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: padding-inline 0.4s var(--ease);
+}
+
+.closing a:hover {
+  padding-inline: 14px;
+}
+
+@media (max-width: 620px) {
+  .closing {
+    min-height: 700px;
+    padding-inline: 20px;
+  }
 }
 
 /* -- the closing headline arrives a line at a time ------------------------- */
@@ -442,17 +633,17 @@
 
 /* -- fabric index: the number swells, a swatch chip slides in ------------- */
 
-.fabricChip {
-  width: 46px;
-  height: 34px;
-  border: 1px solid var(--line-strong);
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+/* The pattern family itself slides in behind the row on hover. */
+.fabricPanel {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: clamp(180px, 26%, 340px);
+  transform: translateX(100%);
+  transition: transform 0.55s var(--ease);
+  pointer-events: none;
 }
 
-.fabricRow:hover .fabricChip {
-  opacity: 1;
+.fabricRow:hover .fabricPanel {
   transform: none;
 }
 
@@ -472,7 +663,9 @@
   .heroCta,
   .heroMeta,
   .heroImage img,
-  .storyMedia img {
+  .oneMedia img,
+  .twoMedia img,
+  .threeMedia img {
     animation: none;
   }
 
