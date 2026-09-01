@@ -15,11 +15,6 @@ const chipSwatch = [
   "swatch-women",
 ];
 
-/** Every second-level fabric term, run twice so the ticker loops seamlessly. */
-function tickerTerms(lang: Locale) {
-  return fabricCategories.flatMap((c) => c.groups.map((g) => pick(g.name, lang)));
-}
-
 export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
   const t = d.home;
   const to = (path: string) => localePath(lang, path);
@@ -85,13 +80,6 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
           ))}
         </div>
       </section>
-
-      <div className="ticker" aria-hidden="true">
-        <div className="ticker-track">
-          <span>{tickerTerms(lang).join(" ")}</span>
-          <span>{tickerTerms(lang).join(" ")}</span>
-        </div>
-      </div>
 
       {/* 01 — a narrow column of type against a large image dropped below it. */}
       <section className={styles.storyOne}>

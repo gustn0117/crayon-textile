@@ -509,57 +509,6 @@ button {
   transform: none;
 }
 
-/* --------------------------------------------------------------------------
-   Keyword ticker — a market board of what Crayon actually stocks
-   -------------------------------------------------------------------------- */
-
-.ticker {
-  overflow: hidden;
-  border-block: 1px solid var(--line);
-  padding-block: clamp(16px, 1.9vw, 26px);
-  background: var(--paper);
-}
-
-.ticker-track {
-  display: flex;
-  width: max-content;
-  gap: clamp(20px, 2.6vw, 40px);
-  animation: tickerRun 64s linear infinite;
-}
-
-.ticker:hover .ticker-track {
-  animation-play-state: paused;
-}
-
-.ticker-track span {
-  display: inline-flex;
-  align-items: center;
-  gap: clamp(20px, 2.6vw, 40px);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  color: var(--body);
-  white-space: nowrap;
-}
-
-.ticker-track span::after {
-  content: "";
-  width: 4px;
-  height: 4px;
-  background: var(--line-strong);
-}
-
-@keyframes tickerRun {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-  to {
-    /* Two identical halves, so half a turn is a seamless loop. */
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   :root.reveal-ready .reveal,
   :root.reveal-ready .reveal-mask,
@@ -568,10 +517,6 @@ button {
     clip-path: none;
     transform: none;
     transition: none;
-  }
-
-  .ticker-track {
-    animation: none;
   }
 
   *,
