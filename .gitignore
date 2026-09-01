@@ -40,3 +40,7 @@ next-env.d.ts
 
 # original photo drop
 /0826/
+
+# design QA scratch from another agent
+/.product-design/
+/design-qa.md

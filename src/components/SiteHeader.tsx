@@ -64,7 +64,6 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
             height={341}
             priority
           />
-          <span className={styles.brandEn}>{d.brand.en}</span>
         </Link>
 
         <nav className={styles.nav} aria-label={d.header.navAria}>

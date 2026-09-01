@@ -1,345 +1,181 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { SectionHead } from "@/components/SectionHead";
-import { contact, destinations } from "@/lib/site";
+import { destinations } from "@/lib/site";
 import { categoryPath, fabricCategories, pick } from "@/lib/fabrics";
 import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./home.module.css";
 
-const galleryImages = [
-  "/images/crayon-designroom-team.jpg",
-  "/images/crayon-designroom-work.jpg",
-  "/images/crayon-store.jpg",
+/** The three story rows, paired with the photography each one is about. */
+const storyMedia = [
+  { src: "/images/crayon-design-desk.jpg", altKey: 1 as const },
+  { src: "/images/crayon-store.jpg", altKey: 2 as const },
+  { src: "/images/crayon-designroom-team.jpg", altKey: 0 as const },
 ];
-
-// The shop is the only portrait frame; bias its crop up so the blue signs stay in.
-const galleryPositions = ["center 45%", "center 40%", "center 26%"];
 
 export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
   const t = d.home;
   const to = (path: string) => localePath(lang, path);
 
+  const storyBody = [t.aboutBody, t.businessHead.lead, t.stories[2].body ?? ""];
+  const storyHref = ["/about", "/fabrics/cotton", "/studio"];
+
   return (
     <>
       <section className={styles.hero}>
-        <div className={styles.heroMedia} aria-hidden="true">
-          <Image src="/images/crayon-textile-hero.jpg" alt="" fill preload sizes="100vw" />
-          <div className={styles.heroScrim} />
+        <div className={styles.heroWord} aria-label={t.heroWordmark}>
+          {t.heroWordmark}
         </div>
 
-        <div className={`container ${styles.heroInner}`}>
-          <Reveal>
-            <p className={styles.heroEyebrow}>
-              {t.heroEyebrow.map((line) => (
-                <span key={line}>{line}</span>
-              ))}
-            </p>
-          </Reveal>
-
-          <Reveal delay={70}>
-            <h1 className={`display-lg ${styles.heroTitle}`}>{t.heroTitle}</h1>
-          </Reveal>
-
-          <Reveal delay={140}>
-            <p className={styles.heroLead}>{t.heroLead}</p>
-          </Reveal>
-
-          <Reveal className={styles.heroActions} delay={210}>
-            <Link className="btn btn-invert" href={to("/contact")}>
-              {t.heroCtaContact}
-              <span aria-hidden="true">↗</span>
-            </Link>
-            <Link className="arrow-link arrow-link-light" href={to("/fabrics/cotton")}>
-              {t.heroCtaCollection}
-              <span aria-hidden="true">→</span>
-            </Link>
-          </Reveal>
-        </div>
-
-        <div className={`container ${styles.heroFoot}`}>
-          <ul className={styles.heroFields}>
-            {t.materials.map((item) => (
-              <li key={item.en}>
-                <b>{item.en}</b>
-                <span>{item.ko}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className={styles.heroCue} aria-hidden="true">
-            <span>SCROLL</span>
-            <i />
-          </div>
-        </div>
-      </section>
-
-      <section className={styles.figures} aria-label={t.figuresAria}>
-        <div className={`container ${styles.figuresGrid}`}>
-          {t.figures.map((item) => (
-            <div className={styles.figure} key={item.unit}>
-              <p className={styles.figureValue}>{item.value}</p>
-              <p className={styles.figureUnit}>{item.unit}</p>
-              <p className={styles.figureNote}>{item.note}</p>
-            </div>
+        <p className={styles.heroMaterials}>
+          {t.materials.map((m) => (
+            <span key={m.en}>{m.en}</span>
           ))}
-        </div>
-      </section>
+        </p>
 
-      <section className="section">
-        <div className="container">
-          <SectionHead
-            index="01"
-            en={t.aboutHead.en}
-            note={t.aboutHead.note}
-            title={
-              <>
-                {t.aboutHead.title[0]}
-                <br />
-                {t.aboutHead.title[1]}
-              </>
-            }
-          />
+        <div className={styles.heroRule} />
 
-          <div className={styles.aboutGrid}>
-            <Reveal className={styles.aboutCopy}>
-              <div className={`prose ${styles.aboutProse}`}>
-                <p className="lead">{t.aboutLead}</p>
-                <p>{t.aboutBody}</p>
-              </div>
-
-              <dl className={`facts ${styles.aboutFacts}`}>
-                {t.overview.map((row) => (
-                  <div key={row.term}>
-                    <dt>{row.term}</dt>
-                    <dd>{row.value}</dd>
-                  </div>
-                ))}
-              </dl>
-
-              <Link className={`arrow-link ${styles.aboutLink}`} href={to("/about")}>
-                {t.aboutMore}
-                <span aria-hidden="true">→</span>
-              </Link>
-            </Reveal>
-
-            <Reveal className={styles.aboutVisual} delay={80}>
-              <div className={styles.aboutImage}>
-                <Image
-                  src="/images/crayon-design-desk.jpg"
-                  alt={t.aboutVisualAlt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 44vw"
-                />
-              </div>
-              <p className={styles.aboutCaption}>
-                {t.aboutVisualCaption.map((line) => (
-                  <span key={line}>{line}</span>
-                ))}
-              </p>
-
-              <ul className={styles.principleList}>
-                {d.principles.map((item) => (
-                  <li key={item.en}>
-                    <span>{item.en}</span>
-                    <b>{item.title}</b>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
+        <div className={styles.heroBottom}>
+          <div className={styles.heroCopy}>
+            <h1>
+              {t.heroTagline[0]}
+              <br />
+              {t.heroTagline[1]}
+            </h1>
+            <p>{t.heroSub}</p>
           </div>
-        </div>
-      </section>
 
-      {/* People, floor and shop — the home page had no photograph of any of
-          the three until now. */}
-      <section className={styles.gallery}>
-        <div className="container">
-          <Reveal className={styles.galleryHead}>
-            <p className="label label-ink">{t.galleryLabel}</p>
-            <p className={styles.galleryLead}>{t.galleryLead}</p>
-          </Reveal>
+          <Link className={styles.heroCta} href={to("/contact")}>
+            <span>{t.heroCta}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
 
-          <ul className={styles.galleryGrid}>
-            {t.gallery.map((item, i) => (
-              <li key={item.en}>
-                <Reveal delay={i * 70}>
-                  <figure className={styles.galleryFigure}>
-                    <div className={styles.galleryImage}>
-                      <Image
-                        src={galleryImages[i]}
-                        alt={item.alt}
-                        fill
-                        sizes="(max-width: 760px) 100vw, 33vw"
-                        style={{ objectPosition: galleryPositions[i] }}
-                      />
-                    </div>
-                    <figcaption className={styles.galleryCaption}>
-                      <span>{item.en}</span>
-                      <span>{item.ko}</span>
-                    </figcaption>
-                  </figure>
-                </Reveal>
-              </li>
+          <p className={styles.heroMeta}>
+            {t.heroMeta.map((line) => (
+              <span key={line}>{line}</span>
             ))}
-          </ul>
+          </p>
         </div>
       </section>
 
-      <section className={`section ${styles.business}`}>
-        <div className="container">
-          <SectionHead
-            index="02"
-            en={t.businessHead.en}
-            note={t.businessHead.note}
-            title={t.businessHead.title}
-            lead={t.businessHead.lead}
-          />
+      <figure className={styles.heroImage}>
+        <Image
+          src="/images/crayon-textile-hero.jpg"
+          alt={t.aboutVisualAlt}
+          fill
+          preload
+          sizes="100vw"
+        />
+      </figure>
 
-          <ul className={styles.businessGrid}>
-            {fabricCategories
-              .filter((c) => c.slug !== "new")
-              .map((c, i) => (
-                <li key={c.slug}>
-                  <Reveal delay={i * 60}>
-                    <Link className={styles.businessCard} href={to(categoryPath(c))}>
-                      <span className={styles.businessArt} aria-hidden="true">
-                        <span
-                          className={`${styles.businessArtInner} ${d.categories[i].swatch}`}
-                        />
-                      </span>
-                      <span className={styles.businessCode}>
-                        {pick(c.label, lang)}
-                      </span>
-                      <span className={styles.businessName}>{pick(c.nav, lang)}</span>
-                      <span className={styles.businessNote}>
-                        {c.groups
-                          .slice(0, 4)
-                          .map((g) => pick(g.name, lang))
-                          .join(" · ")}
-                      </span>
-                    </Link>
-                  </Reveal>
-                </li>
-              ))}
-          </ul>
-
-          <Reveal className={styles.businessFoot}>
-            <Link className="arrow-link" href={to("/new")}>
-              {t.businessMore}
-              <span aria-hidden="true">→</span>
-            </Link>
-          </Reveal>
-        </div>
+      {/* Four numbers, one hairline row — the quickest read of the company. */}
+      <section className={styles.figures} aria-label={t.figuresAria}>
+        {t.figures.map((item) => (
+          <div className={styles.figure} key={item.unit}>
+            <p className={styles.figureValue}>{item.value}</p>
+            <p className={styles.figureUnit}>{item.unit}</p>
+            <p className={styles.figureNote}>{item.note}</p>
+          </div>
+        ))}
       </section>
 
-      <section className={`section ${styles.studio}`}>
-        <div className="container">
-          <SectionHead
-            index="03"
-            en={t.studioHead.en}
-            note={t.studioHead.note}
-            title={
-              <>
-                {t.studioHead.title[0]}
+      <section className={styles.editorial}>
+        {storyMedia.map((media, i) => (
+          <div
+            className={i % 2 ? `${styles.storyGrid} ${styles.storyReverse}` : styles.storyGrid}
+            key={media.src}
+          >
+            {i % 2 ? (
+              <figure className={styles.storyMedia}>
+                <Image
+                  src={media.src}
+                  alt={i === 0 ? t.aboutVisualAlt : t.gallery[media.altKey].alt}
+                  fill
+                  loading="eager"
+                  sizes="(max-width: 760px) 100vw, 58vw"
+                />
+                <figcaption>{t.stories[i].caption}</figcaption>
+              </figure>
+            ) : null}
+
+            <div className={styles.storyCopy}>
+              <p className={styles.index}>{t.stories[i].index}</p>
+              <h2>
+                {t.stories[i].title[0]}
                 <br />
-                {t.studioHead.title[1]}
-              </>
-            }
-            lead={t.studioHead.lead}
-            light
-          />
-
-          <Reveal className={styles.studioVisual}>
-            <div className={styles.studioImage}>
-              <Image
-                src="/images/crayon-printing-table.jpg"
-                alt={t.printingAlt}
-                fill
-                sizes="100vw"
-              />
+                {t.stories[i].title[1]}
+              </h2>
+              <p>{storyBody[i]}</p>
+              <Link className={styles.textLink} href={to(storyHref[i])}>
+                {t.stories[i].link} <span aria-hidden="true">→</span>
+              </Link>
             </div>
-            <p className={styles.studioCaption}>
-              <span>ON THE TABLE</span>
-              <span>{t.printingCaption}</span>
-            </p>
-          </Reveal>
 
-          <ol className={styles.process}>
-            {d.processSteps.map((item, i) => (
-              <li key={item.step}>
-                <Reveal className={styles.step} delay={i * 60}>
-                  <span className={styles.stepNumber}>{item.step}</span>
-                  <span className={styles.stepEn}>{item.en}</span>
-                  <b className={styles.stepTitle}>{item.title}</b>
-                  <span className={styles.stepText}>{item.description}</span>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
-
-          <Reveal className={styles.studioFoot}>
-            <p className={styles.studioNote}>{t.studioNote}</p>
-            <Link className="arrow-link arrow-link-light" href={to("/studio")}>
-              {t.studioMore}
-              <span aria-hidden="true">→</span>
-            </Link>
-          </Reveal>
-        </div>
+            {i % 2 ? null : (
+              <figure className={styles.storyMedia}>
+                <Image
+                  src={media.src}
+                  alt={i === 0 ? t.aboutVisualAlt : t.gallery[media.altKey].alt}
+                  fill
+                  loading="eager"
+                  sizes="(max-width: 760px) 100vw, 58vw"
+                />
+                <figcaption>{t.stories[i].caption}</figcaption>
+              </figure>
+            )}
+          </div>
+        ))}
       </section>
 
-      <section className="section">
-        <div className="container">
-          <SectionHead
-            index="04"
-            en={t.globalHead.en}
-            note={t.globalHead.note}
-            title={t.globalHead.title}
-            lead={t.globalHead.lead}
-          />
+      {/* The fabric branches, as an index. These are the pages search traffic
+          lands on, so the home page has to link every one of them. */}
+      <section className={styles.fabricIndex}>
+        <Reveal className={styles.fabricHead}>
+          <p className={styles.indexLabel}>{t.indexLabel}</p>
+          <h2>{t.indexTitle}</h2>
+        </Reveal>
 
-          <Reveal className={styles.route}>
-            <div className={styles.origin}>
-              <span className={styles.originMark} aria-hidden="true" />
-              <p className={styles.originName}>SEOUL</p>
-              <p className={styles.originNote}>CRAYON · DONGDAEMUN</p>
-            </div>
+        <ul className={styles.fabricList}>
+          {fabricCategories.map((c, i) => (
+            <li key={c.slug}>
+              <Link className={styles.fabricRow} href={to(categoryPath(c))}>
+                <span className={styles.fabricNum}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className={styles.fabricName}>{pick(c.nav, lang)}</span>
+                <span className={styles.fabricGroups}>
+                  {c.groups
+                    .slice(0, 5)
+                    .map((g) => pick(g.name, lang))
+                    .join(" · ")}
+                </span>
+                <span className={styles.fabricArrow} aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
 
-            <ul className={styles.destinations}>
-              {destinations.map((place) => (
-                <li key={place}>{place}</li>
-              ))}
-            </ul>
-          </Reveal>
-        </div>
+      <section className={styles.route}>
+        <p className={styles.routeLabel}>{t.routeLabel}</p>
+        <p className={styles.routeOrigin}>SEOUL</p>
+        <ul className={styles.routeList}>
+          {destinations.map((place) => (
+            <li key={place}>{place}</li>
+          ))}
+        </ul>
       </section>
 
       <section className={styles.closing}>
-        <div className={`container ${styles.closingInner}`}>
-          <Reveal>
-            <p className="label label-ink">{t.closingLabel}</p>
-            <h2 className={`display ${styles.closingTitle}`}>
-              {t.closingTitle[0]}
-              <br />
-              {t.closingTitle[1]}
-            </h2>
-          </Reveal>
-
-          <Reveal className={styles.closingSide} delay={80}>
-            <p className={styles.closingNote}>{t.closingNote}</p>
-            <div className={styles.closingActions}>
-              <Link className="btn btn-solid" href={to("/contact")}>
-                {t.closingCta}
-                <span aria-hidden="true">↗</span>
-              </Link>
-              <a className="arrow-link" href={contact.telHref}>
-                {d.phone.tel}
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </Reveal>
-        </div>
+        <p>{t.closingEyebrow}</p>
+        <h2>{t.closingHeadline}</h2>
+        <Link href={to("/contact")}>
+          {t.closingAction}
+          <span aria-hidden="true">→</span>
+        </Link>
       </section>
     </>
   );

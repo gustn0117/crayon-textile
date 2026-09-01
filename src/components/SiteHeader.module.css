@@ -14,47 +14,8 @@
 /* Floating over the home hero: no plate, light type. Everything below is an
    override of the solid state, so the solid state stays the default. */
 .overHero {
-  background: transparent;
-  border-bottom-color: transparent;
-}
-
-.overHero .logo {
-  filter: brightness(0) invert(1);
-}
-
-.overHero .brandEn {
-  color: rgba(255, 255, 255, 0.55);
-  border-left-color: rgba(255, 255, 255, 0.28);
-}
-
-.overHero .navLink,
-.overHero .tel {
-  color: rgba(255, 255, 255, 0.66);
-}
-
-.overHero .lang {
-  border-color: rgba(255, 255, 255, 0.4);
-  color: var(--paper);
-}
-
-.overHero .lang:hover {
   background: var(--paper);
-  border-color: var(--paper);
-  color: var(--ink);
-}
-
-.overHero .navLink:hover,
-.overHero .tel:hover,
-.overHero .isActive {
-  color: var(--paper);
-}
-
-.overHero .isActive::before {
-  background: var(--paper);
-}
-
-.overHero .toggle span {
-  background: var(--paper);
+  border-bottom-color: var(--line);
 }
 
 .inner {
@@ -70,6 +31,14 @@
 
 /* -- brand ---------------------------------------------------------------- */
 
+/* One asset for both states: brightness(0) invert(1) keeps the alpha and
+   paints every opaque pixel white, so no second file is needed. */
+.logo {
+  width: auto;
+  height: clamp(30px, 3vw, 40px);
+  transition: filter 0.45s var(--ease);
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -79,24 +48,12 @@
 
 /* One asset for both states: brightness(0) invert(1) keeps the alpha and
    paints every opaque pixel white, so no second file is needed. */
-.logo {
-  width: auto;
-  height: clamp(30px, 3vw, 40px);
-  transition: filter 0.45s var(--ease);
-}
-
-.brandEn {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  color: var(--muted);
+.wordmark {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.055em;
   line-height: 1;
-  padding-left: 12px;
-  border-left: 1px solid var(--line);
-  transition:
-    color 0.45s var(--ease),
-    border-color 0.45s var(--ease);
 }
 
 /* -- desktop nav ---------------------------------------------------------- */

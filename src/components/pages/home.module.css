@@ -1,271 +1,155 @@
-/* -- hero — headline over the fabric --------------------------------------- */
-
 .hero {
-  position: relative;
+  min-height: calc(100svh - var(--header-h));
+  padding: clamp(42px, 7vw, 106px) var(--gutter) clamp(28px, 3vw, 48px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  min-height: 640px;
-  min-height: 100svh;
-  /* Cancels the reservation main makes for the fixed header, then puts it back
-     as padding — the image runs to the top of the window, the type does not. */
-  margin-top: calc(var(--header-h) * -1);
-  padding-top: calc(var(--header-h) + 48px);
-  padding-bottom: clamp(20px, 2.4vw, 32px);
-  color: var(--paper);
-  overflow: hidden;
+  background: var(--paper);
 }
 
-.heroMedia {
-  position: absolute;
-  inset: 0;
-}
-
-/* A single slow settle on load. Long enough to read as camera movement rather
-   than as an effect. */
-.heroMedia img {
-  object-fit: cover;
-  animation: heroSettle 5.5s cubic-bezier(0.16, 0.84, 0.24, 1) both;
-}
-
-@keyframes heroSettle {
-  from {
-    transform: scale(1.09);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-
-/* Weighted toward the left, where the type sits, so the fabric still shows its
-   colour on the right. */
-.heroScrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      100deg,
-      rgba(11, 11, 11, 0.9) 0%,
-      rgba(11, 11, 11, 0.78) 38%,
-      rgba(11, 11, 11, 0.34) 78%,
-      rgba(11, 11, 11, 0.24) 100%
-    ),
-    linear-gradient(180deg, rgba(11, 11, 11, 0.34) 0%, rgba(11, 11, 11, 0) 30%),
-    linear-gradient(0deg, rgba(11, 11, 11, 0.6) 0%, rgba(11, 11, 11, 0) 26%);
-}
-
-.heroInner {
-  position: relative;
+.heroWord {
   width: 100%;
   margin-top: auto;
-  padding-bottom: clamp(44px, 5vw, 76px);
-}
-
-.heroEyebrow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px;
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1;
-}
-
-.heroEyebrow span + span {
-  padding-left: 14px;
-  border-left: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.heroTitle {
-  max-width: none;
-  margin-top: clamp(20px, 2.6vw, 32px);
-  font-size: clamp(2.5rem, 4.35vw, 4.5rem);
+  /* Was hardcoded to Arial, which is outside the type system and renders
+     differently per OS. Gothic A1 is the site's own display face. */
+  font-family: var(--font-sans);
+  font-size: clamp(4.2rem, 16.4vw, 15rem);
+  font-weight: 800;
+  letter-spacing: -0.085em;
+  line-height: 0.73;
   white-space: nowrap;
 }
 
-.heroLead {
-  max-width: 44ch;
-  margin-top: clamp(20px, 2.4vw, 28px);
-  font-size: clamp(1rem, 1.25vw, 1.125rem);
-  line-height: 1.85;
-  color: rgba(255, 255, 255, 0.78);
-}
-
-.heroActions {
+.heroMaterials {
+  margin-bottom: auto;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: clamp(18px, 2.6vw, 34px);
-  margin-top: clamp(30px, 3.4vw, 44px);
-}
-
-/* -- hero foot — the four fields, on the image ---------------------------- */
-
-.heroFoot {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  padding-top: clamp(18px, 2vw, 26px);
-  border-top: 1px solid rgba(255, 255, 255, 0.24);
-}
-
-.heroFields {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 12px clamp(20px, 3vw, 56px);
-  flex: 1 1 auto;
-  max-width: 860px;
-}
-
-.heroFields li {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-}
-
-.heroFields b {
+  gap: 8px clamp(14px, 2vw, 30px);
+  margin-top: clamp(20px, 2.6vw, 34px);
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--paper);
+  letter-spacing: 0.22em;
+  color: var(--muted);
   line-height: 1;
 }
 
-.heroFields span {
-  font-size: 0.8125rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1;
+.heroRule { height: 1px; margin-top: clamp(34px, 4.5vw, 68px); background: var(--ink); }
+
+.heroBottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 0.45fr) minmax(190px, 0.25fr);
+  gap: clamp(24px, 4vw, 72px);
+  align-items: end;
+  padding-top: clamp(22px, 2.4vw, 38px);
 }
 
-/* Vertical scroll cue. The mark travels the rule once every few seconds;
-   nothing else on the page moves on its own. */
-.heroCue {
+.heroCopy h1 { font-size: clamp(1.5rem, 2.15vw, 2.15rem); font-weight: 600; line-height: 1.32; letter-spacing: -0.04em; }
+.heroCopy p { margin-top: 12px; color: var(--body); font-size: 0.9375rem; }
+
+.heroCta {
+  min-height: 62px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 12px;
-  flex: none;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 22px;
+  border: 1px solid var(--line-strong);
+  font-size: 0.875rem;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.heroCta:hover { background: var(--ink); color: var(--paper); }
+.heroMeta { display: flex; flex-direction: column; font-family: var(--font-mono); font-size: 0.625rem; line-height: 1.55; letter-spacing: 0.08em; }
+
+.heroImage { position: relative; width: 100%; height: min(67vw, 850px); min-height: 520px; overflow: hidden; }
+.heroImage img { object-fit: cover; object-position: center 50%; }
+
+.editorial { padding: clamp(80px, 10vw, 160px) var(--gutter); }
+.storyGrid { display: grid; grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.4fr); align-items: center; gap: clamp(50px, 7vw, 120px); }
+.storyGrid + .storyGrid { margin-top: clamp(80px, 11vw, 180px); }
+.storyReverse { grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); }
+.storyCopy { max-width: 500px; }
+
+.index { display: flex; align-items: center; gap: 20px; margin-bottom: clamp(30px, 4vw, 64px); font-family: var(--font-mono); font-size: 0.625rem; letter-spacing: 0.12em; }
+.index::after { content: ""; height: 1px; flex: 1; background: var(--line-strong); }
+.storyCopy h2 { font-size: clamp(2rem, 3.35vw, 3.5rem); font-weight: 600; line-height: 1.22; letter-spacing: -0.055em; }
+.storyCopy > p:not(.index) { max-width: 43ch; margin-top: clamp(24px, 3vw, 42px); color: var(--body); font-size: 0.9375rem; line-height: 1.9; }
+.textLink { display: inline-flex; align-items: center; gap: 22px; margin-top: clamp(40px, 5vw, 76px); padding-bottom: 5px; border-bottom: 1px solid var(--ink); font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.08em; }
+.storyMedia { position: relative; aspect-ratio: 1.25 / 1; margin: 0; overflow: hidden; }
+.storyMedia img { object-fit: cover; transition: transform 1.4s var(--ease); }
+.storyMedia:hover img { transform: scale(1.03); }
+.storyReverse .storyMedia { aspect-ratio: 1.15 / 1; }
+.storyMedia figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 9px 14px;
+  background: var(--paper);
   font-family: var(--font-mono);
   font-size: 0.5625rem;
   font-weight: 500;
-  letter-spacing: 0.3em;
-  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  line-height: 1;
 }
 
-/* Only the label rotates — rotating the flex container would turn its main axis
-   sideways and lay the label and rule out side by side. */
-.heroCue span {
-  writing-mode: vertical-rl;
-}
-
-.heroCue i {
-  position: relative;
-  display: block;
-  width: 1px;
-  height: 34px;
-  background: rgba(255, 255, 255, 0.24);
-  overflow: hidden;
-}
-
-.heroCue i::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -55%;
-  height: 55%;
-  background: var(--paper);
-  animation: cueTravel 2.8s var(--ease) infinite;
-}
-
-@keyframes cueTravel {
-  0% {
-    top: -55%;
-  }
-  55%,
-  100% {
-    top: 100%;
-  }
-}
+.closing { min-height: min(72vw, 880px); padding: clamp(80px, 11vw, 160px) var(--gutter); display: flex; flex-direction: column; justify-content: space-between; background: var(--ink); color: var(--paper); }
+.closing > p { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.18em; }
+.closing h2 { max-width: 15ch; margin-block: clamp(80px, 11vw, 160px); font-size: clamp(2.8rem, 7.5vw, 7.2rem); font-weight: 600; line-height: 1.08; letter-spacing: -0.06em; }
+.closing a { align-self: flex-end; display: flex; width: min(100%, 420px); justify-content: space-between; padding: 22px 0; border-top: 1px solid rgba(255,255,255,.5); border-bottom: 1px solid rgba(255,255,255,.5); }
 
 @media (max-width: 900px) {
-  .heroFields {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .heroCue {
-    display: none;
-  }
+  .hero { min-height: auto; padding-top: clamp(70px, 16vw, 130px); }
+  .heroWord { margin: 0; font-size: 16.6vw; line-height: 0.8; }
+  .heroBottom { grid-template-columns: 1fr 1fr; }
+  .heroMeta { grid-column: 1 / -1; }
+  .storyGrid, .storyReverse { grid-template-columns: 1fr; }
+  .storyReverse .storyMedia { order: 2; }
+  .storyReverse .storyCopy { order: 1; }
+  .storyCopy { max-width: 650px; }
 }
 
-@media (max-width: 700px) {
-  .heroTitle {
-    font-size: 4.9vw;
-  }
-
-  /* No room for a side-weighted scrim — darken the whole frame instead. */
-  .heroScrim {
-    background: linear-gradient(
-      180deg,
-      rgba(11, 11, 11, 0.6) 0%,
-      rgba(11, 11, 11, 0.78) 55%,
-      rgba(11, 11, 11, 0.88) 100%
-    );
-  }
+@media (max-width: 620px) {
+  .hero { padding-inline: 20px; padding-bottom: 24px; }
+  .heroRule { margin-top: 42px; }
+  .heroBottom { grid-template-columns: 1fr; gap: 28px; }
+  .heroCta { width: 100%; }
+  .heroImage { min-height: 430px; height: 112vw; }
+  .editorial { padding-inline: 20px; }
+  .storyGrid { gap: 38px; }
+  .storyMedia, .storyReverse .storyMedia { aspect-ratio: .92 / 1; }
+  .closing { min-height: 760px; padding-inline: 20px; }
 }
 
-@media (max-width: 640px) {
-  /* Stacked, the divider rule would strand itself at the start of line two. */
-  .heroEyebrow {
-    display: block;
-  }
+@media (prefers-reduced-motion: reduce) { .heroCta { transition: none; } }
 
-  .heroEyebrow span + span {
-    display: block;
-    margin-top: 8px;
-    padding-left: 0;
-    border-left: 0;
-  }
-}
-
-/* -- figures -------------------------------------------------------------- */
+/* -- figures — one hairline row under the opening image -------------------- */
 
 .figures {
-  border-bottom: 1px solid var(--line);
-  background: var(--paper);
-}
-
-.figuresGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding-inline: var(--gutter);
+  border-bottom: 1px solid var(--line);
 }
 
 .figure {
-  padding: clamp(28px, 3.4vw, 44px) clamp(16px, 2vw, 32px) clamp(28px, 3.4vw, 44px) 0;
+  padding: clamp(30px, 3.6vw, 48px) clamp(16px, 2vw, 32px) clamp(30px, 3.6vw, 48px) 0;
 }
 
 .figure + .figure {
-  padding-left: clamp(20px, 2.4vw, 36px);
+  padding-left: clamp(20px, 2.4vw, 40px);
   border-left: 1px solid var(--line);
 }
 
 .figureValue {
   font-family: var(--font-mono);
-  font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+  font-size: clamp(1.75rem, 3.4vw, 3rem);
   font-weight: 500;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
   line-height: 1;
-  color: var(--ink);
 }
 
 .figureUnit {
-  margin-top: 10px;
+  margin-top: 12px;
   font-family: var(--font-mono);
   font-size: 0.625rem;
   font-weight: 500;
@@ -281,586 +165,169 @@
   color: var(--body);
 }
 
-@media (max-width: 780px) {
-  .figuresGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+/* -- fabric index --------------------------------------------------------- */
 
-  .figure:nth-child(odd) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .figure:nth-child(n + 3) {
-    border-top: 1px solid var(--line);
-  }
-}
-
-/* -- about summary -------------------------------------------------------- */
-
-.aboutGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
-  gap: clamp(36px, 4.5vw, 76px);
-  align-items: start;
-}
-
-.aboutCopy {
-  min-width: 0;
-}
-
-.aboutProse {
-  max-width: 46ch;
-}
-
-.aboutFacts {
-  margin-top: clamp(28px, 3.4vw, 44px);
-}
-
-.aboutLink {
-  margin-top: clamp(28px, 3.2vw, 40px);
-}
-
-.aboutVisual {
-  min-width: 0;
-}
-
-.aboutImage {
-  position: relative;
-  aspect-ratio: 4 / 3;
+.fabricIndex {
+  padding: clamp(76px, 9.5vw, 150px) var(--gutter);
   background: var(--surface);
-  overflow: hidden;
+  border-top: 1px solid var(--line);
 }
 
-.aboutImage img {
-  object-fit: cover;
-  transition: transform 1.4s var(--ease);
-}
-
-.aboutVisual:hover .aboutImage img {
-  transform: scale(1.04);
-}
-
-.aboutCaption {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 20px;
-  padding-top: 12px;
-  margin-top: 12px;
-  border-top: 1px solid var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--muted);
-  line-height: 1;
-}
-
-.principleList {
-  display: grid;
-  gap: 1px;
-  margin-top: clamp(24px, 3vw, 36px);
-  background: var(--line);
-  border-block: 1px solid var(--line);
-}
-
-.principleList li {
+.fabricHead {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px 18px;
-  padding-block: clamp(13px, 1.6vw, 17px);
-  background: var(--paper);
-}
-
-.principleList span {
-  flex: 0 0 11.5em;
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.principleList b {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-
-@media (max-width: 900px) {
-  .aboutGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* -- business ------------------------------------------------------------- */
-
-.business {
-  border-top: 1px solid var(--line);
-  background: var(--surface);
-}
-
-.businessGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(16px, 2vw, 28px);
-  border-top: 1px solid var(--ink);
-  padding-top: clamp(28px, 3.2vw, 44px);
-}
-
-.businessCard {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 10px;
-}
-
-/* Same mount card as the collection page, minus the punched hole — at this size
-   the hole would read as a speck. */
-.businessArt {
-  flex: 0 0 100%;
-  padding: clamp(11px, 1.1vw, 15px);
-  margin-bottom: 16px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  box-shadow:
-    0 1px 0 var(--line-strong),
-    0 14px 26px -24px rgba(11, 11, 11, 0.45);
-  transition:
-    transform 0.5s var(--ease),
-    box-shadow 0.5s var(--ease);
-}
-
-.businessCard:hover .businessArt {
-  transform: translateY(-5px);
-  box-shadow:
-    0 1px 0 var(--line-strong),
-    0 22px 34px -22px rgba(11, 11, 11, 0.55);
-}
-
-.businessArtInner {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  border: 1px solid var(--line-strong);
-}
-
-.businessCode {
-  flex: 0 0 100%;
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
-  color: var(--muted);
-  line-height: 1;
-}
-
-.businessName {
-  font-family: var(--font-mono);
-  font-size: clamp(0.9375rem, 1.4vw, 1.125rem);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--ink);
-  line-height: 1.2;
-  padding-bottom: 3px;
-  background-image: linear-gradient(var(--ink), var(--ink));
-  background-repeat: no-repeat;
-  background-position: 0 100%;
-  background-size: 0 1px;
-  transition: background-size 0.5s var(--ease);
-}
-
-.businessCard:hover .businessName {
-  background-size: 100% 1px;
-}
-
-.businessKo {
-  font-size: 0.8125rem;
-  color: var(--body);
-  line-height: 1.4;
-}
-
-.businessNote {
-  flex: 0 0 100%;
-  margin-top: 6px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-  font-size: 0.8125rem;
-  line-height: 1.7;
-  color: var(--body);
-}
-
-.businessFoot {
-  margin-top: clamp(32px, 3.6vw, 48px);
-}
-
-@media (max-width: 860px) {
-  .businessGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(20px, 4vw, 32px);
-  }
-}
-
-@media (max-width: 420px) {
-  .businessGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* -- studio — the one inverted block in the middle of the page ------------- */
-
-.studio {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.studioVisual {
-  margin-bottom: clamp(36px, 4.5vw, 64px);
-}
-
-.studioImage {
-  position: relative;
-  aspect-ratio: 21 / 9;
-  background: rgba(255, 255, 255, 0.06);
-  overflow: hidden;
-}
-
-.studioImage img {
-  object-fit: cover;
-}
-
-.studioCaption {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
-  gap: 8px 20px;
-  padding-top: 12px;
-  margin-top: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  gap: 14px clamp(24px, 4vw, 72px);
+  padding-bottom: clamp(32px, 4vw, 56px);
+}
+
+.indexLabel {
   font-family: var(--font-mono);
   font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.4;
-}
-
-.studioCaption span:last-child {
-  font-family: var(--font-sans);
-  letter-spacing: -0.01em;
-  font-size: 0.8125rem;
-}
-
-@media (max-width: 760px) {
-  .studioImage {
-    aspect-ratio: 4 / 3;
-  }
-}
-
-.process {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 100%;
-  padding: clamp(24px, 3vw, 38px) clamp(18px, 2.2vw, 32px) 0 0;
-}
-
-.process > li + li .step {
-  padding-left: clamp(18px, 2.2vw, 32px);
-  border-left: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.stepNumber {
-  font-family: var(--font-mono);
-  font-size: 1.75rem;
-  font-weight: 500;
-  letter-spacing: -0.04em;
-  line-height: 1;
-  color: var(--paper);
-}
-
-.stepEn {
-  margin-top: 14px;
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
   font-weight: 500;
   letter-spacing: 0.24em;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--muted);
   line-height: 1;
 }
 
-.stepTitle {
-  margin-top: 18px;
-  font-size: clamp(1rem, 1.5vw, 1.1875rem);
-  font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.4;
+.fabricHead h2 {
+  max-width: 24ch;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.045em;
 }
 
-.stepText {
-  margin-top: 10px;
-  font-size: 0.875rem;
-  line-height: 1.75;
-  color: rgba(255, 255, 255, 0.66);
-}
-
-.studioFoot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px 40px;
-  margin-top: clamp(36px, 4vw, 56px);
-  padding-top: clamp(20px, 2.4vw, 28px);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.studioNote {
-  font-size: 0.8125rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-@media (max-width: 900px) {
-  .process {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .process > li:nth-child(odd) .step {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .process > li:nth-child(n + 3) .step {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: clamp(20px, 3vw, 32px);
-  }
-
-  .step {
-    padding-bottom: clamp(20px, 3vw, 28px);
-  }
-}
-
-@media (max-width: 520px) {
-  .process {
-    grid-template-columns: 1fr;
-  }
-
-  .process > li + li .step {
-    padding-left: 0;
-    border-left: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 24px;
-  }
-}
-
-/* -- global supply -------------------------------------------------------- */
-
-.route {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
-  gap: clamp(24px, 4vw, 72px);
-  align-items: center;
-  padding-top: clamp(24px, 3vw, 36px);
+.fabricList {
   border-top: 1px solid var(--ink);
 }
 
-.origin {
-  position: relative;
-  padding-left: 20px;
+.fabricList > li + li {
+  border-top: 1px solid var(--line-strong);
 }
 
-.originMark {
-  position: absolute;
-  left: 0;
-  top: 7px;
-  width: 8px;
-  height: 8px;
+/* The whole row is the target; it flips to ink so the index reads as a stack
+   of cards being pulled out. */
+.fabricRow {
+  display: grid;
+  grid-template-columns: auto minmax(0, 4fr) minmax(0, 7fr) auto;
+  align-items: baseline;
+  gap: clamp(16px, 3vw, 48px);
+  padding: clamp(22px, 2.8vw, 38px) clamp(14px, 2vw, 26px);
+  margin-inline: clamp(-26px, -2vw, -14px);
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.fabricRow:hover {
   background: var(--ink);
+  color: var(--paper);
 }
 
-.originName {
+.fabricNum {
   font-family: var(--font-mono);
-  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  transition: color 0.4s var(--ease);
+}
+
+.fabricRow:hover .fabricNum {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.fabricName {
+  font-size: clamp(1.125rem, 1.9vw, 1.625rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.3;
+}
+
+.fabricGroups {
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--body);
+  transition: color 0.4s var(--ease);
+}
+
+.fabricRow:hover .fabricGroups {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.fabricArrow {
+  font-family: var(--font-mono);
+  font-size: 1.0625rem;
+  transition: transform 0.4s var(--ease);
+}
+
+.fabricRow:hover .fabricArrow {
+  transform: translateX(8px);
+}
+
+/* -- supply route --------------------------------------------------------- */
+
+.route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px clamp(24px, 4vw, 60px);
+  padding: clamp(40px, 5vw, 72px) var(--gutter);
+  border-top: 1px solid var(--line);
+}
+
+.routeLabel {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.routeOrigin {
+  position: relative;
+  padding-left: 18px;
+  font-family: var(--font-mono);
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
   font-weight: 500;
   letter-spacing: 0.08em;
   line-height: 1;
 }
 
-.originNote {
-  margin-top: 10px;
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  color: var(--muted);
-  line-height: 1;
+.routeOrigin::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  background: var(--ink);
 }
 
-.destinations {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-
-.destinations li {
-  background: var(--paper);
-  padding: clamp(18px, 2.2vw, 26px) clamp(12px, 1.6vw, 20px);
+.routeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px clamp(16px, 2.4vw, 34px);
+  margin-left: auto;
   font-family: var(--font-mono);
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.16em;
-  line-height: 1.3;
-  color: var(--ink);
-}
-
-@media (max-width: 900px) {
-  .route {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
-  .destinations {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-/* -- closing -------------------------------------------------------------- */
-
-/* Sits between two ink blocks, so it needs enough height to read as a room of
-   its own rather than a seam. */
-.closing {
-  border-top: 1px solid var(--line);
-  background: var(--surface);
-  padding-block: clamp(88px, 10.5vw, 168px);
-}
-
-.closingInner {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(32px, 5vw, 80px);
-  align-items: end;
-}
-
-.closingTitle {
-  margin-top: clamp(18px, 2vw, 26px);
-}
-
-.closingSide {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(24px, 3vw, 34px);
-}
-
-.closingNote {
-  max-width: 34ch;
-  font-size: 1rem;
-  line-height: 1.85;
   color: var(--body);
 }
 
-.closingActions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: clamp(18px, 2.4vw, 30px);
-}
-
 @media (max-width: 900px) {
-  .closingInner {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
+  .figures { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .figure:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .figure:nth-child(n + 3) { border-top: 1px solid var(--line); }
+  .fabricRow { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px 20px; }
+  .fabricGroups { grid-column: 2 / -1; }
+  .routeList { margin-left: 0; flex-basis: 100%; }
 }
 
-/* -- gallery — design room, floor, shop ----------------------------------- */
-
-.gallery {
-  border-top: 1px solid var(--line);
-  background: var(--surface);
-  padding-block: clamp(64px, 7.5vw, 112px);
-}
-
-.galleryHead {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px clamp(24px, 4vw, 64px);
-  padding-bottom: clamp(28px, 3.4vw, 48px);
-  border-bottom: 1px solid var(--ink);
-}
-
-.galleryLead {
-  max-width: 46ch;
-  font-size: 0.9375rem;
-  line-height: 1.8;
-  color: var(--body);
-}
-
-.galleryGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(16px, 2.2vw, 32px);
-  padding-top: clamp(28px, 3.4vw, 44px);
-}
-
-.galleryFigure {
-  margin: 0;
-}
-
-.galleryImage {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  background: var(--paper);
-  overflow: hidden;
-}
-
-.galleryImage img {
-  object-fit: cover;
-  transition: transform 1.4s var(--ease);
-}
-
-.galleryFigure:hover .galleryImage img {
-  transform: scale(1.04);
-}
-
-.galleryCaption {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 6px 16px;
-  padding-top: 12px;
-  margin-top: 12px;
-  border-top: 1px solid var(--line-strong);
-  font-family: var(--font-mono);
-  font-size: 0.5625rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--muted);
-  line-height: 1.4;
-}
-
-.galleryCaption span:last-child {
-  font-family: var(--font-sans);
-  letter-spacing: -0.01em;
-  font-size: 0.8125rem;
-}
-
-@media (max-width: 760px) {
-  .galleryGrid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 620px) {
+  .figures, .fabricIndex, .route { padding-inline: 20px; }
+  .fabricRow { margin-inline: -14px; }
 }
