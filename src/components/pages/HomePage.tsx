@@ -7,7 +7,20 @@ import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./home.module.css";
 
+/** Every second-level fabric term, run twice so the ticker loops seamlessly. */
+function tickerTerms(lang: Locale) {
+  return fabricCategories.flatMap((c) => c.groups.map((g) => pick(g.name, lang)));
+}
+
 /** The three story rows, paired with the photography each one is about. */
+const chipSwatch = [
+  "swatch-women",
+  "swatch-kids",
+  "swatch-casual",
+  "swatch-home",
+  "swatch-women",
+];
+
 const storyMedia = [
   { src: "/images/crayon-design-desk.jpg", altKey: 1 as const },
   { src: "/images/crayon-store.jpg", altKey: 2 as const },
@@ -80,6 +93,13 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         ))}
       </section>
 
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker-track">
+          <span>{tickerTerms(lang).join(" ")}</span>
+          <span>{tickerTerms(lang).join(" ")}</span>
+        </div>
+      </div>
+
       <section className={styles.editorial}>
         {storyMedia.map((media, i) => (
           <div
@@ -101,11 +121,13 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
 
             <div className={styles.storyCopy}>
               <p className={styles.index}>{t.stories[i].index}</p>
-              <h2>
-                {t.stories[i].title[0]}
-                <br />
-                {t.stories[i].title[1]}
-              </h2>
+              <Reveal mask>
+                <h2>
+                  {t.stories[i].title[0]}
+                  <br />
+                  {t.stories[i].title[1]}
+                </h2>
+              </Reveal>
               <p>{storyBody[i]}</p>
               <Link className={styles.textLink} href={to(storyHref[i])}>
                 {t.stories[i].link} <span aria-hidden="true">→</span>
@@ -131,7 +153,7 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
       {/* The fabric branches, as an index. These are the pages search traffic
           lands on, so the home page has to link every one of them. */}
       <section className={styles.fabricIndex}>
-        <Reveal className={styles.fabricHead}>
+        <Reveal className={styles.fabricHead} mask>
           <p className={styles.indexLabel}>{t.indexLabel}</p>
           <h2>{t.indexTitle}</h2>
         </Reveal>
@@ -143,6 +165,10 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
                 <span className={styles.fabricNum}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
+                <span
+                  className={`${styles.fabricChip} ${chipSwatch[i % chipSwatch.length]}`}
+                  aria-hidden="true"
+                />
                 <span className={styles.fabricName}>{pick(c.nav, lang)}</span>
                 <span className={styles.fabricGroups}>
                   {c.groups

@@ -6,9 +6,11 @@ type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  /** Wipes up from behind its own hairline instead of fading. */
+  mask?: boolean;
 };
 
-export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
+export function Reveal({ children, className = "", delay = 0, mask = false }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,7 +40,7 @@ export function Reveal({ children, className = "", delay = 0 }: RevealProps) {
   return (
     <div
       ref={ref}
-      className={`reveal ${className}`.trim()}
+      className={`reveal${mask ? " reveal-mask" : ""} ${className}`.trim()}
       style={{ "--reveal-delay": `${delay}ms` } as CSSProperties}
     >
       {children}

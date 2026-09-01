@@ -6,6 +6,8 @@
   background: var(--paper);
 }
 
+/* The signature: the brand name is cut out of their own cloth. The letters are
+   a window onto the fabric, which then arrives full-bleed below. */
 .heroWord {
   width: 100%;
   margin-top: auto;
@@ -17,6 +19,63 @@
   letter-spacing: -0.085em;
   line-height: 0.73;
   white-space: nowrap;
+  color: var(--ink);
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .heroWord {
+    /* The photograph alone loses the letters wherever it goes light, so an ink
+       layer rides on top of it — dark, textured, always legible. */
+    /* A sharp, densely printed cloth — the hero photograph's soft foreground
+       read as grey mush at this size. The ink layer keeps the letters black
+       enough to carry the page. */
+    background-image:
+      linear-gradient(rgba(11, 11, 11, 0.66), rgba(11, 11, 11, 0.66)),
+      url("/images/crayon-collection-hero.jpg");
+    background-size: 165% auto;
+    background-position: 50% 62%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: wordPan 34s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes wordPan {
+  from { background-position: 42% 56%, 42% 56%; }
+  to   { background-position: 58% 70%, 58% 70%; }
+}
+
+/* The opening cascade: wordmark, then keywords, then the rule draws, then the
+   bottom row. Runs once on load, no observer. */
+.heroWord,
+.heroMaterials,
+.heroCopy,
+.heroCta,
+.heroMeta {
+  animation-fill-mode: both;
+}
+
+.heroWord { animation: wordIn 1.05s var(--ease) both, wordPan 34s ease-in-out 1.2s infinite alternate; }
+.heroMaterials { animation: riseIn 0.8s var(--ease) 0.34s both; }
+.heroRule { transform-origin: left center; animation: ruleIn 0.9s var(--ease) 0.46s both; }
+.heroCopy { animation: riseIn 0.8s var(--ease) 0.58s both; }
+.heroCta { animation: riseIn 0.8s var(--ease) 0.68s both; }
+.heroMeta { animation: riseIn 0.8s var(--ease) 0.78s both; }
+
+@keyframes wordIn {
+  from { clip-path: inset(0 0 100% 0); transform: translateY(9%); }
+  to   { clip-path: inset(0 0 0 0); transform: none; }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes ruleIn {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
 }
 
 .heroMaterials {
@@ -62,6 +121,28 @@
 
 .heroImage { position: relative; width: 100%; height: min(67vw, 850px); min-height: 520px; overflow: hidden; }
 .heroImage img { object-fit: cover; object-position: center 50%; }
+
+/* Scroll-linked drift where the browser supports it; a still image everywhere
+   else. No JS, no layout cost. */
+@supports (animation-timeline: view()) {
+  .heroImage img {
+    scale: 1.16;
+    animation: imageDrift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+
+  .storyMedia img {
+    animation: imageDrift linear both;
+    animation-timeline: view();
+    animation-range: entry 10% exit 90%;
+  }
+}
+
+@keyframes imageDrift {
+  from { object-position: center 34%; }
+  to   { object-position: center 66%; }
+}
 
 .editorial { padding: clamp(80px, 10vw, 160px) var(--gutter); }
 .storyGrid { display: grid; grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.4fr); align-items: center; gap: clamp(50px, 7vw, 120px); }
@@ -211,7 +292,7 @@
    of cards being pulled out. */
 .fabricRow {
   display: grid;
-  grid-template-columns: auto minmax(0, 4fr) minmax(0, 7fr) auto;
+  grid-template-columns: auto auto minmax(0, 4fr) minmax(0, 7fr) auto;
   align-items: baseline;
   gap: clamp(16px, 3vw, 48px);
   padding: clamp(22px, 2.8vw, 38px) clamp(14px, 2vw, 26px);
@@ -323,6 +404,7 @@
   .figure:nth-child(odd) { padding-left: 0; border-left: 0; }
   .figure:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .fabricRow { grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px 20px; }
+  .fabricChip { display: none; }
   .fabricGroups { grid-column: 2 / -1; }
   .routeList { margin-left: 0; flex-basis: 100%; }
 }
@@ -330,4 +412,65 @@
 @media (max-width: 620px) {
   .figures, .fabricIndex, .route { padding-inline: 20px; }
   .fabricRow { margin-inline: -14px; }
+}
+
+/* -- the closing headline arrives a line at a time ------------------------- */
+
+.closing h2 span {
+  display: block;
+  overflow: hidden;
+}
+
+.closing h2 span > i {
+  display: block;
+  font-style: normal;
+  transform: translateY(102%);
+  transition: transform 1s var(--ease);
+  transition-delay: calc(var(--i, 0) * 110ms);
+}
+
+:root:not(.reveal-ready) .closing h2 span > i,
+.closing.is-open h2 span > i {
+  transform: none;
+}
+
+/* -- fabric index: the number swells, a swatch chip slides in ------------- */
+
+.fabricChip {
+  width: 46px;
+  height: 34px;
+  border: 1px solid var(--line-strong);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.fabricRow:hover .fabricChip {
+  opacity: 1;
+  transform: none;
+}
+
+.fabricNum {
+  transition: color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.fabricRow:hover .fabricNum {
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroWord,
+  .heroMaterials,
+  .heroRule,
+  .heroCopy,
+  .heroCta,
+  .heroMeta,
+  .heroImage img,
+  .storyMedia img {
+    animation: none;
+  }
+
+  .heroWord { clip-path: none; transform: none; }
+  .heroImage img { scale: 1; }
+  .closing h2 span > i { transform: none; transition: none; }
 }
