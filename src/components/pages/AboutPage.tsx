@@ -43,7 +43,7 @@ export function AboutPage({ lang, d }: { lang: Locale; d: Dictionary }) {
               ))}
             </Reveal>
 
-            <Reveal className={styles.stanceWrap} delay={70}>
+            <Reveal className={styles.stanceWrap} delay={40}>
               {t.stance.map((group) => (
                 <div className={styles.stance} key={group.label}>
                   <p className={styles.stanceLabel}>{group.label}</p>
@@ -68,7 +68,7 @@ export function AboutPage({ lang, d }: { lang: Locale; d: Dictionary }) {
               {t.statement[1]}
             </blockquote>
           </Reveal>
-          <Reveal className="statement-meta" delay={70}>
+          <Reveal className="statement-meta" delay={40}>
             {t.statementMeta.map((line) => (
               <span key={line}>{line}</span>
             ))}
@@ -87,7 +87,7 @@ export function AboutPage({ lang, d }: { lang: Locale; d: Dictionary }) {
 
           <div className={styles.principles}>
             {d.principles.map((item, i) => (
-              <Reveal className={styles.principle} delay={i * 70} key={item.en}>
+              <Reveal className={styles.principle} delay={i * 35} key={item.en}>
                 <p className={styles.principleEn}>{item.en}</p>
                 <h3 className={styles.principleTitle}>{item.title}</h3>
                 <p className={styles.principleText}>{item.description}</p>
@@ -146,7 +146,7 @@ export function AboutPage({ lang, d }: { lang: Locale; d: Dictionary }) {
               </dl>
             </Reveal>
 
-            <Reveal className={styles.profileAside} delay={70}>
+            <Reveal className={styles.profileAside} delay={40}>
               <p className={styles.profileNote}>{t.profileNote}</p>
               <div className={styles.profileLinks}>
                 <Link className="arrow-link" href={to("/collection")}>

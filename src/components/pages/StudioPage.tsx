@@ -75,7 +75,7 @@ export function StudioPage({ lang, d }: { lang: Locale; d: Dictionary }) {
               <p>{t.inhouseBody}</p>
             </Reveal>
 
-            <Reveal delay={70}>
+            <Reveal delay={40}>
               <dl className="facts">
                 {t.assurances.map((row) => (
                   <div key={row.term}>
@@ -129,7 +129,7 @@ export function StudioPage({ lang, d }: { lang: Locale; d: Dictionary }) {
           <ol className={styles.process}>
             {d.processSteps.map((item, i) => (
               <li key={item.step}>
-                <Reveal className={styles.step} delay={i * 60}>
+                <Reveal className={styles.step} delay={i * 30}>
                   <span className={styles.stepNumber}>{item.step}</span>
                   <span className={styles.stepEn}>{item.en}</span>
                   <b className={styles.stepTitle}>{item.title}</b>
@@ -157,7 +157,7 @@ export function StudioPage({ lang, d }: { lang: Locale; d: Dictionary }) {
 
           <div className={styles.printing}>
             {printingImages.map((src, i) => (
-              <Reveal delay={i * 80} key={src}>
+              <Reveal delay={i * 40} key={src}>
                 <figure className={styles.printFigure}>
                   <div className={styles.printImage}>
                     <Image
@@ -209,7 +209,7 @@ export function StudioPage({ lang, d }: { lang: Locale; d: Dictionary }) {
             </ul>
           </Reveal>
 
-          <Reveal className={styles.globalFoot} delay={80}>
+          <Reveal className={styles.globalFoot} delay={40}>
             <p>{t.globalNote}</p>
             <Link
               className={`arrow-link arrow-link-light ${styles.globalLink}`}

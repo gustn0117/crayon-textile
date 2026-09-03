@@ -233,11 +233,6 @@
 
 .printImage img {
   object-fit: cover;
-  transition: transform 1.4s var(--ease);
-}
-
-.printFigure:hover .printImage img {
-  transform: scale(1.03);
 }
 
 .printFigure figcaption {

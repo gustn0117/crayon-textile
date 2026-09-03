@@ -19,7 +19,6 @@
 .media img {
   object-fit: cover;
   transform: scale(1.025);
-  animation: introSettle 4.8s var(--ease) both;
 }
 
 .scrim {
@@ -34,15 +33,6 @@
     ),
     linear-gradient(0deg, rgba(11, 11, 11, 0.64) 0%, rgba(11, 11, 11, 0.08) 58%),
     linear-gradient(180deg, rgba(11, 11, 11, 0.28) 0%, rgba(11, 11, 11, 0) 28%);
-}
-
-@keyframes introSettle {
-  from {
-    transform: scale(1.075);
-  }
-  to {
-    transform: scale(1.025);
-  }
 }
 
 .grid {

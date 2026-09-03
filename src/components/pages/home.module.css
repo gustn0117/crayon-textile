@@ -43,13 +43,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: wordPan 34s ease-in-out infinite alternate;
   }
-}
-
-@keyframes wordPan {
-  from { background-position: 42% 56%, 42% 56%; }
-  to   { background-position: 58% 70%, 58% 70%; }
 }
 
 /* The opening cascade: wordmark, then keywords, then the rule draws, then the
@@ -62,12 +56,12 @@
   animation-fill-mode: both;
 }
 
-.heroWord { animation: wordIn 1.05s var(--ease) both, wordPan 34s ease-in-out 1.2s infinite alternate; }
-.heroMaterials { animation: riseIn 0.8s var(--ease) 0.34s both; }
-.heroRule { transform-origin: left center; animation: ruleIn 0.9s var(--ease) 0.46s both; }
-.heroCopy { animation: riseIn 0.8s var(--ease) 0.58s both; }
-.heroCta { animation: riseIn 0.8s var(--ease) 0.68s both; }
-.heroMeta { animation: riseIn 0.8s var(--ease) 0.78s both; }
+.heroWord { animation: wordIn 0.7s var(--ease) both; }
+.heroMaterials { animation: riseIn 0.5s var(--ease) 0.16s both; }
+.heroRule { transform-origin: left center; animation: ruleIn 0.55s var(--ease) 0.24s both; }
+.heroCopy { animation: riseIn 0.5s var(--ease) 0.3s both; }
+.heroCta { animation: riseIn 0.5s var(--ease) 0.36s both; }
+.heroMeta { animation: riseIn 0.5s var(--ease) 0.42s both; }
 
 @keyframes wordIn {
   from { clip-path: inset(0 0 100% 0); transform: translateY(9%); }
@@ -75,7 +69,7 @@
 }
 
 @keyframes riseIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: none; }
 }
 
@@ -127,30 +121,6 @@
 
 .heroImage { position: relative; width: 100%; height: min(67vw, 850px); min-height: 520px; overflow: hidden; }
 .heroImage img { object-fit: cover; object-position: center 50%; }
-
-/* Scroll-linked drift where the browser supports it; a still image everywhere
-   else. No JS, no layout cost. */
-@supports (animation-timeline: view()) {
-  .heroImage img {
-    scale: 1.16;
-    animation: imageDrift linear both;
-    animation-timeline: view();
-    animation-range: entry 0% exit 100%;
-  }
-
-  .oneMedia img,
-  .twoMedia img,
-  .threeMedia img {
-    animation: imageDrift linear both;
-    animation-timeline: view();
-    animation-range: entry 10% exit 90%;
-  }
-}
-
-@keyframes imageDrift {
-  from { object-position: center 34%; }
-  to   { object-position: center 66%; }
-}
 
 /* -- figures: a white card riding up over the opening photograph ---------- */
 
@@ -662,13 +632,6 @@
   .heroCopy,
   .heroCta,
   .heroMeta,
-  .heroImage img,
-  .oneMedia img,
-  .twoMedia img,
-  .threeMedia img {
-    animation: none;
-  }
-
   .heroWord { clip-path: none; transform: none; }
   .heroImage img { scale: 1; }
   .closing h2 span > i { transform: none; transition: none; }

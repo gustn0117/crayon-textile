@@ -73,7 +73,7 @@ export function FabricCategoryPage({
               <ul className={styles.items}>
                 {group.items.map((item, j) => (
                   <li key={pick(item.name, "ko")}>
-                    <Reveal className={styles.item} delay={j * 50}>
+                    <Reveal className={styles.item} delay={j * 25}>
                       <h3 className={styles.itemName}>{pick(item.name, lang)}</h3>
                       <p className={styles.itemNote}>{pick(item.note, lang)}</p>
                       <Link className={styles.itemLink} href={localePath(lang, "/contact")}>
@@ -102,7 +102,7 @@ export function FabricCategoryPage({
             <p className={styles.closingTitle}>{t.closingTitle}</p>
           </Reveal>
 
-          <Reveal className={styles.closingSide} delay={80}>
+          <Reveal className={styles.closingSide} delay={40}>
             <p className={styles.closingNote}>{t.closingNote}</p>
             <div className={styles.closingActions}>
               <Link className="btn btn-invert" href={localePath(lang, "/contact")}>

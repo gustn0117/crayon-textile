@@ -21,7 +21,7 @@ export function SectionHead({ index, en, note, title, lead, light }: SectionHead
         {note ? <span className={styles.note}>{note}</span> : null}
       </Reveal>
 
-      <Reveal className={styles.body} delay={60} mask>
+      <Reveal className={styles.body} delay={40} mask>
         {title ? <h2 className={`heading ${styles.title}`}>{title}</h2> : null}
         {lead ? <p className={styles.lead}>{lead}</p> : null}
       </Reveal>

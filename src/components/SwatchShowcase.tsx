@@ -26,7 +26,7 @@ export function SwatchShowcase({ lang, d }: { lang: Locale; d: Dictionary }) {
             <p>{t.repeatBody}</p>
           </Reveal>
 
-          <Reveal className={styles.legendAside} delay={70}>
+          <Reveal className={styles.legendAside} delay={40}>
             <p>{t.repeatAside}</p>
           </Reveal>
         </div>
@@ -34,7 +34,7 @@ export function SwatchShowcase({ lang, d }: { lang: Locale; d: Dictionary }) {
         <ul className={styles.grid}>
           {d.categories.map((item, i) => (
             <li key={item.code}>
-              <Reveal delay={i * 70}>
+              <Reveal delay={i * 35}>
                 <article className={styles.card}>
                   <div className={styles.mount}>
                     <span className={styles.hole} aria-hidden="true" />

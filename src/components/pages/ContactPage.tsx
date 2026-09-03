@@ -78,7 +78,7 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
             </Reveal>
 
             <div className={styles.visitInfo}>
-              <Reveal delay={70}>
+              <Reveal delay={40}>
                 <dl className="facts">
                   {t.details.map((row) => (
                     <div key={row.term}>
@@ -103,7 +103,7 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
                 </a>
               </Reveal>
 
-              <Reveal className={styles.visitAside} delay={140}>
+              <Reveal className={styles.visitAside} delay={70}>
                 <p className={styles.visitNote}>{t.visitNote}</p>
                 <a className="btn btn-ghost" href={contact.telHref}>
                   {t.visitCta}
@@ -128,7 +128,7 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
           <ol className={styles.checklist}>
             {t.checklist.map((item, i) => (
               <li key={item.step}>
-                <Reveal className={styles.checkRow} delay={i * 60}>
+                <Reveal className={styles.checkRow} delay={i * 30}>
                   <span className={styles.checkStep}>{item.step}</span>
                   <b className={styles.checkTerm}>{item.term}</b>
                   <span className={styles.checkText}>{item.description}</span>
@@ -150,7 +150,7 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
             </p>
           </Reveal>
 
-          <Reveal className={styles.closingActions} delay={80}>
+          <Reveal className={styles.closingActions} delay={40}>
             <a className="btn btn-invert" href={contact.mobileHref}>
               {d.phone.mobile}
               <span aria-hidden="true">↗</span>

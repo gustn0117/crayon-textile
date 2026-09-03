@@ -192,7 +192,7 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         <ul className={styles.whyList}>
           {d.principles.map((item, i) => (
             <li key={item.en}>
-              <Reveal delay={i * 70}>
+              <Reveal delay={i * 35}>
                 <span className={styles.whyEn}>{item.en}</span>
                 <b className={styles.whyTitle}>{item.title}</b>
                 <span className={styles.whyNote}>{item.description}</span>
@@ -258,7 +258,7 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         <ul className={styles.capList}>
           {t.capability.items.map((item, i) => (
             <li key={item.en}>
-              <Reveal delay={i * 70}>
+              <Reveal delay={i * 35}>
                 <span className={styles.capNum}>{String(i + 1).padStart(2, "0")}</span>
                 <span className={styles.capEn}>{item.en}</span>
                 <b className={styles.capTitle}>{item.title}</b>
