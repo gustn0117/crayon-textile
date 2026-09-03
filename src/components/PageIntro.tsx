@@ -37,7 +37,7 @@ export function PageIntro({
           <p className={styles.en}>{en}</p>
         </Reveal>
 
-        <Reveal className={styles.content} delay={60}>
+        <Reveal className={styles.content} delay={60} mask>
           <h1 className="display">{title}</h1>
           {lead ? <p className={styles.lead}>{lead}</p> : null}
         </Reveal>
