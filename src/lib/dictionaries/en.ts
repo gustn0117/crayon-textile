@@ -168,6 +168,38 @@ export const en: Dictionary = {
     heroSub: "A textile design studio rooted in Dongdaemun, Seoul",
     heroCta: "Start a consultation",
     heroMeta: ["TEXTILE DESIGN", "DONGDAEMUN · SEOUL", "30 YEARS OF EXPERIENCE"],
+    printing: {
+      title: ["PRINTING", "TECHNIQUE"],
+      headline: "Many printing methods, one standard — the best result.",
+      body: "DTP, rotary, spray, reactive and pigment printing. CRAYON picks whichever method suits the cloth and the design, and takes it to the best result it can reach.",
+      methods: ["DTP", "ROTARY", "SPRAY", "REACTIVE", "PIGMENT"],
+      captions: ["Printing line", "Flat-bed printing", "Colour process"],
+      alts: [
+        "A CRAYON printing machine running pattern onto fabric",
+        "Fabric being printed on the flat-bed table",
+        "Colour rollers lined up along the printing process",
+      ],
+    },
+    capability: {
+      title: ["DESIGN", "CAPABILITY"],
+      headline: "Change the design and the fabric changes with it.",
+      body: "CRAYON runs its own design and drafting rooms, handling colour separation, repeats and commissioned designs in one place. That cuts outsourcing cost, lifts the finish, and — because the patterns are our own — keeps licensing off the table. From planning through production, this is what sets our printing apart.",
+      items: [
+        { en: "COLOR SEPARATION", title: "Colour separation", note: "Colours split by screen, through to screen-making, handled here." },
+        { en: "REPEAT", title: "Repeat", note: "The repeat unit worked until the join stops showing." },
+        { en: "COMMISSION", title: "Commissioned design", note: "Exclusive patterns developed to a brand's direction." },
+      ],
+      note: "Lower outsourcing cost · higher finish · minimal licensing exposure",
+    },
+    stockLabel: "Fabric stock",
+    stockAlt: "Rolls of wrapped fabric stacked through the CRAYON warehouse",
+    sectionTitles: {
+      story: ["OUR", "STORY"],
+      why: ["WHY", "CRAYON"],
+      index: ["FABRIC", "INDEX"],
+      supply: ["GLOBAL", "SUPPLY"],
+    },
+    whyLead: "Three standards that have not moved in thirty years.",
     indexLabel: "FABRIC INDEX",
     indexTitle: "Search by base, or by what you are making.",
     stories: [

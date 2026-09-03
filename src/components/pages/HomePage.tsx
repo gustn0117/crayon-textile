@@ -15,6 +15,18 @@ const chipSwatch = [
   "swatch-women",
 ];
 
+function SectionTitle({ lines, className }: { lines: readonly string[]; className?: string }) {
+  return (
+    <Reveal className={className ? `${styles.sectionTitle} ${className}` : styles.sectionTitle} mask>
+      <h2>
+        {lines[0]}
+        <br />
+        {lines[1]}
+      </h2>
+    </Reveal>
+  );
+}
+
 export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
   const t = d.home;
   const to = (path: string) => localePath(lang, path);
@@ -81,6 +93,10 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         </div>
       </section>
 
+      <div className={styles.titleWrap}>
+        <SectionTitle lines={t.sectionTitles.story} />
+      </div>
+
       {/* 01 — a narrow column of type against a large image dropped below it. */}
       <section className={styles.storyOne}>
         <div className={styles.oneCopy}>
@@ -100,8 +116,8 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
 
         <figure className={styles.oneMedia}>
           <Image
-            src="/images/crayon-design-desk.jpg"
-            alt={t.aboutVisualAlt}
+            src="/images/crayon-design-office.jpg"
+            alt={t.gallery[0].alt}
             fill
             loading="eager"
             sizes="(max-width: 900px) 100vw, 66vw"
@@ -114,7 +130,7 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
       <section className={styles.storyTwo}>
         <figure className={styles.twoMedia}>
           <Image
-            src="/images/crayon-store.jpg"
+            src="/images/crayon-store-wide.jpg"
             alt={t.gallery[2].alt}
             fill
             loading="eager"
@@ -151,7 +167,7 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
               {t.stories[2].title[1]}
             </h2>
           </Reveal>
-          <p className={styles.body}>{t.stories[2].body}</p>
+          <p className={styles.body}>{t.capability.body}</p>
           <Link className={styles.textLink} href={to("/studio")}>
             {t.stories[2].link} <span aria-hidden="true">→</span>
           </Link>
@@ -169,12 +185,98 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         </figure>
       </section>
 
+      {/* Why Crayon — the three standards, as a trio of marks. */}
+      <section className={styles.why}>
+        <SectionTitle lines={t.sectionTitles.why} />
+        <p className={styles.whyLead}>{t.whyLead}</p>
+        <ul className={styles.whyList}>
+          {d.principles.map((item, i) => (
+            <li key={item.en}>
+              <Reveal delay={i * 70}>
+                <span className={styles.whyEn}>{item.en}</span>
+                <b className={styles.whyTitle}>{item.title}</b>
+                <span className={styles.whyNote}>{item.description}</span>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Printing — the methods, against the plant. */}
+      <section className={styles.printing}>
+        <div className={styles.printingHead}>
+          <SectionTitle lines={t.printing.title} className={styles.titleLight} />
+          <div className={styles.printingCopy}>
+            <Reveal mask>
+              <h3>{t.printing.headline}</h3>
+            </Reveal>
+            <p>{t.printing.body}</p>
+            <ul className={styles.methods}>
+              {t.printing.methods.map((m) => (
+                <li key={m}>{m}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <div className={styles.printingGrid}>
+          {[
+            "/images/crayon-print-rotary.jpg",
+            "/images/crayon-print-table.jpg",
+            "/images/crayon-print-color.jpg",
+          ].map((src, i) => (
+            <figure key={src}>
+              <Image
+                src={src}
+                alt={t.printing.alts[i]}
+                fill
+                sizes="(max-width: 900px) 100vw, 33vw"
+              />
+              <figcaption>{t.printing.captions[i]}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* Stock — the warehouse behind the counter. */}
+      <figure className={styles.stock}>
+        <Image
+          src="/images/crayon-warehouse.jpg"
+          alt={t.stockAlt}
+          fill
+          sizes="100vw"
+        />
+        <figcaption>{t.stockLabel}</figcaption>
+      </figure>
+
+      {/* Design capability — what running the rooms in-house buys the client. */}
+      <section className={styles.capability}>
+        <SectionTitle lines={t.capability.title} />
+        <Reveal mask>
+          <h3 className={styles.capHeadline}>{t.capability.headline}</h3>
+        </Reveal>
+        <ul className={styles.capList}>
+          {t.capability.items.map((item, i) => (
+            <li key={item.en}>
+              <Reveal delay={i * 70}>
+                <span className={styles.capNum}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={styles.capEn}>{item.en}</span>
+                <b className={styles.capTitle}>{item.title}</b>
+                <span className={styles.capNote}>{item.note}</span>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
+        <p className={styles.capFoot}>{t.capability.note}</p>
+      </section>
+
       {/* The fabric branches, as an index. These are the pages search traffic
           lands on, so the home page has to link every one of them. */}
       <section className={styles.fabricIndex}>
+        <SectionTitle lines={t.sectionTitles.index} />
         <Reveal className={styles.fabricHead} mask>
           <p className={styles.indexLabel}>{t.indexLabel}</p>
-          <h2>{t.indexTitle}</h2>
+          <p className={styles.fabricLead}>{t.indexTitle}</p>
         </Reveal>
 
         <ul className={styles.fabricList}>

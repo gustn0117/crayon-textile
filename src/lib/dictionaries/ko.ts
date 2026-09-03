@@ -164,6 +164,38 @@ export const ko = {
     heroSub: "서울 동대문에서 시작된 텍스타일 디자인 스튜디오",
     heroCta: "원단 상담하기",
     heroMeta: ["TEXTILE DESIGN", "DONGDAEMUN · SEOUL", "30 YEARS OF EXPERIENCE"],
+    printing: {
+      title: ["PRINTING", "TECHNIQUE"],
+      headline: "다양한 나염 기술, 하나의 기준 — 최고 품질.",
+      body: "DTP · 로터리 · 분사 · 반응성 · 안료 나염까지, 크레용은 원단과 디자인에 가장 적합한 방식으로 최고의 결과를 만들어갑니다.",
+      methods: ["DTP", "로터리", "분사", "반응성", "안료"],
+      captions: ["나염 인쇄 라인", "평판 나염", "컬러 공정"],
+      alts: [
+        "원단 위에 무늬가 인쇄되어 나오는 크레용 나염 인쇄기",
+        "평판 나염대에서 인쇄가 진행 중인 원단",
+        "컬러별 롤러가 늘어선 나염 공정 라인",
+      ],
+    },
+    capability: {
+      title: ["DESIGN", "CAPABILITY"],
+      headline: "디자인이 다르면 원단의 가치도 달라집니다.",
+      body: "크레용은 자체 디자인실과 제도실을 직접 운영하며, 도수분리·리피트·의뢰 디자인까지 원스톱으로 진행합니다. 외주 비용은 줄이고, 완성도는 높이고, 독자적인 디자인 개발로 라이선스 부담까지 최소화합니다. 기획부터 생산까지, 크레용만의 차별화된 나염 경쟁력을 만나보세요.",
+      items: [
+        { en: "COLOR SEPARATION", title: "도수분리", note: "색을 도수별로 나눠 제판까지 직접 관리합니다." },
+        { en: "REPEAT", title: "리피트", note: "반복 단위를 다듬어 이음매가 보이지 않게 맞춥니다." },
+        { en: "COMMISSION", title: "의뢰 디자인", note: "브랜드가 원하는 방향으로 전용 패턴을 개발합니다." },
+      ],
+      note: "외주 비용 절감 · 완성도 향상 · 라이선스 부담 최소화",
+    },
+    stockLabel: "원단 재고",
+    stockAlt: "비닐로 포장된 원단 롤이 층층이 쌓인 크레용 원단 창고",
+    sectionTitles: {
+      story: ["OUR", "STORY"],
+      why: ["WHY", "CRAYON"],
+      index: ["FABRIC", "INDEX"],
+      supply: ["GLOBAL", "SUPPLY"],
+    },
+    whyLead: "30년 동안 바뀌지 않은 세 가지 기준입니다.",
     indexLabel: "FABRIC INDEX",
     indexTitle: "소재로도, 용도로도 찾으실 수 있습니다.",
     stories: [

@@ -673,3 +673,317 @@
   .heroImage img { scale: 1; }
   .closing h2 span > i { transform: none; transition: none; }
 }
+
+/* -- stacked section title ------------------------------------------------
+   The reference site's strongest device: a two-line English title set large
+   and flush left, opening every section. It gives the page a spine.
+   ------------------------------------------------------------------------- */
+
+.sectionTitle h2 {
+  font-size: clamp(2.25rem, 4.6vw, 4.4rem);
+  font-weight: 500;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.titleWrap {
+  padding: clamp(84px, 11vw, 170px) var(--gutter) 0;
+}
+
+.titleWrap + .storyOne {
+  padding-top: clamp(30px, 4vw, 62px);
+}
+
+.titleLight h2 {
+  color: var(--paper);
+}
+
+/* -- why crayon ----------------------------------------------------------- */
+
+.why {
+  padding: clamp(84px, 11vw, 170px) var(--gutter);
+  border-top: 1px solid var(--line);
+}
+
+.whyLead {
+  max-width: 46ch;
+  margin-top: clamp(20px, 2.4vw, 32px);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: var(--body);
+}
+
+.whyList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(44px, 6vw, 90px);
+  border-top: 1px solid var(--ink);
+}
+
+.whyList > li {
+  padding: clamp(26px, 3vw, 42px) clamp(20px, 2.4vw, 40px) 0 0;
+}
+
+.whyList > li + li {
+  padding-left: clamp(20px, 2.4vw, 40px);
+  border-left: 1px solid var(--line);
+}
+
+.whyEn {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+.whyTitle {
+  display: block;
+  margin-top: clamp(16px, 2vw, 26px);
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.35;
+}
+
+.whyNote {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: var(--body);
+}
+
+/* -- printing ------------------------------------------------------------- */
+
+.printing {
+  padding: clamp(84px, 11vw, 170px) var(--gutter);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.printingHead {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 90px);
+  align-items: start;
+}
+
+.printingCopy h3 {
+  font-size: clamp(1.375rem, 2.4vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.045em;
+}
+
+.printingCopy > p {
+  max-width: 52ch;
+  margin-top: clamp(18px, 2.2vw, 28px);
+  font-size: 0.9375rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(26px, 3vw, 40px);
+}
+
+.methods li {
+  padding: 11px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.printingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 24px);
+  margin-top: clamp(44px, 6vw, 88px);
+}
+
+.printingGrid figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
+}
+
+.printingGrid img {
+  object-fit: cover;
+}
+
+.printingGrid figcaption {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 9px 14px;
+  background: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1;
+}
+
+/* -- stock ---------------------------------------------------------------- */
+
+.stock {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: min(52vw, 620px);
+  min-height: 340px;
+  overflow: hidden;
+}
+
+.stock img {
+  object-fit: cover;
+}
+
+.stock figcaption {
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(18px, 2.4vw, 32px);
+  padding: 10px 16px;
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* -- design capability ---------------------------------------------------- */
+
+.capability {
+  padding: clamp(84px, 11vw, 170px) var(--gutter);
+}
+
+.capHeadline {
+  max-width: 22ch;
+  margin-top: clamp(26px, 3.4vw, 48px);
+  font-size: clamp(1.5rem, 2.8vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.32;
+  letter-spacing: -0.05em;
+}
+
+.capList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(44px, 6vw, 88px);
+  border-top: 1px solid var(--ink);
+}
+
+.capList > li {
+  padding: clamp(24px, 3vw, 40px) clamp(20px, 2.4vw, 40px) 0 0;
+}
+
+.capList > li + li {
+  padding-left: clamp(20px, 2.4vw, 40px);
+  border-left: 1px solid var(--line);
+}
+
+.capNum {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--line-strong);
+}
+
+.capEn {
+  display: block;
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+}
+
+.capTitle {
+  display: block;
+  margin-top: 14px;
+  font-size: clamp(1.0625rem, 1.6vw, 1.375rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.capNote {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.875rem;
+  line-height: 1.85;
+  color: var(--body);
+}
+
+.capFoot {
+  margin-top: clamp(32px, 4vw, 56px);
+  padding-top: 20px;
+  border-top: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.fabricLead {
+  max-width: 34ch;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: var(--body);
+}
+
+.fabricIndex .sectionTitle {
+  margin-bottom: clamp(28px, 3.4vw, 48px);
+}
+
+@media (max-width: 900px) {
+  .whyList,
+  .capList,
+  .printingGrid,
+  .printingHead {
+    grid-template-columns: 1fr;
+  }
+
+  .whyList > li + li,
+  .capList > li + li {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
+  }
+
+  .whyList > li,
+  .capList > li {
+    padding-right: 0;
+    padding-bottom: clamp(22px, 4vw, 32px);
+  }
+
+  .printingGrid figure { aspect-ratio: 16 / 10; }
+}
+
+@media (max-width: 620px) {
+  .titleWrap,
+  .why,
+  .printing,
+  .capability {
+    padding-inline: 20px;
+  }
+
+  .stock { height: 84vw; }
+  .stock figcaption { left: 20px; }
+}
