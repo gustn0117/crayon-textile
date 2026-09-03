@@ -71,8 +71,8 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
 
       <figure className={styles.heroImage}>
         <Image
-          src="/images/crayon-print-bed.jpg"
-          alt={t.aboutVisualAlt}
+          src="/images/crayon-store-wide.jpg"
+          alt={t.gallery[2].alt}
           fill
           preload
           sizes="100vw"
@@ -130,8 +130,8 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
       <section className={styles.storyTwo}>
         <figure className={styles.twoMedia}>
           <Image
-            src="/images/crayon-store-wide.jpg"
-            alt={t.gallery[2].alt}
+            src="/images/crayon-warehouse.jpg"
+            alt={t.stockAlt}
             fill
             loading="eager"
             sizes="(max-width: 900px) 100vw, 84vw"
@@ -241,8 +241,8 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
       {/* Stock — the warehouse behind the counter. */}
       <figure className={styles.stock}>
         <Image
-          src="/images/crayon-warehouse.jpg"
-          alt={t.stockAlt}
+          src="/images/crayon-warehouse-aisle.jpg"
+          alt={t.stockAisleAlt}
           fill
           sizes="100vw"
         />

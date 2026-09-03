@@ -193,6 +193,7 @@ export const en: Dictionary = {
     },
     stockLabel: "Fabric stock",
     stockAlt: "Rolls of wrapped fabric stacked through the CRAYON warehouse",
+    stockAisleAlt: "An aisle of the CRAYON production warehouse, every rack filled with fabric rolls",
     sectionTitles: {
       story: ["OUR", "STORY"],
       why: ["WHY", "CRAYON"],
@@ -213,7 +214,7 @@ export const en: Dictionary = {
         index: "02",
         title: ["Diverse fabrics,", "direct consultation."],
         link: "FABRICS",
-        caption: "Dongdaemun showroom",
+        caption: "Warehouse",
       },
       {
         index: "03",
@@ -251,8 +252,6 @@ export const en: Dictionary = {
       { term: "Broadcast", value: "KBS Docu ON, “DDP, Communicating Through Design”" },
     ],
     aboutMore: "More about the company",
-    aboutVisualAlt:
-      "Printed fabric coming off a flat-bed printing table, pattern fully struck",
     galleryLabel: "CRAYON AT WORK",
     galleryLead: "Drawn in the design room, printed on the floor, sold in Dongdaemun.",
     gallery: [

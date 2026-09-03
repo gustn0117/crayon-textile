@@ -189,6 +189,7 @@ export const ko = {
     },
     stockLabel: "원단 재고",
     stockAlt: "비닐로 포장된 원단 롤이 층층이 쌓인 크레용 원단 창고",
+    stockAisleAlt: "선반마다 원단 롤이 채워진 크레용 생산 창고 통로",
     sectionTitles: {
       story: ["OUR", "STORY"],
       why: ["WHY", "CRAYON"],
@@ -209,7 +210,7 @@ export const ko = {
         index: "02",
         title: ["다양한 원단,", "빠른 상담과 공급."],
         link: "FABRICS",
-        caption: "동대문 매장",
+        caption: "생산 창고",
       },
       {
         index: "03",
@@ -247,8 +248,6 @@ export const ko = {
       { term: "방송 소개", value: "KBS 다큐ON 「DDP, 디자인으로 소통하다」" },
     ],
     aboutMore: "회사 소개 자세히 보기",
-    aboutVisualAlt:
-      "평판 나염기 위를 지나며 도안이 찍혀 나오는 나염 원단",
     galleryLabel: "CRAYON AT WORK",
     galleryLead: "제도실에서 그리고, 현장에서 찍고, 동대문 매장에서 만납니다.",
     gallery: [

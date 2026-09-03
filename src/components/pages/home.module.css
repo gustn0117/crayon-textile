@@ -119,7 +119,7 @@
 .heroMeta { display: flex; flex-direction: column; font-family: var(--font-mono); font-size: 0.625rem; line-height: 1.55; letter-spacing: 0.08em; }
 
 .heroImage { position: relative; width: 100%; height: min(67vw, 850px); min-height: 520px; overflow: hidden; }
-.heroImage img { object-fit: cover; object-position: center 50%; }
+.heroImage img { object-fit: cover; object-position: center 42%; }
 
 /* -- figures: a white card riding up over the opening photograph ---------- */
 
