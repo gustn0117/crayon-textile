@@ -26,8 +26,8 @@ export function StudioPage({ lang, d }: { lang: Locale; d: Dictionary }) {
     <>
       <PageIntro
         en="STUDIO"
-        imageSrc="/images/crayon-studio-hero.jpg"
-        imagePosition="68% center"
+        imageSrc="/images/crayon-designroom-desks.jpg"
+        imagePosition="center 46%"
         title={
           <>
             {t.introTitle[0]}
@@ -44,7 +44,7 @@ export function StudioPage({ lang, d }: { lang: Locale; d: Dictionary }) {
             <figure className={styles.figure}>
               <div className={styles.figureImage}>
                 <Image
-                  src="/images/crayon-design-studio.jpg"
+                  src="/images/crayon-design-desk.jpg"
                   alt={t.figureAlt}
                   fill
                   loading="eager"

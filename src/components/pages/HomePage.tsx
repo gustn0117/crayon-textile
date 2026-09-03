@@ -71,7 +71,7 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
 
       <figure className={styles.heroImage}>
         <Image
-          src="/images/crayon-textile-hero.jpg"
+          src="/images/crayon-print-bed.jpg"
           alt={t.aboutVisualAlt}
           fill
           preload

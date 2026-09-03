@@ -14,8 +14,8 @@ export function AboutPage({ lang, d }: { lang: Locale; d: Dictionary }) {
     <>
       <PageIntro
         en="ABOUT"
-        imageSrc="/images/crayon-about-hero.jpg"
-        imagePosition="center 54%"
+        imageSrc="/images/crayon-warehouse-aisle.jpg"
+        imagePosition="center 58%"
         title={
           <>
             {t.introTitle[0]}

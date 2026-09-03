@@ -14,7 +14,7 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
     <>
       <PageIntro
         en="CONTACT"
-        imageSrc="/images/crayon-contact-hero.jpg"
+        imageSrc="/images/crayon-store-tall.jpg"
         imagePosition="68% center"
         title={
           <>

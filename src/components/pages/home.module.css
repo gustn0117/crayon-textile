@@ -30,16 +30,15 @@
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   .heroWord {
-    /* The photograph alone loses the letters wherever it goes light, so an ink
-       layer rides on top of it — dark, textured, always legible. */
-    /* A sharp, densely printed cloth — the hero photograph's soft foreground
-       read as grey mush at this size. The ink layer keeps the letters black
-       enough to carry the page. */
+    /* A crop of Crayon's own cloth on the flat-bed press — a dense repeat, so
+       the pattern still reads inside a letterform. The photograph alone loses
+       the letters wherever it goes light, so an ink layer rides on top: dark
+       enough to carry the page, sheer enough to keep the print visible. */
     background-image:
-      linear-gradient(rgba(11, 11, 11, 0.66), rgba(11, 11, 11, 0.66)),
-      url("/images/crayon-collection-hero.jpg");
-    background-size: 150% auto;
-    background-position: 50% 58%;
+      linear-gradient(rgba(11, 11, 11, 0.73), rgba(11, 11, 11, 0.73)),
+      url("/images/crayon-wordmark-fill.jpg");
+    background-size: cover;
+    background-position: 50% 46%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

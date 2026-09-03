@@ -252,8 +252,7 @@ export const en: Dictionary = {
     ],
     aboutMore: "More about the company",
     aboutVisualAlt:
-      "Hands at work over pattern drawings, colour chips and fabric swatches in the CRAYON design room",
-    aboutVisualCaption: ["DESIGN PROCESS", "FROM IDEA TO TEXTILE"],
+      "Printed fabric coming off a flat-bed printing table, pattern fully struck",
     galleryLabel: "CRAYON AT WORK",
     galleryLead: "Drawn in the design room, printed on the floor, sold in Dongdaemun.",
     gallery: [

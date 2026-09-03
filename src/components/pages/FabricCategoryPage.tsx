@@ -10,10 +10,10 @@ import styles from "./fabrics.module.css";
 
 /** Hero image per category — reuses what the site already has. */
 const heroes: Record<string, { src: string; position: string }> = {
-  new: { src: "/images/crayon-printing-table.jpg", position: "center 55%" },
-  cotton: { src: "/images/crayon-textile-hero.jpg", position: "center 60%" },
-  polyester: { src: "/images/crayon-collection-hero.jpg", position: "center 52%" },
-  use: { src: "/images/crayon-store.jpg", position: "center 42%" },
+  new: { src: "/images/crayon-print-rotary.jpg", position: "center 50%" },
+  cotton: { src: "/images/crayon-warehouse.jpg", position: "center 55%" },
+  polyester: { src: "/images/crayon-print-steam.jpg", position: "center 50%" },
+  use: { src: "/images/crayon-store-wide.jpg", position: "center 46%" },
   design: { src: "/images/crayon-design-desk.jpg", position: "center 55%" },
 };
 

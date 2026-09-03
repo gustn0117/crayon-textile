@@ -248,8 +248,7 @@ export const ko = {
     ],
     aboutMore: "회사 소개 자세히 보기",
     aboutVisualAlt:
-      "패턴 도안과 컬러칩, 원단 스와치를 놓고 작업 중인 크레용 디자인 제도실 책상",
-    aboutVisualCaption: ["DESIGN PROCESS", "FROM IDEA TO TEXTILE"],
+      "평판 나염기 위를 지나며 도안이 찍혀 나오는 나염 원단",
     galleryLabel: "CRAYON AT WORK",
     galleryLead: "제도실에서 그리고, 현장에서 찍고, 동대문 매장에서 만납니다.",
     gallery: [
