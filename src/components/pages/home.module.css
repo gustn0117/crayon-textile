@@ -84,7 +84,7 @@
   gap: 8px clamp(14px, 2vw, 30px);
   margin-top: clamp(20px, 2.6vw, 34px);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   color: var(--muted);
@@ -112,11 +112,11 @@
   gap: 20px;
   padding: 0 22px;
   border: 1px solid var(--line-strong);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 .heroCta:hover { background: var(--ink); color: var(--paper); }
-.heroMeta { display: flex; flex-direction: column; font-family: var(--font-mono); font-size: 0.625rem; line-height: 1.55; letter-spacing: 0.08em; }
+.heroMeta { display: flex; flex-direction: column; font-family: var(--font-mono); font-size: 0.8125rem; line-height: 1.55; letter-spacing: 0.08em; }
 
 .heroImage { position: relative; width: 100%; height: min(67vw, 850px); min-height: 520px; overflow: hidden; }
 .heroImage img { object-fit: cover; object-position: center 42%; }
@@ -157,7 +157,7 @@
 .figureUnit {
   margin-top: 12px;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   color: var(--muted);
@@ -166,7 +166,7 @@
 
 .figureNote {
   margin-top: 16px;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.6;
   color: var(--body);
 }
@@ -179,7 +179,7 @@
   gap: 18px;
   margin-bottom: clamp(24px, 3vw, 44px);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   letter-spacing: 0.12em;
   color: var(--muted);
 }
@@ -215,7 +215,7 @@
   padding-bottom: 5px;
   border-bottom: 1px solid var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   letter-spacing: 0.08em;
 }
 
@@ -227,7 +227,7 @@
   padding: 9px 14px;
   background: var(--paper);
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   color: var(--ink);
@@ -238,15 +238,19 @@
 
 .storyOne {
   display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: clamp(36px, 5vw, 90px);
   align-items: start;
   padding: clamp(84px, 11vw, 170px) var(--gutter) 0;
 }
 
 .oneCopy {
-  max-width: 34ch;
   padding-top: clamp(0px, 2vw, 40px);
+}
+
+.oneCopy .body,
+.threeCopy .body {
+  max-width: 34ch;
 }
 
 .oneMedia {
@@ -297,7 +301,7 @@
 .twoCaption {
   margin-top: 14px;
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   color: var(--muted);
@@ -316,7 +320,6 @@
 .threeCopy {
   position: sticky;
   top: calc(var(--header-h) + clamp(40px, 8vh, 110px));
-  max-width: 38ch;
 }
 
 .threeMedia {
@@ -350,7 +353,7 @@
 
 .indexLabel {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   color: var(--muted);
@@ -394,7 +397,7 @@
 
 .fabricNum {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   color: var(--muted);
@@ -413,7 +416,7 @@
 }
 
 .fabricGroups {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.7;
   color: var(--body);
   transition: color 0.4s var(--ease);
@@ -446,7 +449,7 @@
 
 .routeLabel {
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   color: var(--muted);
@@ -480,7 +483,7 @@
   gap: 10px clamp(16px, 2.4vw, 34px);
   margin-left: auto;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   color: var(--body);
@@ -544,7 +547,7 @@
 
 .closing > p {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   letter-spacing: 0.18em;
   color: rgba(255, 255, 255, 0.6);
 }
@@ -694,7 +697,7 @@
 .whyEn {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   color: var(--muted);
@@ -712,7 +715,7 @@
 .whyNote {
   display: block;
   margin-top: 12px;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.85;
   color: var(--body);
 }
@@ -758,7 +761,7 @@
   padding: 11px 18px;
   border: 1px solid rgba(255, 255, 255, 0.32);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   line-height: 1;
@@ -789,7 +792,7 @@
   padding: 9px 14px;
   background: var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   line-height: 1;
@@ -817,7 +820,7 @@
   padding: 10px 16px;
   background: var(--paper);
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   color: var(--ink);
@@ -862,14 +865,14 @@
   font-weight: 500;
   letter-spacing: -0.04em;
   line-height: 1;
-  color: var(--line-strong);
+  color: var(--numeral);
 }
 
 .capEn {
   display: block;
   margin-top: 16px;
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   color: var(--muted);
@@ -886,7 +889,7 @@
 .capNote {
   display: block;
   margin-top: 10px;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.85;
   color: var(--body);
 }
@@ -896,7 +899,7 @@
   padding-top: 20px;
   border-top: 1px solid var(--line-strong);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   color: var(--muted);

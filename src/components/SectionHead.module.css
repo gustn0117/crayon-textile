@@ -21,7 +21,7 @@
   font-size: clamp(2rem, 3.4vw, 3.25rem);
   font-weight: 500;
   letter-spacing: -0.06em;
-  color: var(--line-strong);
+  color: var(--numeral);
   line-height: 0.85;
 }
 
@@ -31,7 +31,7 @@
   padding-top: clamp(14px, 1.6vw, 18px);
   border-top: 1px solid var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.26em;
   color: var(--ink);
@@ -41,7 +41,7 @@
 .note {
   max-width: 17ch;
   margin-top: 14px;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.7;
   color: var(--body);
 }
@@ -65,7 +65,7 @@
 /* -- on ink --------------------------------------------------------------- */
 
 .light .index {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.42);
 }
 
 .light .en {

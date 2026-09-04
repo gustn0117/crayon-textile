@@ -68,7 +68,7 @@
   position: relative;
   white-space: nowrap;
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   color: var(--muted);
@@ -99,7 +99,7 @@
 
 .tel {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   color: var(--muted);
@@ -115,7 +115,7 @@
   padding: 7px 11px;
   border: 1px solid var(--line-strong);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.18em;
   color: var(--ink);
@@ -231,10 +231,10 @@
 
   .panelEn {
     font-family: var(--font-mono);
-    font-size: 0.625rem;
+    font-size: 0.8125rem;
     font-weight: 500;
     letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.62);
   }
 
   .panelKo {
@@ -248,7 +248,7 @@
     flex-direction: column;
     gap: 6px;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     letter-spacing: 0.06em;
     color: rgba(255, 255, 255, 0.6);
   }
@@ -265,7 +265,7 @@
     padding: 10px 14px;
     border: 1px solid rgba(255, 255, 255, 0.4);
     font-family: var(--font-sans);
-    font-size: 0.8125rem !important;
+    font-size: 0.9375rem !important;
     letter-spacing: -0.01em !important;
   }
 

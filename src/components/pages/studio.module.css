@@ -24,7 +24,7 @@
   margin-top: 12px;
   border-top: 1px solid var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.22em;
   color: var(--muted);
@@ -75,7 +75,7 @@
 .stepEn {
   margin-top: 14px;
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   color: var(--muted);
@@ -92,7 +92,7 @@
 
 .stepText {
   margin-top: 10px;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.75;
   color: var(--body);
 }
@@ -101,7 +101,7 @@
   margin-top: clamp(36px, 4vw, 56px);
   padding-top: 20px;
   border-top: 1px solid var(--line-strong);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.7;
   color: var(--muted);
 }
@@ -185,7 +185,7 @@
   margin-top: 12px;
   border-top: 1px solid var(--line-strong);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   color: var(--muted);
@@ -195,7 +195,7 @@
 .roomCaption span:last-child {
   font-family: var(--font-sans);
   letter-spacing: -0.01em;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 
 @media (max-width: 760px) {
@@ -244,7 +244,7 @@
   margin-top: 12px;
   border-top: 1px solid var(--line-strong);
   font-family: var(--font-mono);
-  font-size: 0.625rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   color: var(--muted);
@@ -254,7 +254,7 @@
 .printFigure figcaption span:last-child {
   font-family: var(--font-sans);
   letter-spacing: -0.01em;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
 }
 
 @media (max-width: 760px) {
@@ -307,10 +307,10 @@
 .originNote {
   margin-top: 10px;
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.24em;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.62);
   line-height: 1;
 }
 
@@ -326,7 +326,7 @@
   background: var(--ink);
   padding: clamp(18px, 2.2vw, 26px) clamp(12px, 1.6vw, 20px);
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   line-height: 1.3;

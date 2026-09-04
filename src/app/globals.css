@@ -9,9 +9,14 @@
   --surface: #f2f2ef;
   --ink: #0b0b0b;
   --body: #4f4f4b;
-  --muted: #9a9a93;
+  /* Small mono labels sit at this colour all over the site. It has to clear
+     WCAG AA (4.5:1) on --surface, not just on white, or the labels on the grey
+     bands go unreadable — and a good share of Crayon's buyers are not 25. */
+  --muted: #6a6a63;
   --line: #e3e3df;
   --line-strong: #c7c7c1;
+  /* Oversized decorative numerals — large text, so 3:1 is the bar. */
+  --numeral: #888881;
 
   --gutter: clamp(20px, 4.4vw, 72px);
   --container: 1440px;
@@ -175,7 +180,7 @@ button {
 }
 
 .facts dt {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--muted);
@@ -215,7 +220,7 @@ button {
 
 .label {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -305,7 +310,7 @@ button {
   padding-top: 14px;
   border-top: 1px solid var(--line-strong);
   font-family: var(--font-mono);
-  font-size: 0.5625rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.24em;
   color: var(--muted);
@@ -323,7 +328,7 @@ button {
   padding: 17px 26px;
   border: 1px solid var(--ink);
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -360,7 +365,7 @@ button {
   gap: 12px;
   padding-bottom: 6px;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
