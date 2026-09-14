@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
+    // Preserve fine textile patterns and small printing details. In Next 16,
+    // this allowlist also becomes the effective default when no quality prop
+    // is supplied because 90 is the only permitted value.
+    qualities: [90],
   },
 };
 
