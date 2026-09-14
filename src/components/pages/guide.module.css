@@ -1,0 +1,472 @@
+/* Shared by the guide branch. Reading pages, so a wider measure and calmer
+   rhythm than the home page; same tokens. */
+
+/* -- cards ---------------------------------------------------------------- */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  padding: clamp(24px, 3vw, 40px);
+  border: 1px solid var(--line-strong);
+  color: inherit;
+  text-decoration: none;
+  transition:
+    border-color 0.3s var(--ease),
+    background-color 0.3s var(--ease);
+}
+
+.card:hover {
+  border-color: var(--ink);
+  background: var(--surface);
+}
+
+.cardEn {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+}
+
+.cardTitle {
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.3;
+}
+
+.cardSummary {
+  color: var(--body);
+}
+
+.cardArrow {
+  margin-top: auto;
+  padding-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+}
+
+/* -- the two audiences ---------------------------------------------------- */
+
+.audience {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.audienceCol {
+  padding: clamp(24px, 3vw, 40px);
+  background: var(--surface);
+}
+
+.audienceEn {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+}
+
+.audienceTitle {
+  margin-top: 10px;
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+}
+
+.audienceLead {
+  margin-top: 10px;
+  color: var(--body);
+}
+
+.audienceList {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.audienceList li,
+.bullets li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.audienceList li::before,
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 8px;
+  height: 1px;
+  background: var(--ink);
+}
+
+.audienceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 22px;
+}
+
+/* -- in-page navigation --------------------------------------------------- */
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.toc a {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  color: var(--body);
+  border-bottom: 1px solid var(--line-strong);
+  transition:
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.toc a:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* -- FAQ ------------------------------------------------------------------ */
+
+.faqGroup + .faqGroup {
+  margin-top: clamp(40px, 5vw, 72px);
+}
+
+.faqList {
+  margin-top: 8px;
+}
+
+.faqItem {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 12px clamp(24px, 4vw, 72px);
+  padding: clamp(20px, 2.4vw, 30px) 0;
+  border-top: 1px solid var(--line);
+}
+
+.faqQ {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+}
+
+.faqA {
+  color: var(--body);
+}
+
+.faqLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 10px;
+}
+
+/* -- ordering flows ------------------------------------------------------- */
+
+.flows {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 4vw, 56px);
+}
+
+.flow {
+  scroll-margin-top: calc(var(--header-h) + 72px);
+}
+
+.flowHead {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+}
+
+.flowTitle {
+  margin-top: 8px;
+  font-size: clamp(1.375rem, 2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.25;
+}
+
+.steps {
+  margin-top: 20px;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.stepN {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.stepTitle {
+  font-weight: 700;
+}
+
+.stepBody {
+  margin-top: 4px;
+  color: var(--body);
+}
+
+/* -- policy cards --------------------------------------------------------- */
+
+.policies {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.policy {
+  padding: clamp(22px, 3vw, 32px);
+  border: 1px solid var(--line-strong);
+  scroll-margin-top: calc(var(--header-h) + 72px);
+}
+
+.policyEn {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+}
+
+.policyTitle {
+  margin-top: 8px;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.policyBody {
+  margin-top: 10px;
+  color: var(--body);
+  white-space: pre-line;
+}
+
+.policyNote {
+  margin-top: 10px;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.policyLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 12px;
+}
+
+/* -- prose, lists, tables ------------------------------------------------- */
+
+.quick {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 28px;
+}
+
+.prose {
+  max-width: 70ch;
+}
+
+.prose p {
+  color: var(--body);
+}
+
+.prose p + p {
+  margin-top: 1em;
+}
+
+.bullets {
+  display: grid;
+  gap: 8px;
+}
+
+.bullets li {
+  color: var(--body);
+}
+
+.numbered {
+  display: grid;
+  gap: 10px;
+  counter-reset: item;
+}
+
+.numbered li {
+  position: relative;
+  padding-left: 40px;
+  color: var(--body);
+  counter-increment: item;
+}
+
+.numbered li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--numeral);
+}
+
+.block {
+  scroll-margin-top: calc(var(--header-h) + 72px);
+}
+
+.block + .block {
+  margin-top: clamp(48px, 6vw, 96px);
+}
+
+.subhead {
+  margin-top: clamp(24px, 3vw, 40px);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 14px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+
+.table th {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.table td {
+  color: var(--body);
+}
+
+.table td:first-child {
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+/* -- legal ---------------------------------------------------------------- */
+
+.legalMeta {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.legalTitle {
+  margin-top: 12px;
+}
+
+.legalBody {
+  margin-top: 32px;
+}
+
+.legalBody h2 {
+  margin-top: clamp(28px, 4vw, 44px);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.legalBody > div:first-child h2 {
+  margin-top: 0;
+}
+
+.legalBody p,
+.legalBody li {
+  color: var(--body);
+}
+
+.legalBody p,
+.legalBody ul {
+  margin-top: 10px;
+}
+
+/* On a phone a four-column table of Korean prose collapses into one-word
+   columns, so each row becomes a card and the column names move in front of
+   the values (from data-label on the cell). */
+@media (max-width: 700px) {
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table tr {
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .table td {
+    padding: 4px 0;
+    border-top: 0;
+    white-space: normal;
+  }
+
+  .table td:first-child {
+    padding-bottom: 8px;
+    font-size: 1.125rem;
+  }
+
+  .table td[data-label]:not(:first-child)::before {
+    content: attr(data-label);
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+  }
+}
+
+@media (max-width: 900px) {
+  .cards,
+  .audience,
+  .flows,
+  .policies {
+    grid-template-columns: 1fr;
+  }
+
+  .faqItem {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

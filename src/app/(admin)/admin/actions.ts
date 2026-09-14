@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { changePassword, endSession, isAdmin, login } from "@/lib/server/adminAuth";
 import { saveSiteInfo } from "@/lib/server/siteInfoStore";
-import { parseSiteInfo, type SiteInfoField, type SiteInfoInput } from "@/lib/siteInfo";
+import { parseSiteInfo, siteInfoFields, type SiteInfoField, type SiteInfoInput } from "@/lib/siteInfo";
 
 export type FormState = {
   status: "idle" | "error" | "success";
@@ -37,18 +37,7 @@ export async function logoutAction() {
 export async function saveInfoAction(_prev: FormState, formData: FormData): Promise<FormState> {
   if (!(await isAdmin())) return EXPIRED;
 
-  const fields: SiteInfoField[] = [
-    "tel",
-    "mobile",
-    "fax",
-    "email",
-    "addressKo0",
-    "addressKo1",
-    "addressEn0",
-    "addressEn1",
-    "mapUrl",
-  ];
-  const input: SiteInfoInput = Object.fromEntries(fields.map((f) => [f, text(formData.get(f))]));
+  const input: SiteInfoInput = Object.fromEntries(siteInfoFields.map((f) => [f, text(formData.get(f))]));
   const parsed = parseSiteInfo(input);
   if (!parsed.ok) {
     return { status: "error", message: "입력한 내용을 확인해 주세요.", errors: parsed.errors };

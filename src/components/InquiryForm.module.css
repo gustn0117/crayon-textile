@@ -1,0 +1,231 @@
+/* Sized like the admin form: people fill this in on a phone, often not
+   young — big targets, big type, one thing per row. */
+
+.form {
+  display: grid;
+  gap: 28px;
+}
+
+.trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.types {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.label {
+  display: block;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.typeRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.type {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  transition:
+    background-color 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+.type input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.type:hover {
+  border-color: var(--ink);
+}
+
+.type:has(input:focus-visible) {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.typeOn {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px 16px;
+}
+
+.wide {
+  grid-column: 1 / -1;
+}
+
+.field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input {
+  width: 100%;
+  min-height: 54px;
+  padding: 12px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.0625rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input::placeholder {
+  color: #9a9a93;
+}
+
+.input:focus {
+  border-color: var(--ink);
+  outline: 2px solid var(--ink);
+  outline-offset: 0;
+}
+
+.input[aria-invalid="true"] {
+  border-color: #b3261e;
+  outline-color: #b3261e;
+}
+
+.textarea {
+  min-height: 160px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.error {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #b3261e;
+}
+
+.consent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.check input {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: #0b0b0b;
+}
+
+.consentLink {
+  font-size: 0.9375rem;
+  color: var(--body);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.consentLink:hover {
+  color: var(--ink);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.status {
+  margin: 0;
+  color: var(--body);
+}
+
+.statusError {
+  font-weight: 600;
+  color: #b3261e;
+}
+
+/* -- after submit --------------------------------------------------------- */
+
+.success {
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid var(--ink);
+}
+
+.successEn {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.successTitle {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.successBody {
+  margin-top: 8px;
+  color: var(--body);
+}
+
+.successActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 24px;
+}
+
+.successActions button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}

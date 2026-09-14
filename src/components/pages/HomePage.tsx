@@ -2,9 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { destinations } from "@/lib/site";
+import { audiences, guidePages } from "@/content/guide";
 import { categoryPath, fabricCategories, pick } from "@/lib/fabrics";
 import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
+import type { SiteInfo } from "@/lib/siteInfo";
 import styles from "./home.module.css";
 
 const chipSwatch = [
@@ -27,7 +29,7 @@ function SectionTitle({ lines, className }: { lines: readonly string[]; classNam
   );
 }
 
-export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
+export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info: SiteInfo }) {
   const t = d.home;
   const to = (path: string) => localePath(lang, path);
 
@@ -54,6 +56,9 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
               {t.heroTagline[1]}
             </h1>
             <p>{t.heroSub}</p>
+            <Link className={styles.heroSecondary} href={to("/guide/order#retail")}>
+              {t.heroSecondary} <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
           <Link className={styles.heroCta} href={to("/contact")}>
@@ -202,6 +207,37 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
         </ul>
       </section>
 
+      {/* Who the shop is for — the same two promises the guide hub makes. */}
+      <section className={styles.audience}>
+        <SectionTitle lines={t.sectionTitles.audience} />
+        <p className={styles.audienceLead}>{t.audienceLead}</p>
+        <div className={styles.audienceGrid}>
+          {audiences.map((a, i) => (
+            <Reveal className={styles.audienceCol} delay={i * 40} key={a.id}>
+              <span className={styles.audienceEn}>{a.en}</span>
+              <h3 className={styles.audienceTitle}>{pick(a.title, lang)}</h3>
+              <ul className={styles.audienceList}>
+                {a.points.map((p) => (
+                  <li key={p.en}>{pick(p, lang)}</li>
+                ))}
+              </ul>
+              <div className={styles.audienceLinks}>
+                {a.links.map((l) => (
+                  <Link className={styles.textLink} href={to(l.href)} key={l.href}>
+                    {pick(l.label, lang)} <span aria-hidden="true">→</span>
+                  </Link>
+                ))}
+                {a.id === "personal" && info.storeUrl ? (
+                  <a className={styles.textLink} href={info.storeUrl} target="_blank" rel="noreferrer">
+                    {d.guide.store} <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* Printing — the methods, against the plant. */}
       <section className={styles.printing}>
         <div className={styles.printingHead}>
@@ -268,6 +304,25 @@ export function HomePage({ lang, d }: { lang: Locale; d: Dictionary }) {
           ))}
         </ul>
         <p className={styles.capFoot}>{t.capability.note}</p>
+      </section>
+
+      {/* Where to start — the four guide pages, as a short index. */}
+      <section className={styles.guideStrip}>
+        <SectionTitle lines={t.sectionTitles.guide} />
+        <ul className={styles.guideList}>
+          {guidePages.map((g, i) => (
+            <li key={g.slug}>
+              <Link className={styles.guideRow} href={to(g.href)}>
+                <span className={styles.fabricNum}>{String(i + 1).padStart(2, "0")}</span>
+                <span className={styles.guideName}>{pick(g.title, lang)}</span>
+                <span className={styles.guideSummary}>{pick(g.summary, lang)}</span>
+                <span className={styles.fabricArrow} aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* The fabric branches, as an index. These are the pages search traffic

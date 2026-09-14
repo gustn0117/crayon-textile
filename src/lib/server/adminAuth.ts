@@ -2,6 +2,7 @@ import { createHmac, randomBytes, scrypt as scryptCallback, timingSafeEqual } fr
 import { promisify } from "node:util";
 import { cookies, headers } from "next/headers";
 import { readJson, writeJson } from "./data";
+import { reset, take } from "./rateLimit";
 
 const scrypt = promisify(scryptCallback) as (
   password: string,
@@ -86,23 +87,11 @@ export async function endSession() {
   (await cookies()).delete({ name: COOKIE, path: COOKIE_PATH });
 }
 
-/* A four-digit password falls to 10,000 guesses, so failures are capped per
-   address and across all addresses. In memory: this site runs one container. */
+/* A four-digit password falls to 10,000 guesses, so attempts are capped per
+   address and across all addresses. */
 const WINDOW_MS = 15 * 60_000;
 const MAX_PER_IP = 5;
 const MAX_TOTAL = 30;
-
-type Bucket = { count: number; since: number };
-const buckets = new Map<string, Bucket>();
-const total: Bucket = { count: 0, since: 0 };
-
-function fresh(bucket: Bucket, now: number) {
-  if (now - bucket.since > WINDOW_MS) {
-    bucket.count = 0;
-    bucket.since = now;
-  }
-  return bucket;
-}
 
 async function clientIp() {
   const h = await headers();
@@ -122,17 +111,9 @@ async function passwordMatches(password: string, record: PasswordRecord) {
 }
 
 export async function login(password: string): Promise<AuthResult> {
-  const now = Date.now();
   const ip = await clientIp();
 
-  if (buckets.size > 1000) {
-    for (const [key, bucket] of buckets) if (now - bucket.since > WINDOW_MS) buckets.delete(key);
-  }
-  const mine = fresh(buckets.get(ip) ?? { count: 0, since: now }, now);
-  buckets.set(ip, mine);
-  fresh(total, now);
-
-  if (mine.count >= MAX_PER_IP || total.count >= MAX_TOTAL) {
+  if (!take("login", ip, MAX_PER_IP, WINDOW_MS) || !take("login", "all", MAX_TOTAL, WINDOW_MS)) {
     return { ok: false, error: "로그인 시도가 너무 많습니다. 15분 뒤에 다시 시도해 주세요." };
   }
 
@@ -142,12 +123,10 @@ export async function login(password: string): Promise<AuthResult> {
   }
 
   if (!(await passwordMatches(password, record))) {
-    mine.count += 1;
-    total.count += 1;
     return { ok: false, error: "비밀번호가 올바르지 않습니다." };
   }
 
-  buckets.delete(ip);
+  reset("login", ip);
   await startSession(record);
   return { ok: true };
 }

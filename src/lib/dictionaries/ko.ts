@@ -31,6 +31,7 @@ export function ko(info: SiteInfo) {
       fax: info.fax,
       email: info.email,
       addressShort: info.addressKo[1] || info.addressKo[0],
+      hours: info.hours.ko,
     },
 
     /* The same in every locale: international tel: numbers dial from anywhere. */
@@ -41,6 +42,60 @@ export function ko(info: SiteInfo) {
       map: info.mapUrl,
     },
 
+    hours: { label: "영업시간", fallback: "영업시간은 전화로 확인해 주세요." },
+
+    guide: {
+      navAria: "이용 안내 메뉴",
+      hub: "이용 안내",
+      faq: "자주 묻는 질문",
+      order: "주문·배송 안내",
+      fabric: "원단 가이드",
+      custom: "커스텀 나염 의뢰",
+      contactCta: "문의하기",
+      callCta: "전화 문의",
+      kakao: "카카오톡 상담",
+      store: "온라인 스토어",
+      consultNote: "자세한 조건은 상담 시 안내해 드립니다.",
+      tocLabel: "바로가기",
+    },
+
+    inquiry: {
+      en: "INQUIRY",
+      title: "문의하기",
+      lead: "원단명, 용도, 수량을 아는 만큼만 적어 주세요. 나머지는 통화로 좁혀 드립니다.",
+      types: { wholesale: "도매 · 대량", retail: "소량 · 개인", custom: "커스텀 나염", other: "기타" },
+      fields: {
+        type: "문의 유형",
+        name: "이름",
+        phone: "연락처",
+        email: "이메일 (선택)",
+        company: "회사 · 브랜드 (선택)",
+        use: "용도 (선택)",
+        quantity: "수량 (선택)",
+        message: "문의 내용",
+        consent: "개인정보 수집·이용에 동의합니다.",
+      },
+      placeholders: {
+        name: "예) 홍길동",
+        phone: "예) 010-1234-5678",
+        email: "예) name@example.com",
+        company: "예) 브랜드명",
+        use: "예) 아동복, 침구, 블라우스",
+        quantity: "예) 5마, 2롤",
+        message: "예) 면 80수 꽃무늬 원단을 소량으로 구매하고 싶습니다. 참고 이미지가 있습니다.",
+      },
+      consentLink: "개인정보처리방침 보기",
+      submit: "문의 보내기",
+      sending: "보내는 중…",
+      successTitle: "문의가 접수되었습니다.",
+      successBody: "확인 후 연락드리겠습니다. 급하시면 전화 주세요.",
+      successRef: "접수번호",
+      successAgain: "다른 문의 보내기",
+      errorSummary: "입력한 내용을 확인해 주세요.",
+      rateLimited: "잠시 후 다시 시도하거나 전화로 문의해 주세요.",
+      saveFailed: "저장에 실패했습니다. 전화로 문의해 주세요.",
+    },
+
     nav: [
       { href: "/new", en: "NEW", label: "신상품" },
       { href: "/fabrics/cotton", en: "COTTON", label: "면·셀룰로오스" },
@@ -49,6 +104,7 @@ export function ko(info: SiteInfo) {
       { href: "/fabrics/design", en: "BY DESIGN", label: "디자인별 원단" },
       { href: "/studio", en: "STUDIO", label: "디자인 개발" },
       { href: "/about", en: "ABOUT", label: "회사 소개" },
+      { href: "/guide", en: "GUIDE", label: "이용 안내" },
       { href: "/contact", en: "CONTACT", label: "문의" },
     ],
 
@@ -78,6 +134,9 @@ export function ko(info: SiteInfo) {
       sitemap: "SITEMAP",
       contact: "CONTACT",
       address: "ADDRESS",
+      guide: "GUIDE",
+      privacy: "개인정보처리방침",
+      hours: "HOURS",
       home: "홈",
       sitemapAria: "사이트맵",
       tagline: "차별화된 디자인과 신뢰할 수 있는 품질로 함께 성장하겠습니다.",
@@ -172,6 +231,7 @@ export function ko(info: SiteInfo) {
       heroTagline: ["30년의 감각으로,", "원단의 다음을 만듭니다."],
       heroSub: "서울 동대문에서 시작된 텍스타일 디자인 스튜디오",
       heroCta: "원단 상담하기",
+      heroSecondary: "소량 구매 안내",
       heroMeta: ["TEXTILE DESIGN", "DONGDAEMUN · SEOUL", "30 YEARS OF EXPERIENCE"],
       printing: {
         title: ["PRINTING", "TECHNIQUE"],
@@ -199,7 +259,11 @@ export function ko(info: SiteInfo) {
       stockLabel: "원단 재고",
       stockAlt: "비닐로 포장된 원단 롤이 층층이 쌓인 크레용 원단 창고",
       stockAisleAlt: "선반마다 원단 롤이 채워진 크레용 생산 창고 통로",
+      audienceLead: "브랜드 원단도, 개인 소잉 원단도 같은 매장에서 나갑니다. 필요한 만큼, 맞는 방법으로.",
+      guideStripLabel: "이용 안내",
       sectionTitles: {
+        audience: ["FOR", "EVERYONE"],
+        guide: ["HOW TO", "START"],
         story: ["OUR", "STORY"],
         why: ["WHY", "CRAYON"],
         index: ["FABRIC", "INDEX"],
@@ -486,10 +550,14 @@ export function ko(info: SiteInfo) {
       },
       globalNote: "수출 물량이나 대량 공급 조건도 상담을 통해 안내해 드립니다.",
       globalCta: "수출 · 대량 공급 문의",
+      customCta: "커스텀 나염 의뢰 안내",
     },
 
     contact: {
       title: "문의",
+      formHead: { en: "INQUIRY", note: "폼으로 문의", title: "문의를 남겨 주세요." },
+      hoursLabel: "영업시간",
+      transit: { label: "오시는 길", lines: ["지하철 1·4호선 동대문역에서 도보", "동대문종합시장 D동 2층 2621호"] },
       description:
         `원단 상담 및 견적 문의. 전화 ${info.tel} / ${info.mobile}, 이메일 ${info.email}. ${info.addressKo.filter(Boolean).join(" ")}.`,
       introTitle: ["새로운 원단을", "찾고 계신가요?"],

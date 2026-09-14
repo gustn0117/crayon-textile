@@ -218,6 +218,13 @@ export function StudioPage({ lang, d }: { lang: Locale; d: Dictionary }) {
               {t.globalCta}
               <span aria-hidden="true">→</span>
             </Link>
+            <Link
+              className={`arrow-link arrow-link-light ${styles.globalLink}`}
+              href={localePath(lang, "/guide/custom")}
+            >
+              {t.customCta}
+              <span aria-hidden="true">→</span>
+            </Link>
           </Reveal>
         </div>
       </section>

@@ -31,6 +31,7 @@ export function en(info: SiteInfo): Dictionary {
       fax: info.fax ? intlPhone(info.fax) : "",
       email: info.email,
       addressShort: info.addressEn[0],
+      hours: info.hours.en,
     },
 
     links: {
@@ -38,6 +39,60 @@ export function en(info: SiteInfo): Dictionary {
       mobile: telHref(info.mobile),
       email: `mailto:${info.email}`,
       map: info.mapUrl,
+    },
+
+    hours: { label: "Opening hours", fallback: "Please call to confirm opening hours." },
+
+    guide: {
+      navAria: "Guide menu",
+      hub: "Guide",
+      faq: "FAQ",
+      order: "Ordering & delivery",
+      fabric: "Fabric guide",
+      custom: "Custom printing",
+      contactCta: "Send an enquiry",
+      callCta: "Call us",
+      kakao: "KakaoTalk",
+      store: "Online store",
+      consultNote: "Full terms are confirmed during consultation.",
+      tocLabel: "Jump to",
+    },
+
+    inquiry: {
+      en: "INQUIRY",
+      title: "Send an enquiry",
+      lead: "Tell us the fabric, the use and the quantity as far as you know them. We narrow the rest down by phone.",
+      types: { wholesale: "Wholesale · bulk", retail: "Small quantity · personal", custom: "Custom printing", other: "Other" },
+      fields: {
+        type: "Enquiry type",
+        name: "Name",
+        phone: "Phone",
+        email: "Email (optional)",
+        company: "Company · brand (optional)",
+        use: "Intended use (optional)",
+        quantity: "Quantity (optional)",
+        message: "Message",
+        consent: "I agree to the collection and use of my details.",
+      },
+      placeholders: {
+        name: "e.g. Jane Kim",
+        phone: "e.g. +82-10-1234-5678",
+        email: "e.g. name@example.com",
+        company: "e.g. brand name",
+        use: "e.g. childrenswear, bedding, blouses",
+        quantity: "e.g. 5 yards, 2 rolls",
+        message: "e.g. I would like a small quantity of the cotton 80s floral print. I have reference images.",
+      },
+      consentLink: "Read the privacy policy",
+      submit: "Send enquiry",
+      sending: "Sending…",
+      successTitle: "Your enquiry has been received.",
+      successBody: "We will get back to you. If it is urgent, please call.",
+      successRef: "Reference",
+      successAgain: "Send another",
+      errorSummary: "Please check the highlighted fields.",
+      rateLimited: "Please try again shortly, or call us.",
+      saveFailed: "We could not save your enquiry. Please call us.",
     },
 
     nav: [
@@ -48,6 +103,7 @@ export function en(info: SiteInfo): Dictionary {
       { href: "/fabrics/design", en: "BY DESIGN", label: "Fabric by design" },
       { href: "/studio", en: "STUDIO", label: "Design studio" },
       { href: "/about", en: "ABOUT", label: "About us" },
+      { href: "/guide", en: "GUIDE", label: "Guide" },
       { href: "/contact", en: "CONTACT", label: "Contact" },
     ],
 
@@ -77,6 +133,9 @@ export function en(info: SiteInfo): Dictionary {
       sitemap: "SITEMAP",
       contact: "CONTACT",
       address: "ADDRESS",
+      guide: "Guide",
+      privacy: "Privacy policy",
+      hours: "HOURS",
       home: "Home",
       sitemapAria: "Sitemap",
       tagline:
@@ -176,6 +235,7 @@ export function en(info: SiteInfo): Dictionary {
       heroTagline: ["Thirty years of instinct,", "shaping what fabric becomes next."],
       heroSub: "A textile design studio rooted in Dongdaemun, Seoul",
       heroCta: "Start a consultation",
+      heroSecondary: "Buying small quantities",
       heroMeta: ["TEXTILE DESIGN", "DONGDAEMUN · SEOUL", "30 YEARS OF EXPERIENCE"],
       printing: {
         title: ["PRINTING", "TECHNIQUE"],
@@ -203,7 +263,11 @@ export function en(info: SiteInfo): Dictionary {
       stockLabel: "Fabric stock",
       stockAlt: "Rolls of wrapped fabric stacked through the CRAYON warehouse",
       stockAisleAlt: "An aisle of the CRAYON production warehouse, every rack filled with fabric rolls",
+      audienceLead: "The cloth for a brand and the cloth for a home sewer leave the same shop. As much as you need, the right way.",
+      guideStripLabel: "Guide",
       sectionTitles: {
+        audience: ["FOR", "EVERYONE"],
+        guide: ["HOW TO", "START"],
         story: ["OUR", "STORY"],
         why: ["WHY", "CRAYON"],
         index: ["FABRIC", "INDEX"],
@@ -500,10 +564,14 @@ export function en(info: SiteInfo): Dictionary {
       globalNote:
         "Export volumes and bulk supply terms are also arranged through consultation.",
       globalCta: "Export & bulk enquiries",
+      customCta: "Custom printing — how it works",
     },
 
     contact: {
       title: "Contact",
+      formHead: { en: "INQUIRY", note: "By form", title: "Leave us an enquiry." },
+      hoursLabel: "Opening hours",
+      transit: { label: "Getting here", lines: ["A short walk from Dongdaemun Station (Lines 1 & 4)", "Room 2621, 2F, Building D, Dongdaemun Comprehensive Market"] },
       description:
         `Fabric consultation and quotations. Tel ${intlPhone(info.tel)} / ${intlPhone(info.mobile)}, email ${info.email}. ${info.addressEn.filter(Boolean).join(", ")}.`,
       introTitle: ["Looking for a fabric", "you haven't found yet?"],

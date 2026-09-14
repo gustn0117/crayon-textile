@@ -15,6 +15,7 @@ type Field = {
   required?: boolean;
   wide?: boolean;
   hint?: string | ((values: Values) => string);
+  multiline?: boolean;
 };
 
 const englishSpelling = (value: string) =>
@@ -65,6 +66,30 @@ const groups: { id: string; title: string; note: string; fields: Field[] }[] = [
       },
     ],
   },
+  {
+    id: "operating",
+    title: "운영 안내",
+    note: "비워두면 사이트에 기본 안내문(‘자세한 조건은 상담 시 안내’)이 나오고, 채우면 그 문구가 대신 나옵니다. 국문·영문을 각각 적어 주세요.",
+    fields: [
+      { name: "hoursKo", label: "영업시간 · 국문", multiline: true, placeholder: "예) 평일 09:00–18:00 · 토요일 09:00–15:00 · 일요일·공휴일 휴무" },
+      { name: "hoursEn", label: "영업시간 · 영문", multiline: true, placeholder: "e.g. Mon–Fri 9am–6pm · Sat 9am–3pm · Closed Sun & holidays" },
+      { name: "retailKo", label: "소량 구매 안내 · 국문", multiline: true, placeholder: "예) 1마 단위로 끊어 드립니다. 원단에 따라 최소 수량이 다를 수 있습니다." },
+      { name: "retailEn", label: "소량 구매 안내 · 영문", multiline: true, placeholder: "e.g. Sold by the yard in store; minimums vary by fabric." },
+      { name: "shippingKo", label: "배송 안내 · 국문", multiline: true, placeholder: "예) 택배 발송 가능, 배송비는 수량에 따라 안내" },
+      { name: "shippingEn", label: "배송 안내 · 영문", multiline: true, placeholder: "e.g. Courier delivery available; shipping quoted by quantity." },
+      { name: "sampleKo", label: "샘플·스와치 안내 · 국문", multiline: true, placeholder: "예) 매장에서 스와치 확인 가능, 우편 샘플은 상담" },
+      { name: "sampleEn", label: "샘플·스와치 안내 · 영문", multiline: true, placeholder: "e.g. Swatches available in store; mailed samples on request." },
+    ],
+  },
+  {
+    id: "links",
+    title: "링크",
+    note: "주소를 넣으면 문의·이용 안내·홈에 버튼이 생기고, 비우면 버튼이 사라집니다.",
+    fields: [
+      { name: "kakaoUrl", label: "카카오톡 채널", type: "url", placeholder: "예) https://pf.kakao.com/_xxxxx", wide: true },
+      { name: "storeUrl", label: "온라인 스토어", type: "url", placeholder: "예) https://smartstore.naver.com/xxxxx", wide: true },
+    ],
+  },
 ];
 
 function toValues(info: SiteInfo): Values {
@@ -78,6 +103,16 @@ function toValues(info: SiteInfo): Values {
     addressEn0: info.addressEn[0],
     addressEn1: info.addressEn[1],
     mapUrl: info.mapUrl,
+    hoursKo: info.hours.ko,
+    hoursEn: info.hours.en,
+    retailKo: info.retail.ko,
+    retailEn: info.retail.en,
+    shippingKo: info.shipping.ko,
+    shippingEn: info.shipping.en,
+    sampleKo: info.sample.ko,
+    sampleEn: info.sample.en,
+    kakaoUrl: info.kakaoUrl,
+    storeUrl: info.storeUrl,
   };
 }
 
@@ -121,21 +156,37 @@ export function InfoForm({ info }: { info: SiteInfo }) {
                     {field.label}
                     {field.required ? <span className={styles.required}> 필수</span> : null}
                   </label>
-                  <input
-                    className={styles.input}
-                    id={field.name}
-                    name={field.name}
-                    type={field.type ?? "text"}
-                    value={values[field.name]}
-                    placeholder={field.placeholder}
-                    required={field.required}
-                    autoComplete="off"
-                    aria-invalid={error ? true : undefined}
-                    aria-describedby={describedBy}
-                    onChange={(event) =>
-                      setValues((current) => ({ ...current, [field.name]: event.target.value }))
-                    }
-                  />
+                  {field.multiline ? (
+                    <textarea
+                      className={`${styles.input} ${styles.textarea}`}
+                      id={field.name}
+                      name={field.name}
+                      rows={2}
+                      value={values[field.name]}
+                      placeholder={field.placeholder}
+                      aria-invalid={error ? true : undefined}
+                      aria-describedby={describedBy}
+                      onChange={(event) =>
+                        setValues((current) => ({ ...current, [field.name]: event.target.value }))
+                      }
+                    />
+                  ) : (
+                    <input
+                      className={styles.input}
+                      id={field.name}
+                      name={field.name}
+                      type={field.type ?? "text"}
+                      value={values[field.name]}
+                      placeholder={field.placeholder}
+                      required={field.required}
+                      autoComplete="off"
+                      aria-invalid={error ? true : undefined}
+                      aria-describedby={describedBy}
+                      onChange={(event) =>
+                        setValues((current) => ({ ...current, [field.name]: event.target.value }))
+                      }
+                    />
+                  )}
                   {hint ? (
                     <p className={styles.hint} id={`${field.name}-hint`}>
                       {hint}

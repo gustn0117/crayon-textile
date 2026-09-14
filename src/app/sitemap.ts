@@ -3,7 +3,9 @@ import { getDictionary } from "@/lib/dictionaries";
 import { localePath, locales, siteUrl } from "@/lib/routing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const paths = ["/", ...(await getDictionary("ko")).nav.map((item) => item.href)];
+  const nav = (await getDictionary("ko")).nav.map((item) => item.href);
+  const extra = ["/guide/faq", "/guide/order", "/guide/fabric", "/guide/custom", "/privacy"];
+  const paths = [...new Set(["/", ...nav, ...extra])];
 
   return locales.flatMap((lang) =>
     paths.map((path) => ({

@@ -1,0 +1,64 @@
+/* Mirrors the fabric pages' jump bar (fabrics.module.css .subnav). */
+
+.nav {
+  position: sticky;
+  top: var(--header-h);
+  z-index: 40;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 32px);
+  padding-block: 14px;
+}
+
+.label {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.inner ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px clamp(14px, 1.8vw, 26px);
+  min-width: 0;
+}
+
+.inner a {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--body);
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.inner a:hover,
+.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  /* The bar would eat half a phone screen; let it scroll out instead. */
+  .nav {
+    position: static;
+  }
+}

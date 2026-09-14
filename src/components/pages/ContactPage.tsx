@@ -1,12 +1,17 @@
 import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
 import { Reveal } from "@/components/Reveal";
+import { InquiryForm } from "@/components/InquiryForm";
 import { SectionHead } from "@/components/SectionHead";
-import type { Locale } from "@/lib/i18n";
+import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
+import type { InquiryType } from "@/lib/inquiry";
+import type { SiteInfo } from "@/lib/siteInfo";
 import styles from "./contact.module.css";
 
-export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
+type Props = { lang: Locale; d: Dictionary; info: SiteInfo; initialType?: InquiryType };
+
+export function ContactPage({ lang, d, info, initialType }: Props) {
   const t = d.contact;
 
   return (
@@ -49,10 +54,32 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="inquiry">
         <div className="container">
           <SectionHead
             index="01"
+            en={t.formHead.en}
+            note={t.formHead.note}
+            title={t.formHead.title}
+            lead={d.inquiry.lead}
+          />
+          <Reveal>
+            <InquiryForm
+              lang={lang}
+              t={d.inquiry}
+              telHref={d.links.mobile}
+              telLabel={`${d.guide.callCta} · ${d.phone.mobile}`}
+              privacyHref={localePath(lang, "/privacy")}
+              initialType={initialType}
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHead
+            index="02"
             en={t.visitHead.en}
             note={t.visitHead.note}
             title={t.visitHead.title}
@@ -89,6 +116,20 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
                       </dd>
                     </div>
                   ))}
+                  <div>
+                    <dt>{t.hoursLabel}</dt>
+                    <dd>
+                      <span>{d.phone.hours || d.hours.fallback}</span>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>{t.transit.label}</dt>
+                    <dd>
+                      {t.transit.lines.map((line) => (
+                        <span key={line}>{line}</span>
+                      ))}
+                    </dd>
+                  </div>
                 </dl>
 
                 {/* Optional in the admin page — no link, no button. */}
@@ -100,6 +141,18 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
                     rel="noreferrer"
                   >
                     {t.mapLink}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
+                {info.kakaoUrl ? (
+                  <a className={`arrow-link ${styles.mapLink}`} href={info.kakaoUrl} target="_blank" rel="noreferrer">
+                    {d.guide.kakao}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
+                {info.storeUrl ? (
+                  <a className={`arrow-link ${styles.mapLink}`} href={info.storeUrl} target="_blank" rel="noreferrer">
+                    {d.guide.store}
                     <span aria-hidden="true">↗</span>
                   </a>
                 ) : null}
@@ -120,7 +173,7 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
       <section className={`section ${styles.checklistSection}`}>
         <div className="container">
           <SectionHead
-            index="02"
+            index="03"
             en={t.checklistHead.en}
             note={t.checklistHead.note}
             title={t.checklistHead.title}

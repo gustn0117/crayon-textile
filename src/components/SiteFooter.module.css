@@ -75,6 +75,16 @@
   align-self: stretch;
 }
 
+.subLabel {
+  margin-top: 18px;
+}
+
+.hours {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+}
+
 .address {
   display: flex;
   flex-direction: column;
@@ -95,6 +105,19 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   color: rgba(255, 255, 255, 0.6);
+}
+
+.baseline a {
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: inherit;
+  transition: color 0.3s var(--ease);
+}
+
+.baseline a:hover {
+  color: var(--paper);
 }
 
 @media (max-width: 1080px) {

@@ -1,9 +1,10 @@
-import type { Locale } from "./i18n";
+import { pick, type Bi } from "./bi";
 
 /* One source for the whole fabric taxonomy. Both locales live on the same node
    so the Korean and English trees can never drift apart. */
 
-export type Bi = { ko: string; en: string };
+export type { Bi };
+export { pick };
 export type FabricItem = { name: Bi; note: Bi };
 export type FabricGroup = { slug: string; name: Bi; items: FabricItem[] };
 
@@ -22,10 +23,6 @@ export type FabricCategory = {
   note?: Bi;
   groups: FabricGroup[];
 };
-
-export function pick(v: Bi, lang: Locale) {
-  return v[lang];
-}
 
 export function categoryPath(c: FabricCategory) {
   return c.path ?? `/fabrics/${c.slug}`;

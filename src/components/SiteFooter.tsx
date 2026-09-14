@@ -30,6 +30,12 @@ export function SiteFooter({ lang, d }: { lang: Locale; d: Dictionary }) {
               {item.label}
             </Link>
           ))}
+          <p className={`${styles.columnLabel} ${styles.subLabel}`}>{d.footer.guide}</p>
+          {(["faq", "order", "fabric", "custom"] as const).map((slug) => (
+            <Link key={slug} href={localePath(lang, `/guide/${slug}`)}>
+              {d.guide[slug]}
+            </Link>
+          ))}
         </nav>
 
         <div className={styles.column}>
@@ -37,6 +43,8 @@ export function SiteFooter({ lang, d }: { lang: Locale; d: Dictionary }) {
           <a href={d.links.tel}>T. {d.phone.tel}</a>
           {d.phone.fax ? <span>F. {d.phone.fax}</span> : null}
           <a href={d.links.email}>{d.phone.email}</a>
+          <p className={`${styles.columnLabel} ${styles.subLabel}`}>{d.footer.hours}</p>
+          <span className={styles.hours}>{d.phone.hours || d.hours.fallback}</span>
         </div>
 
         <div className={styles.column}>
@@ -51,6 +59,7 @@ export function SiteFooter({ lang, d }: { lang: Locale; d: Dictionary }) {
 
       <div className={`container ${styles.baseline}`}>
         <span>SEOUL · DONGDAEMUN · 2621</span>
+        <Link href={localePath(lang, "/privacy")}>{d.footer.privacy}</Link>
         <span>{d.footer.rights}</span>
       </div>
     </footer>

@@ -952,3 +952,155 @@
   .stock { height: 84vw; }
   .stock figcaption { left: 20px; }
 }
+
+/* -- hero: secondary link under the sub line ------------------------------ */
+
+.heroSecondary {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  letter-spacing: 0.08em;
+  color: var(--body);
+  border-bottom: 1px solid var(--line-strong);
+  animation: riseIn 0.5s var(--ease) 0.4s both;
+  transition:
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.heroSecondary:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* -- for everyone: the two audiences -------------------------------------- */
+
+.audience {
+  padding: clamp(84px, 11vw, 170px) var(--gutter) 0;
+}
+
+.audienceLead {
+  max-width: 44ch;
+  margin-top: 18px;
+  font-size: 1.0625rem;
+  color: var(--body);
+}
+
+.audienceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: clamp(28px, 4vw, 56px);
+}
+
+.audienceCol {
+  padding: clamp(28px, 3.4vw, 52px);
+  border: 1px solid var(--line-strong);
+}
+
+.audienceCol:first-child {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.audienceEn {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.24em;
+  opacity: 0.7;
+}
+
+.audienceTitle {
+  margin-top: 12px;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.audienceList {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.audienceList li {
+  position: relative;
+  padding-left: 18px;
+}
+
+.audienceList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8em;
+  width: 8px;
+  height: 1px;
+  background: currentColor;
+}
+
+.audienceLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 26px;
+}
+
+.audienceCol:first-child .textLink {
+  color: inherit;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* -- how to start: the guide pages, as rows ------------------------------- */
+
+.guideStrip {
+  padding: clamp(84px, 11vw, 170px) var(--gutter) 0;
+}
+
+.guideList {
+  margin-top: clamp(28px, 4vw, 56px);
+  border-top: 1px solid var(--ink);
+}
+
+.guideRow {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 220px) minmax(0, 1fr) 32px;
+  gap: 16px clamp(16px, 2.4vw, 40px);
+  align-items: baseline;
+  padding: clamp(18px, 2vw, 26px) 0;
+  border-bottom: 1px solid var(--line);
+  color: inherit;
+  transition: color 0.3s var(--ease);
+}
+
+.guideRow:hover {
+  color: var(--ink);
+}
+
+.guideName {
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.guideSummary {
+  font-size: 0.9375rem;
+  color: var(--body);
+}
+
+@media (max-width: 900px) {
+  .audienceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .guideRow {
+    grid-template-columns: 44px minmax(0, 1fr) 32px;
+  }
+
+  .guideSummary {
+    grid-column: 2 / 3;
+  }
+}

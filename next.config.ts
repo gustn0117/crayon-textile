@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
     ];
   },
   output: "standalone",
+  // Two root layouts (ko/en) leave no single place for a 404; this routes
+  // unmatched URLs to app/global-not-found.tsx instead.
+  experimental: { globalNotFound: true },
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
