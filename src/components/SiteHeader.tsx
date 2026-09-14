@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { contact } from "@/lib/site";
 import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./SiteHeader.module.css";
@@ -83,7 +82,7 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
           })}
         </nav>
 
-        <a className={styles.tel} href={contact.telHref}>
+        <a className={styles.tel} href={d.links.tel}>
           T. {d.phone.tel}
         </a>
 
@@ -138,7 +137,7 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
           <a className={styles.panelLang} href={otherHref} hrefLang={otherLang}>
             {d.header.langOtherTitle}
           </a>
-          <a href={contact.mobileHref}>{d.phone.mobile}</a>
+          <a href={d.links.mobile}>{d.phone.mobile}</a>
           <p>{d.phone.addressShort}</p>
         </div>
       </div>

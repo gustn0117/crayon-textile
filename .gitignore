@@ -47,3 +47,6 @@ next-env.d.ts
 
 # original photo drop
 /0903/
+
+# admin-edited content and credentials — lives on the server volume
+/data/

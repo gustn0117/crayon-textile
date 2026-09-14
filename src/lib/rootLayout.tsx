@@ -31,8 +31,8 @@ export const viewport: Viewport = {
 };
 
 /** Metadata shared by both locale trees, with hreflang alternates. */
-export function rootMetadata(lang: Locale): Metadata {
-  const d = getDictionary(lang);
+export async function rootMetadata(lang: Locale): Promise<Metadata> {
+  const d = await getDictionary(lang);
   return {
     metadataBase: new URL(siteUrl),
     title: { default: d.meta.titleDefault, template: d.meta.titleTemplate },
@@ -55,8 +55,8 @@ export function rootMetadata(lang: Locale): Metadata {
   };
 }
 
-export function RootShell({ lang, children }: { lang: Locale; children: ReactNode }) {
-  const d = getDictionary(lang);
+export async function RootShell({ lang, children }: { lang: Locale; children: ReactNode }) {
+  const d = await getDictionary(lang);
   return (
     <html lang={d.htmlLang} className={`${gothic.variable} ${plexMono.variable}`}>
       <body>

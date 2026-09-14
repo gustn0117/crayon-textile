@@ -13,9 +13,10 @@ export const metadata: Metadata = {
   keywords: [...category.keywords.en],
 };
 
-export default function Page() {
+export default async function Page() {
   if (!category) notFound();
+  const d = await getDictionary(lang);
   return (
-    <FabricCategoryPage lang={lang} d={getDictionary(lang)} category={category} />
+    <FabricCategoryPage lang={lang} d={d} category={category} />
   );
 }

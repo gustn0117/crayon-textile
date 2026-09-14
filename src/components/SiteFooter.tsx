@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { contact } from "@/lib/site";
 import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./SiteFooter.module.css";
@@ -35,9 +34,9 @@ export function SiteFooter({ lang, d }: { lang: Locale; d: Dictionary }) {
 
         <div className={styles.column}>
           <p className={styles.columnLabel}>{d.footer.contact}</p>
-          <a href={contact.telHref}>T. {d.phone.tel}</a>
-          <span>F. {d.phone.fax}</span>
-          <a href={contact.emailHref}>{contact.email}</a>
+          <a href={d.links.tel}>T. {d.phone.tel}</a>
+          {d.phone.fax ? <span>F. {d.phone.fax}</span> : null}
+          <a href={d.links.email}>{d.phone.email}</a>
         </div>
 
         <div className={styles.column}>

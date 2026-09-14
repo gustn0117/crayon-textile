@@ -2,7 +2,6 @@ import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
 import { Reveal } from "@/components/Reveal";
 import { SectionHead } from "@/components/SectionHead";
-import { contact } from "@/lib/site";
 import type { Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import styles from "./contact.module.css";
@@ -29,7 +28,7 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
       <section className="section-tight">
         <div className="container">
           <Reveal className={styles.actions}>
-            <a className={styles.action} href={contact.mobileHref}>
+            <a className={styles.action} href={d.links.mobile}>
               <span className={styles.actionLabel}>CALL</span>
               <span className={styles.actionValue}>{d.phone.mobile}</span>
               <span className={styles.actionNote}>{t.callNote}</span>
@@ -38,9 +37,9 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
               </span>
             </a>
 
-            <a className={styles.action} href={contact.emailHref}>
+            <a className={styles.action} href={d.links.email}>
               <span className={styles.actionLabel}>EMAIL</span>
-              <span className={styles.actionValue}>{contact.email}</span>
+              <span className={styles.actionValue}>{d.phone.email}</span>
               <span className={styles.actionNote}>{t.emailNote}</span>
               <span className={styles.actionArrow} aria-hidden="true">
                 ↗
@@ -92,20 +91,23 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
                   ))}
                 </dl>
 
-                <a
-                  className={`arrow-link ${styles.mapLink}`}
-                  href={contact.mapUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t.mapLink}
-                  <span aria-hidden="true">↗</span>
-                </a>
+                {/* Optional in the admin page — no link, no button. */}
+                {d.links.map ? (
+                  <a
+                    className={`arrow-link ${styles.mapLink}`}
+                    href={d.links.map}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t.mapLink}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                ) : null}
               </Reveal>
 
               <Reveal className={styles.visitAside} delay={70}>
                 <p className={styles.visitNote}>{t.visitNote}</p>
-                <a className="btn btn-ghost" href={contact.telHref}>
+                <a className="btn btn-ghost" href={d.links.tel}>
                   {t.visitCta}
                   <span aria-hidden="true">↗</span>
                 </a>
@@ -151,12 +153,12 @@ export function ContactPage({ d }: { lang: Locale; d: Dictionary }) {
           </Reveal>
 
           <Reveal className={styles.closingActions} delay={40}>
-            <a className="btn btn-invert" href={contact.mobileHref}>
+            <a className="btn btn-invert" href={d.links.mobile}>
               {d.phone.mobile}
               <span aria-hidden="true">↗</span>
             </a>
-            <a className="arrow-link arrow-link-light" href={contact.emailHref}>
-              {contact.email}
+            <a className="arrow-link arrow-link-light" href={d.links.email}>
+              {d.phone.email}
               <span aria-hidden="true">→</span>
             </a>
           </Reveal>

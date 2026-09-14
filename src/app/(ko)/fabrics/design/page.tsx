@@ -14,14 +14,15 @@ export const metadata: Metadata = {
   keywords: [...category.keywords.ko],
 };
 
-export default function Page() {
+export default async function Page() {
   if (!category) notFound();
+  const d = await getDictionary(lang);
   return (
     <FabricCategoryPage
       lang={lang}
-      d={getDictionary(lang)}
+      d={d}
       category={category}
-      extra={<SwatchShowcase lang={lang} d={getDictionary(lang)} />}
+      extra={<SwatchShowcase lang={lang} d={d} />}
     />
   );
 }
