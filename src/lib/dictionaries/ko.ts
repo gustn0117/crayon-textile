@@ -121,6 +121,7 @@ export function ko(info: SiteInfo) {
 
     header: {
       navAria: "주요 메뉴",
+      fabrics: "원단",
       fullNavAria: "전체 메뉴",
       open: "메뉴 열기",
       close: "메뉴 닫기",

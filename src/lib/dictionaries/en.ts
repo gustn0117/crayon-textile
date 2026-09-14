@@ -120,6 +120,7 @@ export function en(info: SiteInfo): Dictionary {
 
     header: {
       navAria: "Main menu",
+      fabrics: "Fabrics",
       fullNavAria: "Full menu",
       open: "Open menu",
       close: "Close menu",

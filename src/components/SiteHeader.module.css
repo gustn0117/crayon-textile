@@ -61,17 +61,19 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: clamp(11px, 1.5vw, 22px);
+  gap: clamp(20px, 2.6vw, 40px);
 }
 
+/* Five words in the reader's own language. The mono caps live on in the
+   dropdown and the mobile panel as small secondary labels. */
 .navLink {
   position: relative;
   white-space: nowrap;
-  font-family: var(--font-mono);
-  font-size: 0.9375rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--body);
   line-height: 1;
   transition: color 0.3s var(--ease);
 }
@@ -89,7 +91,7 @@
 .isActive::before {
   content: "";
   position: absolute;
-  left: -9px;
+  left: -11px;
   top: 50%;
   width: 5px;
   height: 5px;
@@ -97,18 +99,88 @@
   background: var(--ink);
 }
 
-.tel {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-  line-height: 1;
-  transition: color 0.3s var(--ease);
+/* -- fabrics dropdown ----------------------------------------------------- */
+
+/* Spans the header's full height so the panel hangs from the header's edge
+   and the pointer can travel from the button into it without leaving. */
+.menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--header-h);
 }
 
-.tel:hover {
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.menuOpen {
   color: var(--ink);
+}
+
+.caret {
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--ease);
+}
+
+.caretUp {
+  margin-top: 3px;
+  transform: rotate(225deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: -18px;
+  z-index: 70;
+  min-width: 268px;
+  padding: 8px;
+  background: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-top: 0;
+  box-shadow: 0 18px 40px rgba(11, 11, 11, 0.08);
+}
+
+.dropLink {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 13px 14px;
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.dropLink:hover,
+.dropActive {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.dropKo {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.dropEn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--muted);
 }
 
 .lang {
@@ -174,15 +246,8 @@
   display: none;
 }
 
-@media (max-width: 1280px) {
-  .tel {
-    display: none;
-  }
-}
-
 @media (max-width: 900px) {
-  .nav,
-  .tel {
+  .nav {
     display: none;
   }
 
