@@ -545,7 +545,7 @@
   color: var(--paper);
 }
 
-.closing > p {
+.closing > p:first-child {
   font-family: var(--font-mono);
   font-size: 0.875rem;
   letter-spacing: 0.18em;
@@ -561,8 +561,29 @@
   letter-spacing: -0.06em;
 }
 
+.closingFoot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px 48px;
+}
+
+.closingRoute {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.closingRoute span:last-child {
+  color: rgba(255, 255, 255, 0.86);
+}
+
 .closing a {
-  align-self: flex-end;
   display: flex;
   width: min(100%, 420px);
   justify-content: space-between;
@@ -645,10 +666,11 @@
    ------------------------------------------------------------------------- */
 
 .sectionTitle h2 {
-  font-size: clamp(2.25rem, 4.6vw, 4.4rem);
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
   font-weight: 500;
-  line-height: 0.96;
-  letter-spacing: -0.05em;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--muted);
 }
 
 .titleWrap {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { destinations } from "@/lib/site";
-import { audiences, guidePages } from "@/content/guide";
+import { audiences } from "@/content/guide";
 import { categoryPath, fabricCategories, pick } from "@/lib/fabrics";
 import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
@@ -190,23 +190,6 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
         </figure>
       </section>
 
-      {/* Why Crayon — the three standards, as a trio of marks. */}
-      <section className={styles.why}>
-        <SectionTitle lines={t.sectionTitles.why} />
-        <p className={styles.whyLead}>{t.whyLead}</p>
-        <ul className={styles.whyList}>
-          {d.principles.map((item, i) => (
-            <li key={item.en}>
-              <Reveal delay={i * 35}>
-                <span className={styles.whyEn}>{item.en}</span>
-                <b className={styles.whyTitle}>{item.title}</b>
-                <span className={styles.whyNote}>{item.description}</span>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       {/* Who the shop is for — the same two promises the guide hub makes. */}
       <section className={styles.audience}>
         <SectionTitle lines={t.sectionTitles.audience} />
@@ -274,57 +257,6 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
         </div>
       </section>
 
-      {/* Stock — the warehouse behind the counter. */}
-      <figure className={styles.stock}>
-        <Image
-          src="/images/crayon-warehouse-aisle.jpg"
-          alt={t.stockAisleAlt}
-          fill
-          sizes="100vw"
-        />
-        <figcaption>{t.stockLabel}</figcaption>
-      </figure>
-
-      {/* Design capability — what running the rooms in-house buys the client. */}
-      <section className={styles.capability}>
-        <SectionTitle lines={t.capability.title} />
-        <Reveal mask>
-          <h3 className={styles.capHeadline}>{t.capability.headline}</h3>
-        </Reveal>
-        <ul className={styles.capList}>
-          {t.capability.items.map((item, i) => (
-            <li key={item.en}>
-              <Reveal delay={i * 35}>
-                <span className={styles.capNum}>{String(i + 1).padStart(2, "0")}</span>
-                <span className={styles.capEn}>{item.en}</span>
-                <b className={styles.capTitle}>{item.title}</b>
-                <span className={styles.capNote}>{item.note}</span>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
-        <p className={styles.capFoot}>{t.capability.note}</p>
-      </section>
-
-      {/* Where to start — the four guide pages, as a short index. */}
-      <section className={styles.guideStrip}>
-        <SectionTitle lines={t.sectionTitles.guide} />
-        <ul className={styles.guideList}>
-          {guidePages.map((g, i) => (
-            <li key={g.slug}>
-              <Link className={styles.guideRow} href={to(g.href)}>
-                <span className={styles.fabricNum}>{String(i + 1).padStart(2, "0")}</span>
-                <span className={styles.guideName}>{pick(g.title, lang)}</span>
-                <span className={styles.guideSummary}>{pick(g.summary, lang)}</span>
-                <span className={styles.fabricArrow} aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-
       {/* The fabric branches, as an index. These are the pages search traffic
           lands on, so the home page has to link every one of them. */}
       <section className={styles.fabricIndex}>
@@ -361,23 +293,20 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
         </ul>
       </section>
 
-      <section className={styles.route}>
-        <p className={styles.routeLabel}>{t.routeLabel}</p>
-        <p className={styles.routeOrigin}>SEOUL</p>
-        <ul className={styles.routeList}>
-          {destinations.map((place) => (
-            <li key={place}>{place}</li>
-          ))}
-        </ul>
-      </section>
-
       <section className={styles.closing}>
         <p>{t.closingEyebrow}</p>
         <h2>{t.closingHeadline}</h2>
-        <Link href={to("/contact")}>
-          {t.closingAction}
-          <span aria-hidden="true">→</span>
-        </Link>
+        <div className={styles.closingFoot}>
+          {/* Where the cloth goes — one quiet line instead of its own band. */}
+          <p className={styles.closingRoute}>
+            <span>{t.routeLabel}</span>
+            <span>SEOUL → {destinations.join(" · ")}</span>
+          </p>
+          <Link className={styles.closingAction} href={to("/contact")}>
+            {t.closingAction}
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
       </section>
     </>
   );

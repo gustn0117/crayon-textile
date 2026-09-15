@@ -37,6 +37,10 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
 
   const fabricItems = d.nav.filter((item) => isFabricHref(item.href));
   const topItems = d.nav.filter((item) => !isFabricHref(item.href));
+  // Logo in the middle, menu either side: what we make on the left, who we
+  // are and how to reach us on the right.
+  const leftItems = topItems.filter((item) => item.href === "/studio" || item.href === "/guide");
+  const rightItems = topItems.filter((item) => item.href === "/about" || item.href === "/contact");
   const fabricsActive = fabricItems.some((item) => pathname === localePath(lang, item.href));
 
   // Only the home page has a full-bleed hero for the header to float over.
@@ -105,79 +109,98 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
   return (
     <header className={overHero ? `${styles.header} ${styles.overHero}` : styles.header}>
       <div className={styles.inner}>
-        <Link className={styles.brand} href={home}>
-          <Image
-            className={styles.logo}
-            src="/images/logo-crayon.png"
-            alt={d.brand.ko}
-            width={760}
-            height={341}
-            priority
-          />
-        </Link>
-
         <nav className={styles.nav} aria-label={d.header.navAria}>
-          <div
-            className={styles.menu}
-            ref={menuRef}
-            onMouseEnter={openByHover}
-            onMouseLeave={closeAfterHover}
-            onBlur={(event) => {
-              if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFabricsOpen(false);
-            }}
-          >
-            <button
-              className={[
-                styles.navLink,
-                styles.menuButton,
-                fabricsActive ? styles.isActive : "",
-                fabricsOpen ? styles.menuOpen : "",
-              ]
-                .filter(Boolean)
-                .join(" ")}
-              type="button"
-              aria-haspopup="true"
-              aria-expanded={fabricsOpen}
-              aria-controls="fabrics-menu"
-              onClick={toggleByClick}
+          <div className={`${styles.group} ${styles.groupLeft}`}>
+            <div
+              className={styles.menu}
+              ref={menuRef}
+              onMouseEnter={openByHover}
+              onMouseLeave={closeAfterHover}
+              onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFabricsOpen(false);
+              }}
             >
-              {d.header.fabrics}
-              <span className={fabricsOpen ? `${styles.caret} ${styles.caretUp}` : styles.caret} aria-hidden="true" />
-            </button>
+              <button
+                className={[
+                  styles.navLink,
+                  styles.menuButton,
+                  fabricsActive ? styles.isActive : "",
+                  fabricsOpen ? styles.menuOpen : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+                type="button"
+                aria-haspopup="true"
+                aria-expanded={fabricsOpen}
+                aria-controls="fabrics-menu"
+                onClick={toggleByClick}
+              >
+                {d.header.fabrics}
+                <span className={fabricsOpen ? `${styles.caret} ${styles.caretUp}` : styles.caret} aria-hidden="true" />
+              </button>
 
-            <div className={styles.dropdown} id="fabrics-menu" hidden={!fabricsOpen}>
-              {fabricItems.map((item) => {
-                const href = localePath(lang, item.href);
-                const isActive = pathname === href;
-                return (
-                  <Link
-                    key={item.href}
-                    href={href}
-                    className={isActive ? `${styles.dropLink} ${styles.dropActive}` : styles.dropLink}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    <span className={styles.dropKo}>{item.label}</span>
-                    <span className={styles.dropEn}>{item.en}</span>
-                  </Link>
-                );
-              })}
+              <div className={styles.dropdown} id="fabrics-menu" hidden={!fabricsOpen}>
+                {fabricItems.map((item) => {
+                  const href = localePath(lang, item.href);
+                  const isActive = pathname === href;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={href}
+                      className={isActive ? `${styles.dropLink} ${styles.dropActive}` : styles.dropLink}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      <span className={styles.dropKo}>{item.label}</span>
+                      <span className={styles.dropEn}>{item.en}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
+
+            {leftItems.map((item) => {
+              const href = localePath(lang, item.href);
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={item.href}
+                  href={href}
+                  className={isActive ? `${styles.navLink} ${styles.isActive}` : styles.navLink}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </div>
 
-          {topItems.map((item) => {
-            const href = localePath(lang, item.href);
-            const isActive = pathname === href;
-            return (
-              <Link
-                key={item.href}
-                href={href}
-                className={isActive ? `${styles.navLink} ${styles.isActive}` : styles.navLink}
-                aria-current={isActive ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
+          <Link className={styles.brand} href={home}>
+            <Image
+              className={styles.logo}
+              src="/images/logo-crayon.png"
+              alt={d.brand.ko}
+              width={760}
+              height={341}
+              priority
+            />
+          </Link>
+
+          <div className={`${styles.group} ${styles.groupRight}`}>
+            {rightItems.map((item) => {
+              const href = localePath(lang, item.href);
+              const isActive = pathname === href;
+              return (
+                <Link
+                  key={item.href}
+                  href={href}
+                  className={isActive ? `${styles.navLink} ${styles.isActive}` : styles.navLink}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
         </nav>
 
         {/* Switching language crosses root layouts, so this is a plain anchor —
