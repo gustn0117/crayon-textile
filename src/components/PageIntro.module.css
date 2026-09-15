@@ -1,44 +1,8 @@
 .intro {
-  position: relative;
-  display: flex;
-  min-height: clamp(470px, 60svh, 680px);
-  padding-top: clamp(80px, 10vw, 148px);
-  padding-bottom: clamp(56px, 7vw, 96px);
-  align-items: flex-end;
-  color: var(--paper);
-  background: var(--ink);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-  overflow: hidden;
-}
-
-.media {
-  position: absolute;
-  inset: 0;
-}
-
-.media img {
-  object-fit: cover;
-  transform: scale(1.025);
-}
-
-.scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(11, 11, 11, 0.86) 0%,
-      rgba(11, 11, 11, 0.76) 54%,
-      rgba(11, 11, 11, 0.58) 100%
-    ),
-    linear-gradient(0deg, rgba(11, 11, 11, 0.7) 0%, rgba(11, 11, 11, 0.14) 58%),
-    linear-gradient(180deg, rgba(11, 11, 11, 0.28) 0%, rgba(11, 11, 11, 0) 28%);
+  padding-top: clamp(56px, 7vw, 112px);
 }
 
 .grid {
-  position: relative;
-  z-index: 1;
-  width: 100%;
   align-items: start;
 }
 
@@ -49,11 +13,15 @@
 
 .en {
   font-family: var(--font-mono);
-  font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+  font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.28em;
-  color: rgba(255, 255, 255, 0.86);
+  letter-spacing: 0.14em;
+  color: var(--muted);
   line-height: 1;
+}
+
+.content h1 {
+  max-width: 16ch;
 }
 
 .lead {
@@ -61,29 +29,35 @@
   margin-top: clamp(20px, 2.4vw, 30px);
   font-size: clamp(1rem, 1.25vw, 1.125rem);
   line-height: 1.85;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--body);
 }
 
-@media (max-width: 900px) {
-  .intro {
-    min-height: clamp(430px, 62svh, 590px);
-  }
+/* The photograph, full width, a calm wide frame. */
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  min-height: 300px;
+  max-height: 640px;
+  margin: clamp(44px, 6vw, 96px) 0 0;
+  overflow: hidden;
+}
 
-  .scrim {
-    background:
-      linear-gradient(180deg, rgba(11, 11, 11, 0.56) 0%, rgba(11, 11, 11, 0.82) 100%),
-      linear-gradient(90deg, rgba(11, 11, 11, 0.62), rgba(11, 11, 11, 0.52));
-  }
+.media img {
+  object-fit: cover;
 }
 
 @media (max-width: 560px) {
   .intro {
-    min-height: 460px;
-    padding-top: 76px;
-    padding-bottom: 52px;
+    padding-top: 44px;
   }
 
   .content :global(.display) {
-    font-size: clamp(2.2rem, 10.4vw, 3rem);
+    font-size: clamp(2rem, 9.6vw, 2.75rem);
+  }
+
+  .media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
   }
 }

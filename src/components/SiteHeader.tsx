@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -176,10 +177,8 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
             })}
           </div>
 
-          {/* The brand is set in type, not the purple mark: on a monochrome page
-              the logo image read as a sticker. The mark lives on in the footer. */}
           <Link className={styles.brand} href={home} aria-label={d.brand.ko}>
-            <span className={styles.wordmark}>CRAYON</span>
+            <Image className={styles.logo} src="/images/logo-crayon.png" alt="" width={760} height={341} priority />
           </Link>
 
           <div className={`${styles.group} ${styles.groupRight}`}>

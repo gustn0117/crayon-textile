@@ -9,14 +9,6 @@ import type { Dictionary } from "@/lib/dictionaries";
 import type { SiteInfo } from "@/lib/siteInfo";
 import styles from "./home.module.css";
 
-const chipSwatch = [
-  "swatch-women",
-  "swatch-kids",
-  "swatch-casual",
-  "swatch-home",
-  "swatch-women",
-];
-
 function SectionTitle({ lines, className }: { lines: readonly string[]; className?: string }) {
   return (
     <Reveal className={className ? `${styles.sectionTitle} ${className}` : styles.sectionTitle} mask>
@@ -283,10 +275,6 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
                 <span className={styles.fabricArrow} aria-hidden="true">
                   →
                 </span>
-                <span
-                  className={`${styles.fabricPanel} ${chipSwatch[i % chipSwatch.length]}`}
-                  aria-hidden="true"
-                />
               </Link>
             </li>
           ))}
