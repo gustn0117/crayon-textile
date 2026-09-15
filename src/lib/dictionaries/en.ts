@@ -121,6 +121,7 @@ export function en(info: SiteInfo): Dictionary {
     header: {
       navAria: "Main menu",
       fabrics: "Fabrics",
+      cta: "Contact",
       fullNavAria: "Full menu",
       open: "Open menu",
       close: "Close menu",
@@ -232,6 +233,40 @@ export function en(info: SiteInfo): Dictionary {
         "Cotton, rayon, polyester, interlock knit and brushed fleece — printed fabric developed in Dongdaemun, Seoul for thirty years. Original patterns from our own design room widen what a product can be.",
       heroCtaContact: "Talk to us about fabric",
       heroCtaCollection: "Browse the fabrics",
+      corp: {
+        keyVisual: { en: "DONGDAEMUN · SEOUL", title: ["Thirty years in Dongdaemun Market,", "printing cloth from patterns we draw ourselves."] },
+        business: {
+          en: "BUSINESS",
+          title: "Three things we do.",
+          lead: "We supply fabric, develop our own patterns, and print commissioned artwork. The three connect under one roof.",
+          more: "Learn more",
+          items: [
+            { en: "FABRIC SUPPLY", title: "Fabric supply", body: "Cotton, rayon and polyester by the roll. Seasonal arrivals and standing stock.", href: "/fabrics/cotton", image: "crayon-warehouse" },
+            { en: "DESIGN STUDIO", title: "Design development", body: "Patterns developed in our own design and drafting rooms. Original, not copied.", href: "/studio", image: "crayon-design-office" },
+            { en: "CUSTOM PRINTING", title: "Custom printing", body: "Separation, repeat, strike-off and production in one place. DTP · rotary · reactive · pigment.", href: "/guide/custom", image: "crayon-print-bed" },
+          ],
+        },
+        numbers: {
+          en: "CRAYON IN NUMBERS",
+          title: "CRAYON in numbers",
+          items: [
+            { value: "30", label: "years in Dongdaemun" },
+            { value: "1,000+", label: "designs developed" },
+            { value: "5", label: "printing methods" },
+            { value: "4", label: "export regions" },
+          ],
+        },
+        fabrics: { en: "FABRICS", title: "Fabric categories", cta: "All fabrics" },
+        vision: {
+          en: "DESIGN CAPABILITY",
+          title: ["A different design", "changes what the cloth is worth."],
+          body: "We run our own design and drafting rooms, taking separation, repeat and commissioned design through in one flow.",
+          cta: "Design development",
+        },
+        guide: { en: "GUIDE", title: "New here?", lead: "Brands and individual makers use the same cloth." },
+        contact: { en: "CONTACT", title: "Let's talk about the fabric you are looking for.", cta: "Send an enquiry" },
+      },
+
       heroWordmark: "CRAYON",
       heroTagline: ["Thirty years of instinct,", "shaping what fabric becomes next."],
       heroSub: "A textile design studio rooted in Dongdaemun, Seoul",

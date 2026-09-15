@@ -11,26 +11,26 @@ type PageIntroProps = {
   imagePosition?: string;
 };
 
-/* Editorial opening: the title set on paper, the photograph given its own
-   full-width frame beneath it. Type over a darkened photo read as a template;
-   type beside a photo reads as a magazine. */
+/* Corporate banner: the page's photograph as a wide band, the title set on
+   it bottom-left, the lead beneath the band on paper so it stays legible. */
 export function PageIntro({ en, title, lead, imageSrc, imagePosition = "center" }: PageIntroProps) {
   return (
     <section className={styles.intro}>
-      <div className={`container split ${styles.grid}`}>
-        <Reveal className={styles.meta}>
+      <div className={styles.banner}>
+        <Image src={imageSrc} alt="" fill preload sizes="100vw" style={{ objectPosition: imagePosition }} />
+        <div className={styles.scrim} />
+        <Reveal className={styles.bannerCopy}>
           <p className={styles.en}>{en}</p>
-        </Reveal>
-
-        <Reveal className={styles.content} delay={40} mask>
-          <h1 className="display">{title}</h1>
-          {lead ? <p className={styles.lead}>{lead}</p> : null}
+          <h1 className={styles.title}>{title}</h1>
         </Reveal>
       </div>
-
-      <figure className={styles.media}>
-        <Image src={imageSrc} alt="" fill preload sizes="100vw" style={{ objectPosition: imagePosition }} />
-      </figure>
+      {lead ? (
+        <div className={`container ${styles.leadWrap}`}>
+          <Reveal>
+            <p className={styles.lead}>{lead}</p>
+          </Reveal>
+        </div>
+      ) : null}
     </section>
   );
 }

@@ -1,63 +1,65 @@
-.intro {
-  padding-top: clamp(56px, 7vw, 112px);
+.banner {
+  position: relative;
+  height: min(34vw, 480px);
+  min-height: 320px;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
 }
 
-.grid {
-  align-items: start;
+.banner img {
+  object-fit: cover;
 }
 
-/* Nudges the label down so it sits on the display type's first baseline. */
-.meta {
-  padding-top: clamp(9px, 1.1vw, 17px);
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 11, 11, 0.18), rgba(11, 11, 11, 0.66));
+}
+
+.bannerCopy {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(36px, 4.4vw, 64px);
 }
 
 .en {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  color: var(--muted);
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1;
 }
 
-.content h1 {
-  max-width: 16ch;
+.title {
+  max-width: 20ch;
+  margin-top: 12px;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.15;
+}
+
+.leadWrap {
+  padding-top: clamp(28px, 3.2vw, 44px);
 }
 
 .lead {
-  max-width: 46ch;
-  margin-top: clamp(20px, 2.4vw, 30px);
+  max-width: 60ch;
   font-size: clamp(1rem, 1.25vw, 1.125rem);
   line-height: 1.85;
   color: var(--body);
 }
 
-/* The photograph, full width, a calm wide frame. */
-.media {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 21 / 9;
-  min-height: 300px;
-  max-height: 640px;
-  margin: clamp(44px, 6vw, 96px) 0 0;
-  overflow: hidden;
-}
-
-.media img {
-  object-fit: cover;
-}
-
 @media (max-width: 560px) {
-  .intro {
-    padding-top: 44px;
+  .banner {
+    height: auto;
+    min-height: 300px;
   }
 
-  .content :global(.display) {
-    font-size: clamp(2rem, 9.6vw, 2.75rem);
-  }
-
-  .media {
-    aspect-ratio: 4 / 3;
-    min-height: 0;
+  .title {
+    font-size: clamp(1.75rem, 8.6vw, 2.5rem);
   }
 }

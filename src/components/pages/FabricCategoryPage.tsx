@@ -17,6 +17,8 @@ const heroes: Record<string, { src: string; position: string }> = {
   design: { src: "/images/crayon-design-desk.jpg", position: "center 55%" },
 };
 
+const swatches = ["swatch-women", "swatch-kids", "swatch-casual", "swatch-home"];
+
 export function FabricCategoryPage({
   lang,
   d,
@@ -74,6 +76,7 @@ export function FabricCategoryPage({
                 {group.items.map((item, j) => (
                   <li key={pick(item.name, "ko")}>
                     <Reveal className={styles.item} delay={j * 25}>
+                      <span className={`${styles.itemSwatch} ${swatches[(i + j) % swatches.length]}`} aria-hidden="true" />
                       <h3 className={styles.itemName}>{pick(item.name, lang)}</h3>
                       <p className={styles.itemNote}>{pick(item.note, lang)}</p>
                       <Link className={styles.itemLink} href={localePath(lang, "/contact")}>

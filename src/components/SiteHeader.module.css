@@ -5,31 +5,13 @@
   right: 0;
   z-index: 60;
   background: var(--paper);
-  border-bottom: 1px solid transparent;
-  transition:
-    background-color 0.45s var(--ease),
-    border-color 0.45s var(--ease);
+  border-bottom: 1px solid var(--line);
 }
 
-/* The hairline appears only once the page has moved under the header. */
-.scrolled {
-  border-bottom-color: var(--line);
-}
-
-/* Floating over the home hero: no plate, light type. Everything below is an
-   override of the solid state, so the solid state stays the default. */
-.overHero {
-  background: var(--paper);
-  border-bottom-color: transparent;
-}
-
-/* Three columns: menu · logo · menu. The logo sits on the true centre line of
-   the page; the menu groups grow outward from it. */
 .inner {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  display: flex;
   align-items: center;
+  gap: clamp(24px, 3vw, 56px);
   height: var(--header-h);
   width: 100%;
   max-width: var(--container);
@@ -42,46 +24,36 @@
 .brand {
   display: flex;
   align-items: center;
-  justify-self: center;
+  margin-right: auto;
 }
 
 .logo {
   width: auto;
-  height: clamp(28px, 2.6vw, 34px);
+  height: clamp(30px, 2.8vw, 36px);
 }
 
 /* -- desktop nav ---------------------------------------------------------- */
 
-/* The nav is a landmark, not a box: its three children take the grid's
-   columns directly. */
 .nav {
-  display: contents;
-}
-
-.group {
   display: flex;
   align-items: center;
-  gap: clamp(22px, 2.8vw, 44px);
+  gap: clamp(22px, 2.8vw, 40px);
 }
 
-/* Keeps the right menu group clear of the language word at the far edge. */
-.groupRight {
-  justify-self: end;
-  padding-right: clamp(44px, 4vw, 64px);
-}
-
-/* Words in the reader's own language, set light. The mono caps live on in
-   the dropdown and the mobile panel as small secondary labels. */
 .navLink {
   position: relative;
   white-space: nowrap;
+  padding: 6px 0;
   font-family: var(--font-sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
   line-height: 1;
-  transition: color 0.3s var(--ease);
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
 }
 
 .navLink:hover {
@@ -89,26 +61,11 @@
 }
 
 .isActive {
-  color: var(--ink);
-}
-
-/* The current page carries a filled square — the same mark the collection
-   swatches use for a repeat unit. */
-.isActive::before {
-  content: "";
-  position: absolute;
-  left: -11px;
-  top: 50%;
-  width: 5px;
-  height: 5px;
-  margin-top: -2px;
-  background: var(--ink);
+  border-bottom-color: var(--ink);
 }
 
 /* -- fabrics dropdown ----------------------------------------------------- */
 
-/* Spans the header's full height so the panel hangs from the header's edge
-   and the pointer can travel from the button into it without leaving. */
 .menu {
   position: relative;
   display: flex;
@@ -120,8 +77,9 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 0;
-  border: 0;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
   background: none;
   cursor: pointer;
 }
@@ -150,10 +108,10 @@
   top: 100%;
   left: -18px;
   z-index: 70;
-  min-width: 268px;
+  min-width: 280px;
   padding: 8px;
   background: var(--paper);
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line);
   border-top: 0;
   box-shadow: 0 18px 40px rgba(11, 11, 11, 0.08);
 }
@@ -189,14 +147,15 @@
   color: var(--muted);
 }
 
-/* -- language ------------------------------------------------------------- */
+/* -- actions: language word + the one button --------------------------- */
 
-/* At the far edge as a quiet mono word, not a boxed button. */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2vw, 28px);
+}
+
 .lang {
-  position: absolute;
-  right: var(--gutter);
-  top: 50%;
-  transform: translateY(-50%);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   font-weight: 500;
@@ -207,6 +166,28 @@
 }
 
 .lang:hover {
+  color: var(--ink);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 22px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  border: 1px solid var(--ink);
+  transition:
+    background-color 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+.cta:hover,
+.ctaActive {
+  background: var(--paper);
   color: var(--ink);
 }
 
@@ -225,9 +206,7 @@
   width: 100%;
   height: 1.5px;
   background: var(--ink);
-  transition:
-    transform 0.35s var(--ease),
-    background-color 0.45s var(--ease);
+  transition: transform 0.35s var(--ease);
 }
 
 .toggle span:first-child {
@@ -252,26 +231,10 @@
   display: none;
 }
 
-@media (max-width: 900px) {
-  .inner {
-    display: flex;
-    gap: 18px;
-  }
-
-  .group {
+@media (max-width: 1024px) {
+  .nav,
+  .actions {
     display: none;
-  }
-
-  .brand {
-    margin-right: auto;
-  }
-
-  .lang {
-    position: static;
-    transform: none;
-    padding: 7px 11px;
-    border: 1px solid var(--line-strong);
-    color: var(--ink);
   }
 
   .toggle {

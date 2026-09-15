@@ -1,44 +1,35 @@
-/* Mirrors the fabric pages' jump bar (fabrics.module.css .subnav). */
+/* Corporate tabs under the page banner. */
 
 .nav {
-  position: sticky;
-  top: var(--header-h);
-  z-index: 40;
-  background: var(--surface);
   border-bottom: 1px solid var(--line);
+  background: var(--paper);
 }
 
 .inner {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2.4vw, 32px);
-  padding-block: 14px;
+  gap: clamp(20px, 2.6vw, 40px);
 }
 
 .label {
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  line-height: 1;
+  display: none;
 }
 
 .inner ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px clamp(14px, 1.8vw, 26px);
+  gap: 0 clamp(20px, 2.6vw, 40px);
   min-width: 0;
 }
 
 .inner a {
-  font-size: 0.9375rem;
-  font-weight: 500;
+  display: inline-block;
+  padding: 20px 0 18px;
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--body);
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
   transition:
     color 0.3s var(--ease),
     border-color 0.3s var(--ease);
@@ -51,14 +42,14 @@
 }
 
 @media (max-width: 700px) {
-  .inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+  .inner ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0 22px;
+    padding-bottom: 0;
   }
 
-  /* The bar would eat half a phone screen; let it scroll out instead. */
-  .nav {
-    position: static;
+  .inner a {
+    white-space: nowrap;
   }
 }

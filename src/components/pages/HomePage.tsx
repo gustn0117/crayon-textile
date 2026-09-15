@@ -1,28 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
-import { destinations } from "@/lib/site";
-import { audiences } from "@/content/guide";
+import { guidePages } from "@/content/guide";
 import { categoryPath, fabricCategories, pick } from "@/lib/fabrics";
 import { localePath, type Locale } from "@/lib/i18n";
 import type { Dictionary } from "@/lib/dictionaries";
 import type { SiteInfo } from "@/lib/siteInfo";
 import styles from "./home.module.css";
 
-function SectionTitle({ lines, className }: { lines: readonly string[]; className?: string }) {
-  return (
-    <Reveal className={className ? `${styles.sectionTitle} ${className}` : styles.sectionTitle} mask>
-      <h2>
-        {lines[0]}
-        <br />
-        {lines[1]}
-      </h2>
-    </Reveal>
-  );
+/* One photograph per fabric branch until the cloth itself is photographed. */
+const categoryImage: Record<string, string> = {
+  new: "crayon-print-color",
+  cotton: "crayon-print-table",
+  polyester: "crayon-print-rotary",
+  use: "crayon-store",
+  design: "crayon-designroom-team",
+};
+
+function Eyebrow({ children, light }: { children: string; light?: boolean }) {
+  return <p className={light ? `${styles.eyebrow} ${styles.eyebrowLight}` : styles.eyebrow}>{children}</p>;
 }
 
 export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info: SiteInfo }) {
   const t = d.home;
+  const c = t.corp;
   const to = (path: string) => localePath(lang, path);
 
   return (
@@ -66,234 +67,161 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
         </div>
       </section>
 
-      <figure className={styles.heroImage}>
-        <Image
-          src="/images/crayon-store-wide.jpg"
-          alt={t.gallery[2].alt}
-          fill
-          preload
-          sizes="100vw"
-        />
-      </figure>
-
-      {/* The figures ride up over the photograph rather than sitting under it,
-          so the page opens on an overlap instead of a stack. */}
-      <section className={styles.figuresWrap} aria-label={t.figuresAria}>
-        <div className={styles.figures}>
-          {t.figures.map((item) => (
-            <div className={styles.figure} key={item.unit}>
-              <p className={styles.figureValue}>{item.value}</p>
-              <p className={styles.figureUnit}>{item.unit}</p>
-              <p className={styles.figureNote}>{item.note}</p>
-            </div>
-          ))}
-        </div>
+      {/* Key visual — one wide photograph, one sentence about the company. */}
+      <section className={styles.keyVisual}>
+        <Image src="/images/crayon-store-wide.jpg" alt={t.gallery[2].alt} fill preload sizes="100vw" />
+        <div className={styles.keyScrim} />
+        <Reveal className={styles.keyCopy}>
+          <Eyebrow light>{c.keyVisual.en}</Eyebrow>
+          <p className={styles.keyTitle}>
+            {c.keyVisual.title[0]}
+            <br />
+            {c.keyVisual.title[1]}
+          </p>
+        </Reveal>
       </section>
 
-      <div className={styles.titleWrap}>
-        <SectionTitle lines={t.sectionTitles.story} />
-      </div>
-
-      {/* 01 — a narrow column of type against a large image dropped below it. */}
-      <section className={styles.storyOne}>
-        <div className={styles.oneCopy}>
-          <p className={styles.index}>{t.stories[0].index}</p>
-          <Reveal mask>
-            <h2>
-              {t.stories[0].title[0]}
-              <br />
-              {t.stories[0].title[1]}
-            </h2>
+      {/* Business — the three lines, as photo cards. */}
+      <section className={styles.block}>
+        <div className="container">
+          <Reveal>
+            <Eyebrow>{c.business.en}</Eyebrow>
+            <h2 className={styles.h2}>{c.business.title}</h2>
+            <p className={styles.lead}>{c.business.lead}</p>
           </Reveal>
-          <p className={styles.body}>{t.aboutBody}</p>
-          <Link className={styles.textLink} href={to("/about")}>
-            {t.stories[0].link} <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        <figure className={styles.oneMedia}>
-          <Image
-            src="/images/crayon-design-office.jpg"
-            alt={t.gallery[0].alt}
-            fill
-            loading="eager"
-            sizes="(max-width: 900px) 100vw, 66vw"
-          />
-          <figcaption>{t.stories[0].caption}</figcaption>
-        </figure>
-      </section>
-
-      {/* 02 — the photograph runs off the right edge and the type sits on it. */}
-      <section className={styles.storyTwo}>
-        <figure className={styles.twoMedia}>
-          <Image
-            src="/images/crayon-warehouse.jpg"
-            alt={t.stockAlt}
-            fill
-            loading="eager"
-            sizes="(max-width: 900px) 100vw, 84vw"
-          />
-        </figure>
-
-        <div className={styles.twoCard}>
-          <p className={styles.index}>{t.stories[1].index}</p>
-          <Reveal mask>
-            <h2>
-              {t.stories[1].title[0]}
-              <br />
-              {t.stories[1].title[1]}
-            </h2>
-          </Reveal>
-          <p className={styles.body}>{t.businessHead.lead}</p>
-          <Link className={styles.textLink} href={to("/fabrics/cotton")}>
-            {t.stories[1].link} <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        <p className={styles.twoCaption}>{t.stories[1].caption}</p>
-      </section>
-
-      {/* 03 — the type pins while the photograph travels past it. */}
-      <section className={styles.storyThree}>
-        <div className={styles.threeCopy}>
-          <p className={styles.index}>{t.stories[2].index}</p>
-          <Reveal mask>
-            <h2>
-              {t.stories[2].title[0]}
-              <br />
-              {t.stories[2].title[1]}
-            </h2>
-          </Reveal>
-          <p className={styles.body}>{t.capability.body}</p>
-          <Link className={styles.textLink} href={to("/studio")}>
-            {t.stories[2].link} <span aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        <figure className={styles.threeMedia}>
-          <Image
-            src="/images/crayon-designroom-team.jpg"
-            alt={t.gallery[0].alt}
-            fill
-            loading="eager"
-            sizes="(max-width: 900px) 100vw, 50vw"
-          />
-          <figcaption>{t.stories[2].caption}</figcaption>
-        </figure>
-      </section>
-
-      {/* Who the shop is for — the same two promises the guide hub makes. */}
-      <section className={styles.audience}>
-        <SectionTitle lines={t.sectionTitles.audience} />
-        <p className={styles.audienceLead}>{t.audienceLead}</p>
-        <div className={styles.audienceGrid}>
-          {audiences.map((a, i) => (
-            <Reveal className={styles.audienceCol} delay={i * 40} key={a.id}>
-              <span className={styles.audienceEn}>{a.en}</span>
-              <h3 className={styles.audienceTitle}>{pick(a.title, lang)}</h3>
-              <ul className={styles.audienceList}>
-                {a.points.map((p) => (
-                  <li key={p.en}>{pick(p, lang)}</li>
-                ))}
-              </ul>
-              <div className={styles.audienceLinks}>
-                {a.links.map((l) => (
-                  <Link className={styles.textLink} href={to(l.href)} key={l.href}>
-                    {pick(l.label, lang)} <span aria-hidden="true">→</span>
-                  </Link>
-                ))}
-                {a.id === "personal" && info.storeUrl ? (
-                  <a className={styles.textLink} href={info.storeUrl} target="_blank" rel="noreferrer">
-                    {d.guide.store} <span aria-hidden="true">↗</span>
-                  </a>
-                ) : null}
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* Printing — the methods, against the plant. */}
-      <section className={styles.printing}>
-        <div className={styles.printingHead}>
-          <SectionTitle lines={t.printing.title} className={styles.titleLight} />
-          <div className={styles.printingCopy}>
-            <Reveal mask>
-              <h3>{t.printing.headline}</h3>
-            </Reveal>
-            <p>{t.printing.body}</p>
-            <ul className={styles.methods}>
-              {t.printing.methods.map((m) => (
-                <li key={m}>{m}</li>
-              ))}
-            </ul>
+          <div className={styles.cards}>
+            {c.business.items.map((item, i) => (
+              <Reveal delay={i * 40} key={item.en}>
+                <Link className={styles.card} href={to(item.href)}>
+                  <span className={styles.cardMedia}>
+                    <Image src={`/images/${item.image}.jpg`} alt="" fill sizes="(max-width: 900px) 100vw, 33vw" />
+                  </span>
+                  <span className={styles.cardBody}>
+                    <Eyebrow>{item.en}</Eyebrow>
+                    <span className={styles.cardTitle}>{item.title}</span>
+                    <span className={styles.cardText}>{item.body}</span>
+                    <span className={styles.cardMore}>
+                      {c.business.more} <span aria-hidden="true">→</span>
+                    </span>
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
           </div>
         </div>
+      </section>
 
-        <div className={styles.printingGrid}>
-          {[
-            "/images/crayon-print-rotary.jpg",
-            "/images/crayon-print-table.jpg",
-            "/images/crayon-print-color.jpg",
-          ].map((src, i) => (
-            <figure key={src}>
-              <Image
-                src={src}
-                alt={t.printing.alts[i]}
-                fill
-                sizes="(max-width: 900px) 100vw, 33vw"
-              />
-              <figcaption>{t.printing.captions[i]}</figcaption>
-            </figure>
-          ))}
+      {/* Numbers — dark band. */}
+      <section className={styles.numbers}>
+        <div className={`container ${styles.numbersInner}`}>
+          <Reveal>
+            <Eyebrow light>{c.numbers.en}</Eyebrow>
+            <h2 className={styles.h2Light}>{c.numbers.title}</h2>
+          </Reveal>
+          <div className={styles.stats}>
+            {c.numbers.items.map((s, i) => (
+              <Reveal className={styles.stat} delay={i * 40} key={s.label}>
+                <span className={styles.statValue}>{s.value}</span>
+                <span className={styles.statLabel}>{s.label}</span>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* The fabric branches, as an index. These are the pages search traffic
-          lands on, so the home page has to link every one of them. */}
-      <section className={styles.fabricIndex}>
-        <SectionTitle lines={t.sectionTitles.index} />
-        <Reveal className={styles.fabricHead} mask>
-          <p className={styles.indexLabel}>{t.indexLabel}</p>
-          <p className={styles.fabricLead}>{t.indexTitle}</p>
-        </Reveal>
-
-        <ul className={styles.fabricList}>
-          {fabricCategories.map((c, i) => (
-            <li key={c.slug}>
-              <Link className={styles.fabricRow} href={to(categoryPath(c))}>
-                <span className={styles.fabricNum}>
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className={styles.fabricName}>{pick(c.nav, lang)}</span>
-                <span className={styles.fabricGroups}>
-                  {c.groups
-                    .slice(0, 5)
-                    .map((g) => pick(g.name, lang))
-                    .join(" · ")}
-                </span>
-                <span className={styles.fabricArrow} aria-hidden="true">
-                  →
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      {/* Fabrics — the five branches. */}
+      <section className={styles.block}>
+        <div className="container">
+          <Reveal className={styles.rowHead}>
+            <div>
+              <Eyebrow>{c.fabrics.en}</Eyebrow>
+              <h2 className={styles.h2}>{c.fabrics.title}</h2>
+            </div>
+            <Link className="btn btn-ghost" href={to("/fabrics/cotton")}>
+              {c.fabrics.cta} <span aria-hidden="true">→</span>
+            </Link>
+          </Reveal>
+          <div className={styles.products}>
+            {fabricCategories.map((cat, i) => (
+              <Reveal delay={i * 30} key={cat.slug}>
+                <Link className={styles.product} href={to(categoryPath(cat))}>
+                  <span className={styles.productMedia}>
+                    <Image
+                      src={`/images/${categoryImage[cat.slug] ?? "crayon-print-table"}.jpg`}
+                      alt=""
+                      fill
+                      sizes="(max-width: 900px) 50vw, 20vw"
+                    />
+                  </span>
+                  <span className={styles.productName}>{pick(cat.nav, lang)}</span>
+                  <span className={styles.productLabel}>{cat.label.en}</span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section className={styles.closing}>
-        <p>{t.closingEyebrow}</p>
-        <h2>{t.closingHeadline}</h2>
-        <div className={styles.closingFoot}>
-          {/* Where the cloth goes — one quiet line instead of its own band. */}
-          <p className={styles.closingRoute}>
-            <span>{t.routeLabel}</span>
-            <span>SEOUL → {destinations.join(" · ")}</span>
+      {/* Vision — a full-width photograph with the studio's promise. */}
+      <section className={styles.vision}>
+        <Image src="/images/crayon-designroom-desks.jpg" alt="" fill sizes="100vw" />
+        <div className={styles.visionScrim} />
+        <Reveal className={styles.visionCopy}>
+          <Eyebrow light>{c.vision.en}</Eyebrow>
+          <p className={styles.visionTitle}>
+            {c.vision.title[0]}
+            <br />
+            {c.vision.title[1]}
           </p>
-          <Link className={styles.closingAction} href={to("/contact")}>
-            {t.closingAction}
-            <span aria-hidden="true">→</span>
+          <p className={styles.visionBody}>{c.vision.body}</p>
+          <Link className="btn btn-invert" href={to("/studio")}>
+            {c.vision.cta} <span aria-hidden="true">→</span>
           </Link>
+        </Reveal>
+      </section>
+
+      {/* Guide — four quiet rows. */}
+      <section className={styles.block}>
+        <div className={`container ${styles.twoCol}`}>
+          <Reveal>
+            <Eyebrow>{c.guide.en}</Eyebrow>
+            <h2 className={styles.h2}>{c.guide.title}</h2>
+            <p className={styles.lead}>{c.guide.lead}</p>
+          </Reveal>
+          <Reveal className={styles.links} delay={40}>
+            {guidePages.map((g) => (
+              <Link className={styles.linkRow} href={to(g.href)} key={g.slug}>
+                <span>
+                  {pick(g.title, lang)}
+                  <span className={styles.linkNote}>{pick(g.summary, lang)}</span>
+                </span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Contact band. */}
+      <section className={styles.contactBand}>
+        <div className={`container ${styles.contactInner}`}>
+          <Reveal>
+            <Eyebrow>{c.contact.en}</Eyebrow>
+            <p className={styles.contactTitle}>{c.contact.title}</p>
+          </Reveal>
+          <Reveal className={styles.contactActions} delay={40}>
+            <Link className="btn btn-solid" href={to("/contact")}>
+              {c.contact.cta} <span aria-hidden="true">→</span>
+            </Link>
+            <a className="btn btn-ghost" href={d.links.tel}>
+              {d.phone.tel}
+            </a>
+            {info.kakaoUrl ? (
+              <a className="btn btn-ghost" href={info.kakaoUrl} target="_blank" rel="noreferrer">
+                {d.guide.kakao}
+              </a>
+            ) : null}
+          </Reveal>
         </div>
       </section>
     </>

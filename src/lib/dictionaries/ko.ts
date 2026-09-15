@@ -122,6 +122,7 @@ export function ko(info: SiteInfo) {
     header: {
       navAria: "주요 메뉴",
       fabrics: "원단",
+      cta: "문의하기",
       fullNavAria: "전체 메뉴",
       open: "메뉴 열기",
       close: "메뉴 닫기",
@@ -228,6 +229,40 @@ export function ko(info: SiteInfo) {
         "면·레이온·폴리에스터·다이마루·기모까지, 서울 동대문에서 30년간 나염 원단을 개발해 온 크레용. 자체 디자인 제도실의 독창적인 패턴으로 상품의 가능성을 넓힙니다.",
       heroCtaContact: "원단 · 패턴 상담하기",
       heroCtaCollection: "원단 종류 보기",
+      corp: {
+        keyVisual: { en: "DONGDAEMUN · SEOUL", title: ["동대문종합시장에서 30년,", "직접 그린 패턴으로 원단을 만듭니다."] },
+        business: {
+          en: "BUSINESS",
+          title: "세 가지 일을 합니다.",
+          lead: "원단을 공급하고, 패턴을 직접 개발하고, 의뢰받은 도안을 나염합니다. 세 가지가 한 곳에서 이어집니다.",
+          more: "자세히 보기",
+          items: [
+            { en: "FABRIC SUPPLY", title: "원단 공급", body: "면·레이온·폴리에스터 전 소재를 롤 단위로. 시즌 신상품과 상시 재고.", href: "/fabrics/cotton", image: "crayon-warehouse" },
+            { en: "DESIGN STUDIO", title: "디자인 개발", body: "자체 디자인실·제도실에서 독자 개발한 패턴. 카피가 아닌 오리지널.", href: "/studio", image: "crayon-design-office" },
+            { en: "CUSTOM PRINTING", title: "커스텀 나염", body: "도수분리·리피트·시직·본생산까지 원스톱. DTP · 로터리 · 반응성 · 안료.", href: "/guide/custom", image: "crayon-print-bed" },
+          ],
+        },
+        numbers: {
+          en: "CRAYON IN NUMBERS",
+          title: "숫자로 보는 크레용",
+          items: [
+            { value: "30", label: "년 · 동대문 현장 경험" },
+            { value: "1,000+", label: "누적 개발 디자인" },
+            { value: "5", label: "가지 나염 기법" },
+            { value: "4", label: "개 수출 권역" },
+          ],
+        },
+        fabrics: { en: "FABRICS", title: "원단 카테고리", cta: "전체 원단 보기" },
+        vision: {
+          en: "DESIGN CAPABILITY",
+          title: ["디자인이 다르면", "원단의 가치도 달라집니다."],
+          body: "자체 디자인실과 제도실을 직접 운영하며 도수분리·리피트·의뢰 디자인까지 원스톱으로 진행합니다.",
+          cta: "디자인 개발 보기",
+        },
+        guide: { en: "GUIDE", title: "처음 오셨나요?", lead: "브랜드도, 개인 제작자도 같은 원단을 씁니다." },
+        contact: { en: "CONTACT", title: "찾고 계신 원단을 함께 이야기해 보세요.", cta: "문의하기" },
+      },
+
       heroWordmark: "CRAYON",
       heroTagline: ["30년의 감각으로,", "원단의 다음을 만듭니다."],
       heroSub: "서울 동대문에서 시작된 텍스타일 디자인 스튜디오",

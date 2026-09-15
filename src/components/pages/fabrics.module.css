@@ -1,44 +1,35 @@
 /* -- second-level jump bar ------------------------------------------------ */
 
 .subnav {
-  position: sticky;
-  top: var(--header-h);
-  z-index: 40;
-  background: var(--surface);
   border-bottom: 1px solid var(--line);
+  background: var(--paper);
 }
 
 .subnavInner {
   display: flex;
   align-items: center;
-  gap: clamp(16px, 2.4vw, 32px);
-  padding-block: 14px;
+  gap: clamp(20px, 2.6vw, 40px);
 }
 
 .subnavLabel {
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-  line-height: 1;
+  display: none;
 }
 
 .subnavInner ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px clamp(14px, 1.8vw, 26px);
+  gap: 0 clamp(20px, 2.6vw, 40px);
   min-width: 0;
 }
 
 .subnavInner a {
-  font-size: 0.9375rem;
-  font-weight: 500;
+  display: inline-block;
+  padding: 20px 0 18px;
+  font-size: 1rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--body);
-  padding-bottom: 2px;
-  border-bottom: 1px solid transparent;
+  color: var(--muted);
+  border-bottom: 2px solid transparent;
   transition:
     color 0.3s var(--ease),
     border-color 0.3s var(--ease);
@@ -50,15 +41,14 @@
 }
 
 @media (max-width: 700px) {
-  .subnavInner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+  .subnavInner ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0 22px;
   }
 
-  /* The bar would eat half a phone screen; let it scroll out instead. */
-  .subnav {
-    position: static;
+  .subnavInner a {
+    white-space: nowrap;
   }
 }
 
@@ -79,10 +69,8 @@
    gap background showing as grey blocks. */
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: 1px;
-  background: var(--line);
-  border-block: 1px solid var(--line);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: clamp(32px, 3.4vw, 48px) clamp(20px, 2.4vw, 32px);
 }
 
 .item {
@@ -90,16 +78,24 @@
   flex-direction: column;
   align-items: flex-start;
   height: 100%;
-  gap: 12px;
-  padding: clamp(22px, 2.6vw, 32px) clamp(18px, 2.2vw, 28px);
-  background: var(--paper);
+  gap: 8px;
+}
+
+/* Until the cloth is photographed, each item carries the branch's repeat
+   pattern as a swatch — honest about what it is, and still a picture. */
+.itemSwatch {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 10px;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
 }
 
 .itemName {
-  font-size: clamp(1rem, 1.4vw, 1.125rem);
+  font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 1.45;
+  line-height: 1.4;
   color: var(--ink);
 }
 
