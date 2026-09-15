@@ -123,11 +123,17 @@ button {
 }
 
 .section {
-  padding-block: clamp(76px, 8.5vw, 136px);
+  padding-block: clamp(96px, 10.5vw, 176px);
 }
 
 .section-tight {
-  padding-block: clamp(48px, 6vw, 88px);
+  padding-block: clamp(56px, 7vw, 108px);
+}
+
+/* Phone snapshots from three rooms and two seasons: one quiet grade pulls
+   them into a single set. The logo images sit outside <main>, untouched. */
+main img {
+  filter: saturate(0.86) contrast(1.02);
 }
 
 .rule-top {

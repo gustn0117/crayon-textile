@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -47,12 +46,11 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
   const overHero = pathname === home && !isScrolled && !isOpen;
 
   useEffect(() => {
-    if (pathname !== home) return;
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    const onScroll = () => setIsScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [pathname, home]);
+  }, [pathname]);
 
   useEffect(() => {
     document.body.classList.toggle("menu-open", isOpen);
@@ -107,7 +105,11 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
   };
 
   return (
-    <header className={overHero ? `${styles.header} ${styles.overHero}` : styles.header}>
+    <header
+      className={[styles.header, overHero ? styles.overHero : "", isScrolled || isOpen ? styles.scrolled : ""]
+        .filter(Boolean)
+        .join(" ")}
+    >
       <div className={styles.inner}>
         <nav className={styles.nav} aria-label={d.header.navAria}>
           <div className={`${styles.group} ${styles.groupLeft}`}>
@@ -174,15 +176,10 @@ export function SiteHeader({ lang, d }: { lang: Locale; d: Dictionary }) {
             })}
           </div>
 
-          <Link className={styles.brand} href={home}>
-            <Image
-              className={styles.logo}
-              src="/images/logo-crayon.png"
-              alt={d.brand.ko}
-              width={760}
-              height={341}
-              priority
-            />
+          {/* The brand is set in type, not the purple mark: on a monochrome page
+              the logo image read as a sticker. The mark lives on in the footer. */}
+          <Link className={styles.brand} href={home} aria-label={d.brand.ko}>
+            <span className={styles.wordmark}>CRAYON</span>
           </Link>
 
           <div className={`${styles.group} ${styles.groupRight}`}>
