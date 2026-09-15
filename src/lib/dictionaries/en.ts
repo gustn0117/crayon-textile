@@ -234,6 +234,10 @@ export function en(info: SiteInfo): Dictionary {
       heroCtaContact: "Talk to us about fabric",
       heroCtaCollection: "Browse the fabrics",
       corp: {
+        split: {
+          b2b: { tag: "B2B", en: "FOR BRANDS & MANUFACTURERS", title: "Brands & manufacturers", body: "Roll supply, seasonal arrivals, original patterns and custom printing.", cta: "Wholesale guide", href: "/guide/order#wholesale" },
+          b2c: { tag: "B2C", en: "FOR INDIVIDUALS & SMALL STUDIOS", title: "Individuals & small studios", body: "See the cloth in our Dongdaemun shop and buy a small cut. First time is fine.", cta: "Small-quantity guide", href: "/guide/order#retail" },
+        },
         keyVisual: { en: "DONGDAEMUN · SEOUL", title: ["Thirty years in Dongdaemun Market,", "printing cloth from patterns we draw ourselves."] },
         business: {
           en: "BUSINESS",

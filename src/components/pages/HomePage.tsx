@@ -8,15 +8,6 @@ import type { Dictionary } from "@/lib/dictionaries";
 import type { SiteInfo } from "@/lib/siteInfo";
 import styles from "./home.module.css";
 
-/* One photograph per fabric branch until the cloth itself is photographed. */
-const categoryImage: Record<string, string> = {
-  new: "crayon-print-color",
-  cotton: "crayon-print-table",
-  polyester: "crayon-print-rotary",
-  use: "crayon-store",
-  design: "crayon-designroom-team",
-};
-
 function Eyebrow({ children, light }: { children: string; light?: boolean }) {
   return <p className={light ? `${styles.eyebrow} ${styles.eyebrowLight}` : styles.eyebrow}>{children}</p>;
 }
@@ -65,6 +56,28 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
             ))}
           </p>
         </div>
+      </section>
+
+      {/* Two doors: B2B and B2C. The first choice a visitor makes. */}
+      <section className={styles.split} aria-label="B2B · B2C">
+        {(["b2b", "b2c"] as const).map((key, i) => {
+          const door = c.split[key];
+          return (
+            <Link className={styles.door} href={to(door.href)} key={key}>
+              <Image src={key === "b2b" ? "/images/crayon-warehouse.jpg" : "/images/crayon-store.jpg"} alt="" fill sizes="50vw" />
+              <span className={styles.doorScrim} />
+              <Reveal className={styles.doorCopy} delay={i * 40}>
+                <span className={styles.doorTag}>{door.tag}</span>
+                <span className={styles.eyebrow + " " + styles.eyebrowLight}>{door.en}</span>
+                <span className={styles.doorTitle}>{door.title}</span>
+                <span className={styles.doorBody}>{door.body}</span>
+                <span className={styles.doorCta}>
+                  {door.cta} <span aria-hidden="true">→</span>
+                </span>
+              </Reveal>
+            </Link>
+          );
+        })}
       </section>
 
       {/* Key visual — one wide photograph, one sentence about the company. */}
@@ -145,14 +158,14 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
             {fabricCategories.map((cat, i) => (
               <Reveal delay={i * 30} key={cat.slug}>
                 <Link className={styles.product} href={to(categoryPath(cat))}>
-                  <span className={styles.productMedia}>
-                    <Image
-                      src={`/images/${categoryImage[cat.slug] ?? "crayon-print-table"}.jpg`}
-                      alt=""
-                      fill
-                      sizes="(max-width: 900px) 50vw, 20vw"
-                    />
-                  </span>
+                  {/* Photograph slot: set `image` on the category in lib/fabrics.ts. */}
+                  {cat.image ? (
+                    <span className={styles.productMedia}>
+                      <Image src={cat.image} alt="" fill sizes="(max-width: 900px) 50vw, 20vw" />
+                    </span>
+                  ) : (
+                    <span className={`${styles.productMedia} hatch`} />
+                  )}
                   <span className={styles.productName}>{pick(cat.nav, lang)}</span>
                   <span className={styles.productLabel}>{cat.label.en}</span>
                 </Link>

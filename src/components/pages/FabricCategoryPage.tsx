@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { PageIntro } from "@/components/PageIntro";
@@ -16,8 +17,6 @@ const heroes: Record<string, { src: string; position: string }> = {
   use: { src: "/images/crayon-store-wide.jpg", position: "center 46%" },
   design: { src: "/images/crayon-design-desk.jpg", position: "center 55%" },
 };
-
-const swatches = ["swatch-women", "swatch-kids", "swatch-casual", "swatch-home"];
 
 export function FabricCategoryPage({
   lang,
@@ -76,7 +75,14 @@ export function FabricCategoryPage({
                 {group.items.map((item, j) => (
                   <li key={pick(item.name, "ko")}>
                     <Reveal className={styles.item} delay={j * 25}>
-                      <span className={`${styles.itemSwatch} ${swatches[(i + j) % swatches.length]}`} aria-hidden="true" />
+                      {/* Photograph slot: set `image` on the item in lib/fabrics.ts. */}
+                      {item.image ? (
+                        <span className={styles.itemMedia}>
+                          <Image src={item.image} alt="" fill sizes="(max-width: 900px) 100vw, 25vw" />
+                        </span>
+                      ) : (
+                        <span className={`${styles.itemSwatch} hatch`} aria-hidden="true" />
+                      )}
                       <h3 className={styles.itemName}>{pick(item.name, lang)}</h3>
                       <p className={styles.itemNote}>{pick(item.note, lang)}</p>
                       <Link className={styles.itemLink} href={localePath(lang, "/contact")}>

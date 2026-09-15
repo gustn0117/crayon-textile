@@ -230,6 +230,10 @@ export function ko(info: SiteInfo) {
       heroCtaContact: "원단 · 패턴 상담하기",
       heroCtaCollection: "원단 종류 보기",
       corp: {
+        split: {
+          b2b: { tag: "B2B", en: "FOR BRANDS & MANUFACTURERS", title: "브랜드 · 제조사", body: "롤 단위 공급, 시즌 신상품, 독자 개발 패턴과 커스텀 나염까지.", cta: "도매 안내 보기", href: "/guide/order#wholesale" },
+          b2c: { tag: "B2C", en: "FOR INDIVIDUALS & SMALL STUDIOS", title: "개인 · 소규모 제작자", body: "동대문 매장에서 실물을 보고 소량으로. 처음이라도 괜찮습니다.", cta: "소량 구매 안내 보기", href: "/guide/order#retail" },
+        },
         keyVisual: { en: "DONGDAEMUN · SEOUL", title: ["동대문종합시장에서 30년,", "직접 그린 패턴으로 원단을 만듭니다."] },
         business: {
           en: "BUSINESS",

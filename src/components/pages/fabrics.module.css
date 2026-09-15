@@ -83,12 +83,17 @@
 
 /* Until the cloth is photographed, each item carries the branch's repeat
    pattern as a swatch — honest about what it is, and still a picture. */
-.itemSwatch {
+.itemSwatch,
+.itemMedia {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
   margin-bottom: 10px;
-  background-color: var(--surface);
-  border: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.itemMedia img {
+  object-fit: cover;
 }
 
 .itemName {

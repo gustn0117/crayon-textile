@@ -5,7 +5,9 @@ import { pick, type Bi } from "./bi";
 
 export type { Bi };
 export { pick };
-export type FabricItem = { name: Bi; note: Bi };
+/* `image` is a path under /public — e.g. "/images/fabrics/cotton-80s.jpg".
+   Until one is set, the page shows a hatched placeholder. */
+export type FabricItem = { name: Bi; note: Bi; image?: string };
 export type FabricGroup = { slug: string; name: Bi; items: FabricItem[] };
 
 export type FabricCategory = {
@@ -18,6 +20,8 @@ export type FabricCategory = {
   lead: Bi;
   meta: Bi;
   keywords: { ko: string[]; en: string[] };
+  /** Card photograph on the home page. Hatched placeholder until set. */
+  image?: string;
   /** Appended to each group name to build its H2 — "레이온" + " 나염 원단". */
   headingSuffix: Bi;
   note?: Bi;
