@@ -34,6 +34,7 @@ export function categoryPath(c: FabricCategory) {
 
 const cotton: FabricCategory = {
   slug: "cotton",
+  image: "/images/fabrics/cotton-60s.jpg",
   nav: { ko: "면·셀룰로오스", en: "Cotton & Cellulose" },
   label: { ko: "COTTON · CELLULOSE", en: "COTTON · CELLULOSE" },
   title: {
@@ -80,6 +81,7 @@ const cotton: FabricCategory = {
       items: [
         {
           name: { ko: "면 80수(80s) 나염 원단", en: "Cotton 80s printed fabric" },
+          image: "/images/fabrics/cotton-80s.jpg",
           note: {
             ko: "가장 얇고 부드러운 번수. 블라우스·원피스·아동복 안감에 주로 씁니다.",
             en: "The finest, softest count — blouses, dresses and childrenswear linings.",
@@ -87,6 +89,7 @@ const cotton: FabricCategory = {
         },
         {
           name: { ko: "면 60수(60s) 나염 원단", en: "Cotton 60s printed fabric" },
+          image: "/images/fabrics/cotton-60s.jpg",
           note: {
             ko: "가장 폭넓게 쓰이는 번수. 셔츠와 원피스에 무난하게 맞습니다.",
             en: "The most widely used count — sits comfortably in shirts and dresses.",
@@ -94,6 +97,7 @@ const cotton: FabricCategory = {
         },
         {
           name: { ko: "면 40수(40s) 나염 원단", en: "Cotton 40s printed fabric" },
+          image: "/images/fabrics/cotton-40s.jpg",
           note: {
             ko: "적당한 두께와 힘. 셔츠, 팬츠, 아동복 겉감에 두루 쓰입니다.",
             en: "Moderate weight with body — shirts, trousers and children's outerwear.",
@@ -101,6 +105,7 @@ const cotton: FabricCategory = {
         },
         {
           name: { ko: "면 10수(10s) 나염 원단", en: "Cotton 10s printed fabric" },
+          image: "/images/fabrics/cotton-10s.jpg",
           note: {
             ko: "두껍고 튼튼한 번수. 가방, 쿠션, 홈패브릭 쪽에 적합합니다.",
             en: "Heavy and hard-wearing — bags, cushions and home fabric.",
@@ -114,6 +119,7 @@ const cotton: FabricCategory = {
       items: [
         {
           name: { ko: "레이온 나염 원단", en: "Rayon printed fabric" },
+          image: "/images/fabrics/rayon.jpg",
           note: {
             ko: "떨어짐이 좋고 발색이 깊습니다. 여성복 원피스와 블라우스에 잘 맞습니다.",
             en: "Fluid drape and deep colour — suited to women's dresses and blouses.",
@@ -121,6 +127,7 @@ const cotton: FabricCategory = {
         },
         {
           name: { ko: "RN(레이온·나일론) 나염 원단", en: "RN (rayon·nylon) printed fabric" },
+          image: "/images/fabrics/rayon-nylon.jpg",
           note: {
             ko: "레이온의 촉감에 나일론의 강도를 더한 혼방입니다.",
             en: "Rayon's hand with nylon's strength — a blend for pieces that take wear.",
@@ -134,6 +141,7 @@ const cotton: FabricCategory = {
       items: [
         {
           name: { ko: "CR 나염 원단", en: "CR printed fabric" },
+          image: "/images/fabrics/cotton-rayon.jpg",
           note: {
             ko: "면의 안정감과 레이온의 촉감을 함께 가져가는 혼방입니다.",
             en: "A blend that keeps cotton's stability and rayon's touch.",
@@ -147,6 +155,7 @@ const cotton: FabricCategory = {
       items: [
         {
           name: { ko: "면 다이마루 나염 원단", en: "Cotton interlock knit print" },
+          image: "/images/fabrics/cotton-interlock.jpg",
           note: {
             ko: "신축성이 있는 편직 원단. 티셔츠와 아동복에 많이 나갑니다.",
             en: "A knit with stretch — heavily used for tees and childrenswear.",
@@ -160,6 +169,7 @@ const cotton: FabricCategory = {
       items: [
         {
           name: { ko: "면 골덴 나염 원단", en: "Cotton corduroy print" },
+          image: "/images/fabrics/cotton-corduroy.jpg",
           note: {
             ko: "결이 있는 표면 위에 무늬를 얹습니다. 가을·겨울 아이템에 씁니다.",
             en: "Pattern laid over a ribbed surface — an autumn and winter cloth.",
@@ -173,6 +183,7 @@ const cotton: FabricCategory = {
       items: [
         {
           name: { ko: "겨울 기모 나염 원단", en: "Brushed winter print" },
+          image: "/images/fabrics/cotton-brushed.jpg",
           note: {
             ko: "뒷면을 기모 처리해 보온성을 올린 겨울용 원단입니다.",
             en: "Brushed on the reverse for warmth — a winter-weight fabric.",
@@ -180,6 +191,7 @@ const cotton: FabricCategory = {
         },
         {
           name: { ko: "본딩용 나염 원단", en: "Fabric for bonding" },
+          image: "/images/fabrics/cotton-bonded.jpg",
           note: {
             ko: "안감과 접합해 두께와 보온을 확보하는 겨울 의류용입니다.",
             en: "Bonded to a backing for thickness and warmth in winter garments.",
@@ -192,6 +204,7 @@ const cotton: FabricCategory = {
 
 const polyester: FabricCategory = {
   slug: "polyester",
+  image: "/images/fabrics/polyester-satin.jpg",
   nav: { ko: "폴리에스터", en: "Polyester" },
   label: { ko: "POLYESTER", en: "POLYESTER" },
   title: { ko: "폴리에스터 나염 원단", en: "Printed polyester fabric" },
@@ -238,6 +251,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "QDC 나염 원단", en: "QDC printed fabric" },
+          image: "/images/fabrics/polyester-qdc.jpg",
           note: {
             ko: "가볍고 형태가 잘 잡혀 블라우스와 원피스에 폭넓게 쓰입니다.",
             en: "Light with good form — a staple for blouses and dresses.",
@@ -251,6 +265,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "폴리 새틴 나염 원단", en: "Polyester satin print" },
+          image: "/images/fabrics/polyester-satin.jpg",
           note: {
             ko: "광택이 있는 표면. 발색이 선명하게 올라옵니다.",
             en: "A lustrous face that lifts colour sharply.",
@@ -264,6 +279,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "쉬폰 프린트 원단", en: "Chiffon print fabric" },
+          image: "/images/fabrics/polyester-chiffon.jpg",
           note: {
             ko: "얇고 비치는 원단. 레이어드와 여름 블라우스에 씁니다.",
             en: "Sheer and light — layering pieces and summer blouses.",
@@ -277,6 +293,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "메쉬 프린트 원단", en: "Mesh print fabric" },
+          image: "/images/fabrics/polyester-mesh.jpg",
           note: {
             ko: "망 구조로 통기성이 좋습니다. 배색과 겹침 효과를 노릴 때 씁니다.",
             en: "An open structure that breathes, and layers for colour effects.",
@@ -290,6 +307,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "아문젠 나염 원단", en: "Amunzen printed fabric" },
+          image: "/images/fabrics/polyester-amunzen.jpg",
           note: {
             ko: "잔주름 같은 표면 조직으로 차분한 인상을 냅니다.",
             en: "A finely crinkled surface that reads calm rather than shiny.",
@@ -303,6 +321,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "올피치 나염 원단", en: "All-peach printed fabric" },
+          image: "/images/fabrics/polyester-all-peach.jpg",
           note: {
             ko: "표면을 기모 처리해 부드러운 촉감을 낸 원단입니다.",
             en: "Peach-finished on the surface for a soft, matte hand.",
@@ -316,6 +335,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "CDC 나염 원단", en: "CDC printed fabric" },
+          image: "/images/fabrics/polyester-cdc.jpg",
           note: {
             ko: "적당한 무게와 떨어짐. 원피스와 셋업에 두루 맞습니다.",
             en: "Weight and drape in balance — dresses and co-ord sets.",
@@ -329,6 +349,7 @@ const polyester: FabricCategory = {
       items: [
         {
           name: { ko: "여성복용 폴리 원단", en: "Polyester for womenswear" },
+          image: "/images/fabrics/polyester-womenswear.jpg",
           note: {
             ko: "시즌과 아이템에 맞춰 적합한 폴리 베이스를 함께 고릅니다.",
             en: "We pick the base together, against the season and the garment.",
@@ -336,6 +357,7 @@ const polyester: FabricCategory = {
         },
         {
           name: { ko: "원피스용 폴리 원단", en: "Polyester for dresses" },
+          image: "/images/fabrics/polyester-dress.jpg",
           note: {
             ko: "떨어짐과 무게를 기준으로 후보를 좁혀 제안합니다.",
             en: "Narrowed down by drape and weight before we propose.",
@@ -343,6 +365,7 @@ const polyester: FabricCategory = {
         },
         {
           name: { ko: "블라우스용 폴리 원단", en: "Polyester for blouses" },
+          image: "/images/fabrics/polyester-blouse.jpg",
           note: {
             ko: "비침과 다림질 편의까지 고려해 안내해 드립니다.",
             en: "Chosen with opacity and ease of pressing in mind.",
@@ -355,6 +378,7 @@ const polyester: FabricCategory = {
 
 const use: FabricCategory = {
   slug: "use",
+  image: "/images/fabrics/use-womens-dress.jpg",
   nav: { ko: "용도별 원단", en: "Fabric by use" },
   label: { ko: "BY USE", en: "BY USE" },
   title: { ko: "용도별 나염 원단", en: "Printed fabric by use" },
@@ -395,6 +419,7 @@ const use: FabricCategory = {
       items: [
         {
           name: { ko: "여성 블라우스 원단", en: "Fabric for women's blouses" },
+          image: "/images/fabrics/use-womens-blouse.jpg",
           note: {
             ko: "면 60수·80수, QDC, 쉬폰 쪽에서 주로 후보를 잡습니다.",
             en: "Usually drawn from cotton 60s and 80s, QDC and chiffon.",
@@ -402,6 +427,7 @@ const use: FabricCategory = {
         },
         {
           name: { ko: "여성 원피스 원단", en: "Fabric for women's dresses" },
+          image: "/images/fabrics/use-womens-dress.jpg",
           note: {
             ko: "떨어짐이 중요해 레이온, CDC, 새틴을 자주 제안합니다.",
             en: "Drape leads here — rayon, CDC and satin come up most.",
@@ -409,6 +435,7 @@ const use: FabricCategory = {
         },
         {
           name: { ko: "여성 바지 원단", en: "Fabric for women's trousers" },
+          image: "/images/fabrics/use-womens-trouser.jpg",
           note: {
             ko: "형태 유지가 필요해 면 40수 이상이나 혼방을 봅니다.",
             en: "Form matters, so cotton 40s and up, or a blend.",
@@ -422,6 +449,7 @@ const use: FabricCategory = {
       items: [
         {
           name: { ko: "아동복 나염 원단", en: "Printed childrenswear fabric" },
+          image: "/images/fabrics/use-kidswear.jpg",
           note: {
             ko: "촉감과 세탁 내구성을 함께 봅니다. 면과 다이마루가 중심입니다.",
             en: "Hand and wash durability together — mostly cotton and interlock.",
@@ -429,6 +457,7 @@ const use: FabricCategory = {
         },
         {
           name: { ko: "아동 바지 원단", en: "Fabric for children's trousers" },
+          image: "/images/fabrics/use-kids-trouser.jpg",
           note: {
             ko: "활동량을 견디도록 조금 두꺼운 번수로 잡습니다.",
             en: "A heavier count, set to take the wear children give it.",
@@ -442,6 +471,7 @@ const use: FabricCategory = {
       items: [
         {
           name: { ko: "남성 캐주얼 원단", en: "Men's casual fabric" },
+          image: "/images/fabrics/use-mens-casual.jpg",
           note: {
             ko: "셔츠와 팬츠에 맞는 면·혼방 위주로 제안합니다.",
             en: "Cotton and blends set against shirts and trousers.",
@@ -455,6 +485,7 @@ const use: FabricCategory = {
       items: [
         {
           name: { ko: "침구용 원단", en: "Bedding fabric" },
+          image: "/images/fabrics/use-bedding.jpg",
           note: {
             ko: "넓은 면적에 무늬가 반복되므로 리피트 설계가 중요합니다.",
             en: "Large areas mean the repeat has to be built carefully.",
@@ -462,6 +493,7 @@ const use: FabricCategory = {
         },
         {
           name: { ko: "쿠션용 원단", en: "Cushion fabric" },
+          image: "/images/fabrics/use-cushion.jpg",
           note: {
             ko: "두께가 필요해 면 10수 같은 굵은 번수를 주로 씁니다.",
             en: "Body is needed, so heavier counts such as cotton 10s.",
@@ -475,6 +507,7 @@ const use: FabricCategory = {
       items: [
         {
           name: { ko: "겨울 기모 원단", en: "Brushed winter fabric" },
+          image: "/images/fabrics/use-winter-brushed.jpg",
           note: {
             ko: "뒷면 기모로 보온을 확보한 원단입니다.",
             en: "Brushed on the reverse to hold warmth.",
@@ -482,6 +515,7 @@ const use: FabricCategory = {
         },
         {
           name: { ko: "본딩 겨울 의류 원단", en: "Bonded winter fabric" },
+          image: "/images/fabrics/use-winter-bonded.jpg",
           note: {
             ko: "접합으로 두께를 만들어 아우터와 겨울 아이템에 씁니다.",
             en: "Bonded for thickness — outerwear and winter pieces.",
@@ -495,6 +529,7 @@ const use: FabricCategory = {
       items: [
         {
           name: { ko: "캐주얼 셔츠 원단", en: "Casual shirt fabric" },
+          image: "/images/fabrics/use-casual-shirt.jpg",
           note: {
             ko: "일상복에 무리 없이 스며드는 밀도와 무늬로 잡습니다.",
             en: "Density and motif set to sit easily in everyday clothing.",
@@ -502,6 +537,7 @@ const use: FabricCategory = {
         },
         {
           name: { ko: "캐주얼 팬츠 원단", en: "Casual trouser fabric" },
+          image: "/images/fabrics/use-casual-trouser.jpg",
           note: {
             ko: "면 다이마루, 골덴 등 계절에 맞는 베이스를 고릅니다.",
             en: "Interlock, corduroy and other bases chosen by season.",
@@ -514,6 +550,7 @@ const use: FabricCategory = {
 
 const design: FabricCategory = {
   slug: "design",
+  image: "/images/fabrics/design-floral-cotton.jpg",
   nav: { ko: "디자인별 원단", en: "Fabric by design" },
   label: { ko: "BY DESIGN", en: "BY DESIGN" },
   title: { ko: "디자인별 나염 원단", en: "Printed fabric by design" },
@@ -561,6 +598,7 @@ const design: FabricCategory = {
             ko: "면 60수 플라워 나염 원단 – 여성 블라우스·원피스용",
             en: "Cotton 60s floral print — women's blouses and dresses",
           },
+          image: "/images/fabrics/design-floral-cotton.jpg",
           note: {
             ko: "크레용에서 가장 많이 나가는 계열입니다. 밀도와 크기를 폭넓게 전개합니다.",
             en: "Our busiest family, developed across a wide range of scale and density.",
@@ -571,6 +609,7 @@ const design: FabricCategory = {
             ko: "레이온 플라워 나염 원단 – 원피스용",
             en: "Rayon floral print — dresses",
           },
+          image: "/images/fabrics/design-floral-rayon.jpg",
           note: {
             ko: "떨어짐이 좋아 큰 꽃무늬도 부담 없이 소화합니다.",
             en: "The drape carries a larger floral without weighing it down.",
@@ -587,6 +626,7 @@ const design: FabricCategory = {
             ko: "면 40수 스트라이프 나염 원단 – 셔츠·캐주얼용",
             en: "Cotton 40s stripe print — shirts and casual",
           },
+          image: "/images/fabrics/design-stripe.jpg",
           note: {
             ko: "굵기와 간격에 따라 인상이 크게 달라지는 계열입니다.",
             en: "Weight and interval change the impression more than anything.",
@@ -603,6 +643,7 @@ const design: FabricCategory = {
             ko: "면 다이마루 체크 나염 원단 – 아동복용",
             en: "Cotton interlock check print — childrenswear",
           },
+          image: "/images/fabrics/design-check.jpg",
           note: {
             ko: "아동복에서 가장 오래 사랑받는 무늬 계열입니다.",
             en: "The pattern family childrenswear keeps coming back to.",
@@ -619,6 +660,7 @@ const design: FabricCategory = {
             ko: "면 80수 도트 나염 원단 – 블라우스용",
             en: "Cotton 80s dot print — blouses",
           },
+          image: "/images/fabrics/design-dot.jpg",
           note: {
             ko: "크기를 줄이면 잔잔하게, 키우면 대담하게 읽힙니다.",
             en: "Small reads quiet; enlarged, the same dot turns bold.",
@@ -635,6 +677,7 @@ const design: FabricCategory = {
             ko: "아동 동물 나염 원단 – 아동복·홈패브릭용",
             en: "Children's animal print — childrenswear and home",
           },
+          image: "/images/fabrics/design-animal.jpg",
           note: {
             ko: "아동복과 침구 양쪽에서 꾸준히 찾는 계열입니다.",
             en: "Steadily asked for in both childrenswear and bedding.",
@@ -651,6 +694,7 @@ const design: FabricCategory = {
             ko: "폴리 기하학 나염 원단 – 원피스·셋업용",
             en: "Polyester geometric print — dresses and co-ords",
           },
+          image: "/images/fabrics/design-geometric.jpg",
           note: {
             ko: "반복 구조가 뚜렷해 리피트 설계가 특히 중요한 계열입니다.",
             en: "The structure is explicit, so the repeat has to be exact.",
@@ -667,6 +711,7 @@ const design: FabricCategory = {
             ko: "레이온 빈티지 나염 원단 – 여성복용",
             en: "Rayon vintage print — womenswear",
           },
+          image: "/images/fabrics/design-vintage.jpg",
           note: {
             ko: "채도를 낮춘 배색으로 오래된 원단의 인상을 냅니다.",
             en: "Muted colourways that carry the feel of an older cloth.",
@@ -683,6 +728,7 @@ const design: FabricCategory = {
             ko: "페이즐리 나염 원단 – 여성복·홈패브릭용",
             en: "Paisley print — womenswear and home fabric",
           },
+          image: "/images/fabrics/design-paisley.jpg",
           note: {
             ko: "시즌을 크게 타지 않아 오래 쓰이는 계열입니다.",
             en: "Barely seasonal, which is why it stays in the line for years.",
@@ -699,6 +745,7 @@ const design: FabricCategory = {
             ko: "아동 패턴 나염 원단 – 아동복 전용",
             en: "Children's pattern print — childrenswear",
           },
+          image: "/images/fabrics/design-kids.jpg",
           note: {
             ko: "밝은 배색과 자유로운 모티프로 전개합니다.",
             en: "Bright colourways and motifs that move freely.",
@@ -715,6 +762,7 @@ const design: FabricCategory = {
             ko: "시즌 나염 원단 – 봄·여름 / 가을·겨울",
             en: "Seasonal print — S/S and F/W",
           },
+          image: "/images/fabrics/design-season-fw.jpg",
           note: {
             ko: "시즌마다 새로 개발하는 디자인은 상담 시 보여드립니다.",
             en: "Newly developed each season — shown during consultation.",
@@ -728,6 +776,7 @@ const design: FabricCategory = {
 const season: FabricCategory = {
   slug: "new",
   path: "/new",
+  image: "/images/fabrics/new-fw-2026.jpg",
   nav: { ko: "신상품", en: "New" },
   label: { ko: "NEW FABRIC", en: "NEW FABRIC" },
   title: { ko: "신상품 · 시즌 원단", en: "New and seasonal fabric" },
@@ -768,6 +817,7 @@ const season: FabricCategory = {
       items: [
         {
           name: { ko: "2026 F/W 시즌 나염 원단", en: "2026 F/W seasonal print" },
+          image: "/images/fabrics/new-fw-2026.jpg",
           note: {
             ko: "이번 가을·겨울 시즌에 맞춰 개발한 디자인을 준비하고 있습니다.",
             en: "Designs developed for this autumn and winter season.",
@@ -781,6 +831,7 @@ const season: FabricCategory = {
       items: [
         {
           name: { ko: "겨울 기모 나염 원단", en: "Brushed winter print" },
+          image: "/images/fabrics/new-winter-brushed.jpg",
           note: {
             ko: "기모 가공으로 보온성을 올린 겨울 시즌 품목입니다.",
             en: "Brushed for warmth — the winter staple.",
@@ -794,6 +845,7 @@ const season: FabricCategory = {
       items: [
         {
           name: { ko: "겨울 본딩 원단", en: "Bonded winter fabric" },
+          image: "/images/fabrics/new-winter-bonded.jpg",
           note: {
             ko: "접합으로 두께를 확보해 아우터에 쓰이는 품목입니다.",
             en: "Bonded for thickness, used in outerwear.",
@@ -807,6 +859,7 @@ const season: FabricCategory = {
       items: [
         {
           name: { ko: "봄·여름 시즌 나염 원단", en: "S/S seasonal print" },
+          image: "/images/fabrics/new-spring-summer.jpg",
           note: {
             ko: "얇은 번수와 밝은 배색 중심으로 전개합니다.",
             en: "Finer counts and lighter colourways.",
@@ -820,6 +873,7 @@ const season: FabricCategory = {
       items: [
         {
           name: { ko: "가을·겨울 시즌 나염 원단", en: "F/W seasonal print" },
+          image: "/images/fabrics/new-autumn-winter.jpg",
           note: {
             ko: "골덴, 기모지 등 두께가 있는 베이스로 전개합니다.",
             en: "Built on heavier bases such as corduroy and brushed cloth.",
@@ -833,6 +887,7 @@ const season: FabricCategory = {
       items: [
         {
           name: { ko: "꾸준히 나가는 디자인", en: "Designs that keep selling" },
+          image: "/images/fabrics/new-bestseller.jpg",
           note: {
             ko: "시즌을 넘겨 반복 주문이 이어지는 패턴들을 따로 관리합니다.",
             en: "Patterns that carry over seasons and keep being reordered.",
@@ -846,6 +901,7 @@ const season: FabricCategory = {
       items: [
         {
           name: { ko: "신규 개발 나염 디자인", en: "Newly developed prints" },
+          image: "/images/fabrics/new-developed.jpg",
           note: {
             ko: "자체 제도실에서 막 나온 패턴입니다. 독점 여부는 상담 시 안내합니다.",
             en: "Straight out of our design room. Exclusivity is confirmed on consultation.",
