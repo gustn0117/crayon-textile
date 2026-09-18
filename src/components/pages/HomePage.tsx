@@ -20,31 +20,11 @@ export function HomePage({ lang, d, info }: { lang: Locale; d: Dictionary; info:
   return (
     <>
       <section className={styles.hero}>
-        {/* The name cut out of their own printed cloth, breathing like a flag.
-            The filter lives here because CSS cannot animate filter primitives. */}
-        <svg className={styles.heroDefs} aria-hidden="true" focusable="false">
-          <defs>
-            <filter id="flag" x="-6%" y="-18%" width="112%" height="136%" colorInterpolationFilters="sRGB">
-              {/* One octave at a low frequency gives a long, smooth swell. Finer
-                  noise chewed the letterforms into a ragged edge. */}
-              <feTurbulence type="fractalNoise" numOctaves={1} seed={7} baseFrequency="0.0035 0.009" result="noise">
-                <animate
-                  attributeName="baseFrequency"
-                  dur="16s"
-                  values="0.0035 0.009; 0.0045 0.0075; 0.0035 0.009"
-                  repeatCount="indefinite"
-                  calcMode="spline"
-                  keyTimes="0; 0.5; 1"
-                  keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
-                />
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale={6} xChannelSelector="R" yChannelSelector="G" />
-            </filter>
-          </defs>
-        </svg>
-
+        {/* The name cut from one piece of their own printed cloth, held still
+            and centred. Splitting it into letters was only ever needed to make
+            them wave; with the wave gone the fabric runs unbroken again. */}
         <div className={styles.heroMark}>
-          <div className={styles.heroWord} aria-label={t.heroWordmark}>
+          <div className={styles.heroWord} role="img" aria-label={t.heroWordmark}>
             {t.heroWordmark}
           </div>
           <p className={styles.heroWordKo}>{t.heroWordmarkKo}</p>

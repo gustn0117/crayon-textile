@@ -8,17 +8,10 @@
 
 /* The signature: the brand name is cut out of their own cloth. The letters are
    a window onto the fabric, which then arrives full-bleed below. */
-/* The filter only needs to exist in the document; it is never seen. */
-.heroDefs {
-  position: absolute;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
 .heroMark {
   width: 100%;
   margin-top: auto;
+  text-align: center;
 }
 
 .heroWord {
@@ -42,10 +35,10 @@
 }
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
+  /* One of Crayon's own prints, dark-ground so the letters carry themselves —
+     the old flat ink layer sat at 73% and drowned the pattern. One image across
+     the whole word, and it does not move. */
   .heroWord {
-    /* One of Crayon's own prints, dark-ground so the letters carry themselves —
-       the old flat ink layer had to sit at 73% and drowned the pattern. A light
-       veil is enough now, and the paisley stays legible inside a letterform. */
     background-image:
       linear-gradient(rgba(11, 11, 11, 0.22), rgba(11, 11, 11, 0.22)),
       url("/images/fabrics/design-paisley.jpg");
@@ -54,19 +47,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    /* The cloth drifts slowly inside the letters while the filter ripples the
-       letterforms: together they read as one piece of fabric on a pole. */
-    filter: url("#flag");
-    animation:
-      wordIn 0.7s var(--ease) both,
-      clothDrift 26s ease-in-out 0.7s infinite;
   }
-}
-
-@keyframes clothDrift {
-  0%   { background-position: 48% 50%; }
-  50%  { background-position: 52% 47%; }
-  100% { background-position: 48% 50%; }
 }
 
 /* The Korean name, small, under its English twin. */
@@ -75,7 +56,7 @@
   font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
   font-weight: 600;
   letter-spacing: 0.5em;
-  margin-right: -0.5em;
+  text-indent: 0.5em;
   color: var(--body);
   line-height: 1;
   animation: riseIn 0.5s var(--ease) 0.12s both;
@@ -92,7 +73,8 @@
 }
 
 .heroMaterials { animation: riseIn 0.5s var(--ease) 0.16s both; }
-.heroRule { transform-origin: left center; animation: ruleIn 0.55s var(--ease) 0.24s both; }
+/* The block above it is centred, so the rule opens from the centre too. */
+.heroRule { transform-origin: center; animation: ruleIn 0.55s var(--ease) 0.24s both; }
 .heroCopy { animation: riseIn 0.5s var(--ease) 0.3s both; }
 .heroCta { animation: riseIn 0.5s var(--ease) 0.36s both; }
 .heroMeta { animation: riseIn 0.5s var(--ease) 0.42s both; }
@@ -116,6 +98,7 @@
   margin-bottom: auto;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px clamp(14px, 2vw, 30px);
   margin-top: clamp(20px, 2.6vw, 34px);
   font-family: var(--font-mono);
@@ -212,12 +195,6 @@
     clip-path: none;
     transform: none;
     opacity: 1;
-  }
-
-  /* Drops the rippling filter too — the SVG animation inside it cannot be
-     reached from CSS, so the only way to hold the cloth still is to unhook it. */
-  .heroWord {
-    filter: none;
   }
 
   .card:hover .cardMedia img,
