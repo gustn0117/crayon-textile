@@ -268,6 +268,8 @@ export function ko(info: SiteInfo) {
       },
 
       heroWordmark: "CRAYON",
+
+      heroWordmarkKo: "크레용",
       heroTagline: ["30년의 감각으로,", "원단의 다음을 만듭니다."],
       heroSub: "서울 동대문에서 시작된 텍스타일 디자인 스튜디오",
       heroCta: "원단 상담하기",

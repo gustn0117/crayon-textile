@@ -8,9 +8,21 @@
 
 /* The signature: the brand name is cut out of their own cloth. The letters are
    a window onto the fabric, which then arrives full-bleed below. */
-.heroWord {
+/* The filter only needs to exist in the document; it is never seen. */
+.heroDefs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.heroMark {
   width: 100%;
   margin-top: auto;
+}
+
+.heroWord {
+  width: 100%;
   /* Was hardcoded to Arial, which is outside the type system and renders
      differently per OS. Gothic A1 is the site's own display face. */
   font-family: var(--font-sans);
@@ -26,23 +38,47 @@
      keeps the layout where it was. */
   padding-block: 0.22em;
   margin-bottom: -0.22em;
+  animation: wordIn 0.7s var(--ease) both;
 }
 
 @supports (background-clip: text) or (-webkit-background-clip: text) {
   .heroWord {
-    /* A crop of Crayon's own cloth on the flat-bed press — a dense repeat, so
-       the pattern still reads inside a letterform. The photograph alone loses
-       the letters wherever it goes light, so an ink layer rides on top: dark
-       enough to carry the page, sheer enough to keep the print visible. */
+    /* One of Crayon's own prints, dark-ground so the letters carry themselves —
+       the old flat ink layer had to sit at 73% and drowned the pattern. A light
+       veil is enough now, and the paisley stays legible inside a letterform. */
     background-image:
-      linear-gradient(rgba(11, 11, 11, 0.73), rgba(11, 11, 11, 0.73)),
-      url("/images/crayon-wordmark-fill.jpg");
+      linear-gradient(rgba(11, 11, 11, 0.22), rgba(11, 11, 11, 0.22)),
+      url("/images/fabrics/design-paisley.jpg");
     background-size: cover;
-    background-position: 50% 46%;
+    background-position: 50% 50%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    /* The cloth drifts slowly inside the letters while the filter ripples the
+       letterforms: together they read as one piece of fabric on a pole. */
+    filter: url("#flag");
+    animation:
+      wordIn 0.7s var(--ease) both,
+      clothDrift 26s ease-in-out 0.7s infinite;
   }
+}
+
+@keyframes clothDrift {
+  0%   { background-position: 48% 50%; }
+  50%  { background-position: 52% 47%; }
+  100% { background-position: 48% 50%; }
+}
+
+/* The Korean name, small, under its English twin. */
+.heroWordKo {
+  margin-top: clamp(10px, 1.1vw, 18px);
+  font-size: clamp(0.9375rem, 1.15vw, 1.125rem);
+  font-weight: 600;
+  letter-spacing: 0.5em;
+  margin-right: -0.5em;
+  color: var(--body);
+  line-height: 1;
+  animation: riseIn 0.5s var(--ease) 0.12s both;
 }
 
 /* The opening cascade: wordmark, then keywords, then the rule draws, then the
@@ -55,7 +91,6 @@
   animation-fill-mode: both;
 }
 
-.heroWord { animation: wordIn 0.7s var(--ease) both; }
 .heroMaterials { animation: riseIn 0.5s var(--ease) 0.16s both; }
 .heroRule { transform-origin: left center; animation: ruleIn 0.55s var(--ease) 0.24s both; }
 .heroCopy { animation: riseIn 0.5s var(--ease) 0.3s both; }
@@ -140,7 +175,8 @@
 
 @media (max-width: 900px) {
   .hero { min-height: auto; padding-top: clamp(70px, 16vw, 130px); }
-  .heroWord { margin-top: 0; font-size: 16.6vw; line-height: 0.8; }
+  .heroMark { margin-top: 0; }
+  .heroWord { font-size: 16.6vw; line-height: 0.8; }
   .heroMaterials { margin-bottom: 0; }
   .heroBottom { grid-template-columns: 1fr 1fr; }
   .heroMeta { grid-column: 1 / -1; }
@@ -165,14 +201,30 @@
 
 @media (prefers-reduced-motion: reduce) {
   .heroWord,
+  .heroWordKo,
   .heroMaterials,
   .heroRule,
   .heroCopy,
   .heroCta,
   .heroMeta,
-  .heroWord { clip-path: none; transform: none; }
-  .heroImage img { scale: 1; }
-  .closing h2 span > i { transform: none; transition: none; }
+  .heroSecondary {
+    animation: none;
+    clip-path: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  /* Drops the rippling filter too — the SVG animation inside it cannot be
+     reached from CSS, so the only way to hold the cloth still is to unhook it. */
+  .heroWord {
+    filter: none;
+  }
+
+  .card:hover .cardMedia img,
+  .product:hover .productMedia img,
+  .door:hover img {
+    transform: none;
+  }
 }
 
 /* ==========================================================================

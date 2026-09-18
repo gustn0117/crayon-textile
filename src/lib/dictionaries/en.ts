@@ -272,6 +272,8 @@ export function en(info: SiteInfo): Dictionary {
       },
 
       heroWordmark: "CRAYON",
+
+      heroWordmarkKo: "크레용",
       heroTagline: ["Thirty years of instinct,", "shaping what fabric becomes next."],
       heroSub: "A textile design studio rooted in Dongdaemun, Seoul",
       heroCta: "Start a consultation",
