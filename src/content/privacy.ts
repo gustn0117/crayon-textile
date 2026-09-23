@@ -9,12 +9,13 @@ export const privacyMeta: Meta = {
   },
 };
 
-/* Every statement here is something the inquiry store actually does: the
-   fields match the form, and the one-year retention is enforced by
-   lib/server/inquiryStore.ts. Change one, change the other. */
+/* Every statement here is something the site actually does: the fields match
+   the form, the one-year retention is enforced by lib/server/inquiryStore.ts,
+   and the automatic-collection and overseas-transfer clauses describe the Meta
+   Pixel in components/MetaPixel.tsx. Change one, change the other. */
 export function privacy(info: SiteInfo): { effective: string; sections: Section[] } {
   return {
-    effective: "2026-09-14",
+    effective: "2026-09-23",
     sections: [
       {
         id: "items",
@@ -22,7 +23,10 @@ export function privacy(info: SiteInfo): { effective: string; sections: Section[
         bullets: [
           { ko: "필수: 이름, 연락처, 문의 유형, 문의 내용", en: "Required: name, phone, enquiry type, message" },
           { ko: "선택: 이메일, 회사·브랜드명, 용도, 수량", en: "Optional: email, company or brand, intended use, quantity" },
-          { ko: "자동으로 수집하는 항목은 없습니다. 접속 기록이나 쿠키로 개인을 식별하지 않습니다.", en: "Nothing is collected automatically; no cookies identify you." },
+          {
+            ko: "자동 수집: 광고 성과 측정을 위해 Meta 픽셀이 방문 기록과 쿠키 식별자(_fbp)를 수집합니다. 이름·연락처 등 문의 폼에 적으신 내용은 픽셀로 전송되지 않습니다.",
+            en: "Automatic: the Meta Pixel records your visit and a cookie identifier (_fbp) to measure advertising. Nothing you type into the enquiry form is sent to it.",
+          },
         ],
       },
       {
@@ -46,7 +50,13 @@ export function privacy(info: SiteInfo): { effective: string; sections: Section[
         id: "sharing",
         title: { ko: "4. 제3자 제공 · 위탁", en: "4. Sharing" },
         paragraphs: [
-          { ko: "제3자에게 제공하거나 외부에 처리를 위탁하지 않습니다.", en: "Not shared with third parties or outsourced." },
+          { ko: "문의 내용은 제3자에게 제공하거나 외부에 처리를 위탁하지 않습니다.", en: "Enquiries are not shared with third parties or outsourced." },
+        ],
+        bullets: [
+          {
+            ko: "국외 이전: 위 1항의 자동 수집 항목은 광고 성과 측정을 위해 Meta Platforms Ireland Ltd.(아일랜드)로 전송되며, 해당 사업자의 정책에 따라 보관됩니다. 브라우저의 쿠키 차단이나 광고 추적 제한 설정으로 거부하실 수 있고, 거부하셔도 홈페이지 이용에는 제한이 없습니다.",
+            en: "Transferred abroad: the automatically collected items in §1 go to Meta Platforms Ireland Ltd. (Ireland) to measure advertising and are retained under their policy. You may refuse via your browser's cookie or ad-tracking settings; refusing does not limit your use of the site.",
+          },
         ],
       },
       {
@@ -77,7 +87,7 @@ export function privacy(info: SiteInfo): { effective: string; sections: Section[
       {
         id: "effective",
         title: { ko: "8. 시행일", en: "8. Effective date" },
-        paragraphs: [{ ko: "이 방침은 2026년 9월 14일부터 적용됩니다.", en: "In force from 14 September 2026." }],
+        paragraphs: [{ ko: "이 방침은 2026년 9월 23일부터 적용됩니다.", en: "In force from 23 September 2026." }],
       },
     ],
   };

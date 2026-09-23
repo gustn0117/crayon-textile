@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Gothic_A1, IBM_Plex_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { MetaPixel } from "@/components/MetaPixel";
 import { getDictionary } from "@/lib/dictionaries";
 import { localePath, siteUrl, type Locale } from "@/lib/routing";
 
@@ -63,6 +64,9 @@ export async function RootShell({ lang, children }: { lang: Locale; children: Re
         <SiteHeader lang={lang} d={d} />
         <main id="main">{children}</main>
         <SiteFooter lang={lang} d={d} />
+        {/* Only the two public trees render this shell; /admin has its own
+            root layout, so the pixel never runs over the inquiry inbox. */}
+        <MetaPixel />
       </body>
     </html>
   );
