@@ -1,4 +1,8 @@
-export const siteUrl = "https://crayon-textile.hsweb.pics";
+/* The live domain, and the one registered with Naver's ad account. Canonical
+   tags, hreflang, OpenGraph, sitemap.xml and robots.txt all derive from this,
+   so the staging host (crayon-textile.hsweb.pics) serves the same pages while
+   pointing search engines here. */
+export const siteUrl = "https://crayon1989.com";
 
 export const navigation = [
   { href: "/about", en: "ABOUT", ko: "회사 소개" },
