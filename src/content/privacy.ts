@@ -11,11 +11,12 @@ export const privacyMeta: Meta = {
 
 /* Every statement here is something the site actually does: the fields match
    the form, the one-year retention is enforced by lib/server/inquiryStore.ts,
-   and the automatic-collection and overseas-transfer clauses describe the Meta
-   Pixel in components/MetaPixel.tsx. Change one, change the other. */
+   and the automatic-collection and sharing clauses describe the two ad trackers
+   in components/MetaPixel.tsx and components/NaverWcs.tsx. Add or remove a
+   tracker, change these clauses with it. */
 export function privacy(info: SiteInfo): { effective: string; sections: Section[] } {
   return {
-    effective: "2026-09-23",
+    effective: "2026-10-01",
     sections: [
       {
         id: "items",
@@ -24,8 +25,8 @@ export function privacy(info: SiteInfo): { effective: string; sections: Section[
           { ko: "필수: 이름, 연락처, 문의 유형, 문의 내용", en: "Required: name, phone, enquiry type, message" },
           { ko: "선택: 이메일, 회사·브랜드명, 용도, 수량", en: "Optional: email, company or brand, intended use, quantity" },
           {
-            ko: "자동 수집: 광고 성과 측정을 위해 Meta 픽셀이 방문 기록과 쿠키 식별자(_fbp)를 수집합니다. 이름·연락처 등 문의 폼에 적으신 내용은 픽셀로 전송되지 않습니다.",
-            en: "Automatic: the Meta Pixel records your visit and a cookie identifier (_fbp) to measure advertising. Nothing you type into the enquiry form is sent to it.",
+            ko: "자동 수집: 광고 성과 측정을 위해 Meta 픽셀과 네이버 검색광고 스크립트가 방문 기록, 유입 경로, 쿠키 식별자를 수집합니다. 이름·연락처 등 문의 폼에 적으신 내용은 전송되지 않습니다.",
+            en: "Automatic: the Meta Pixel and Naver Search Ad script record your visit, how you arrived, and a cookie identifier, to measure advertising. Nothing you type into the enquiry form is sent to them.",
           },
         ],
       },
@@ -54,8 +55,16 @@ export function privacy(info: SiteInfo): { effective: string; sections: Section[
         ],
         bullets: [
           {
-            ko: "국외 이전: 위 1항의 자동 수집 항목은 광고 성과 측정을 위해 Meta Platforms Ireland Ltd.(아일랜드)로 전송되며, 해당 사업자의 정책에 따라 보관됩니다. 브라우저의 쿠키 차단이나 광고 추적 제한 설정으로 거부하실 수 있고, 거부하셔도 홈페이지 이용에는 제한이 없습니다.",
-            en: "Transferred abroad: the automatically collected items in §1 go to Meta Platforms Ireland Ltd. (Ireland) to measure advertising and are retained under their policy. You may refuse via your browser's cookie or ad-tracking settings; refusing does not limit your use of the site.",
+            ko: "광고 성과 측정: 위 1항의 자동 수집 항목은 네이버(주)(대한민국)로 전송됩니다.",
+            en: "Advertising measurement: the automatically collected items in §1 are sent to NAVER Corp. (Korea).",
+          },
+          {
+            ko: "국외 이전: 같은 항목이 Meta Platforms Ireland Ltd.(아일랜드)로도 전송되며, 해당 사업자의 정책에 따라 보관됩니다.",
+            en: "Transferred abroad: the same items also go to Meta Platforms Ireland Ltd. (Ireland) and are retained under their policy.",
+          },
+          {
+            ko: "거부 방법: 브라우저의 쿠키 차단이나 광고 추적 제한 설정으로 거부하실 수 있고, 거부하셔도 홈페이지 이용에는 제한이 없습니다.",
+            en: "Opting out: you may refuse via your browser's cookie or ad-tracking settings; refusing does not limit your use of the site.",
           },
         ],
       },
@@ -87,7 +96,7 @@ export function privacy(info: SiteInfo): { effective: string; sections: Section[
       {
         id: "effective",
         title: { ko: "8. 시행일", en: "8. Effective date" },
-        paragraphs: [{ ko: "이 방침은 2026년 9월 23일부터 적용됩니다.", en: "In force from 23 September 2026." }],
+        paragraphs: [{ ko: "이 방침은 2026년 10월 1일부터 적용됩니다.", en: "In force from 1 October 2026." }],
       },
     ],
   };
