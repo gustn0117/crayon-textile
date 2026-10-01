@@ -30,6 +30,8 @@ export function NaverWcs() {
 
   const log = useCallback((path: string) => {
     if (!window.wcs || logged.current === path) return;
+    // Belt and braces: the inline tag below normally sets these during parse,
+    // but re-asserting costs nothing and covers the tag being stripped.
     window.wcs_add = window.wcs_add ?? {};
     window.wcs_add.wa = WCS_ACCOUNT;
     window._nasa = window._nasa ?? {};
@@ -45,11 +47,23 @@ export function NaverWcs() {
   }, [pathname, log]);
 
   return (
-    <Script
-      id="naver-wcslog"
-      src="https://wcs.naver.net/wcslog.js"
-      strategy="afterInteractive"
-      onLoad={() => log(window.location.pathname)}
-    />
+    <>
+      {/* A plain tag, not next/script, so the key is served in the HTML itself.
+          Naver's 검수 reads the delivered source looking for it; setting it
+          only from the JS bundle would pass at runtime and fail review. */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `if (!window.wcs_add) window.wcs_add = {};
+wcs_add["wa"] = "${WCS_ACCOUNT}";
+if (!window._nasa) window._nasa = {};`,
+        }}
+      />
+      <Script
+        id="naver-wcslog"
+        src="https://wcs.naver.net/wcslog.js"
+        strategy="afterInteractive"
+        onLoad={() => log(window.location.pathname)}
+      />
+    </>
   );
 }
